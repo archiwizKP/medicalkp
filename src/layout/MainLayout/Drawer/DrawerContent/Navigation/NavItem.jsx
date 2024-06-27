@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
-import { forwardRef, useEffect } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Button, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, styled } from '@mui/material';
+import { Avatar, ListItemButton, ListItemIcon, ListItemText, Typography, styled } from '@mui/material';
 
 // project import
 import { activeItem } from '../../../../../store/reducers/menu';
 
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { TabClicked } from '../../../../../store/reducers/tab';
 
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
@@ -18,6 +19,8 @@ const NavItem = ({ item, level }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+
+  // const [isMenuClicked, setIsMenuClicked] = useState(false); 
 
   const { drawerOpen, openItem } = useSelector((state) => state.menu);
 
@@ -32,6 +35,7 @@ const NavItem = ({ item, level }) => {
   }
 
   const itemHandler = (id) => {
+    console.log('Menu Item is clicked: ');
     dispatch(activeItem({ openItem: [id] }));
   };
 
@@ -47,6 +51,9 @@ const NavItem = ({ item, level }) => {
     // eslint-disable-next-line
   }, [pathname]);
 
+
+
+
   const textColor = 'text.primary';
   const iconSelectedColor = 'primary.main';
 
@@ -61,12 +68,13 @@ const NavItem = ({ item, level }) => {
       backgroundColor: theme.palette.common.black,
     },
   }));
+  
 
   return (
     <ListItemButton
       {...listItemProps}
       disabled={item.disabled}
-      onClick={() => itemHandler(item.id)}
+      onClick={() =>  itemHandler(item.id)}
       selected={isSelected}
       sx={{
         zIndex: 1201,

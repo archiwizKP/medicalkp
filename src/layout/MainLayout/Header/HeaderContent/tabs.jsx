@@ -2,6 +2,8 @@
 import React from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { TabClicked } from '../../../../store/reducers/tab';
 // ==============================|| HEADER CONTENT - SEARCH ||============================== //
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -13,6 +15,7 @@ function CustomTabPanel(props) {
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}
+            style={{}}
         >
             {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
         </div>
@@ -29,19 +32,24 @@ function a11yProps(index) {
 }
 
 export default function CustomTab() {
+
+    const dispatch = useDispatch();
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        dispatch(TabClicked(newValue))
+        console.log(newValue);
     };
 
     return (
         <Box sx={{ width: '100%', ml: 10 }}>
             <Box sx={{display: 'flex', justifyContent:'start', alignItems: "center"}}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab spacing={4} label="Wire Frame" {...a11yProps(0)} />
                     <Tab spacing={4} label="2D" {...a11yProps(1)} />
                     <Tab spacing={4} label="3D" {...a11yProps(2)} />
+                    <Tab spacing={4} label="Wire Frame" {...a11yProps(3)} />
                 </Tabs>
             </Box>
             {/* <CustomTabPanel value={value} index={0}>
