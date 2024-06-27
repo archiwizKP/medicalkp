@@ -14,10 +14,50 @@ const dashboard = {
   type: 'group',
   children: [
     {
-      id: 'dashboard',
-      title: 'Dashboard',
+      id: 'Neuro',
+      title: 'Neuro Hospital',
       type: 'item',
       url: '/dashboard/default',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'Stroke',
+      title: 'Stroke',
+      type: 'item',
+      url: '/dashboard/stroke',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'nihhs',
+      title: 'NIHHS',
+      type: 'item',
+      url: '/dashboard/nihhss',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'stroke-trail',
+      title: 'Stroke Trail',
+      type: 'item',
+      url: '/dashboard/strokeTrail',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'priorities',
+      title: 'Priorities',
+      type: 'item',
+      url: '/dashboard/priorities',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'communication',
+      title: 'Communication',
+      type: 'item',
+      url: '/dashboard/communication',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }

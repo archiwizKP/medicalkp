@@ -6,6 +6,11 @@ import { lazy } from 'react';
 import Loadable from '../components/Loadable';
 import MainLayout from '../layout/MainLayout';
 import MinimalLayout from '../layout/MinimalLayout'
+import Stroke from "../pages/stroke";
+import NIHHSS from "../pages/nihhss";
+import StrokeTrail from "../pages/stroke_trail";
+import Priorities from "../pages/priorities";
+import Communication from "../pages/comminication";
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('../pages/dashboard')));
 
@@ -82,6 +87,26 @@ function CustomRoute() {
             {
               path: 'default',
               element: <DashboardDefault />
+            },
+            {
+              path: 'stroke',
+              element: <Stroke />
+            },
+            {
+              path: 'nihhss',
+              element: <NIHHSS />
+            },
+            {
+              path: 'strokeTrail',
+              element: <StrokeTrail />
+            },
+            {
+              path: 'priorities',
+              element: <Priorities />
+            },
+            {
+              path: 'communication',
+              element: <Communication />
             }
           ]
         },
