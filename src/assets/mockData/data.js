@@ -1,5 +1,5 @@
 export const TowerA={
-  "name": "nivo",
+  "name": "Tower A",
   "color": "hsl(193, 70%, 50%)",
   "children": [
     {
@@ -714,8 +714,9 @@ export const TowerB={
 }
 
 export const TowerC={
-  "name": "Tower B",
+  "name": "Tower C",
   "color": "hsl(193, 70%, 50%)",
+  
   "children": [
    
     {
@@ -1007,7 +1008,7 @@ export const TowerC={
 
 
 export const TowerD={
-  "name": "Tower B",
+  "name": "Tower D",
   "color": "hsl(193, 70%, 50%)",
   "children": [
    

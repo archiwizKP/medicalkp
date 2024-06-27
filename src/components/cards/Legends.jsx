@@ -1,6 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
+import { CardWrapper } from "./commanStyle";
 
 function Legends() {
   return (
@@ -39,13 +40,8 @@ function Legends() {
 }
 
 
-const CardWrapper = styled(Box)(( {theme} ) => ({
-  width: 200,
-  backgroundColor: "#667BC6",
-  borderRadius: 10,
-  padding: 10,
-  color: "#fff",
-}));
+
+
 const ColorBox = styled(Box)(({PatientColor}) => ({
   backgroundColor: PatientColor,
   width: 20,
