@@ -3,7 +3,7 @@ import { Grid, Typography, Box } from "@mui/material";
 
 // project import
 import AnalyticEcommerce from "../../components/cards/statistics/AnalyticEcommerce";
-import MyResponsiveCirclePacking from "./MyResponsiveCirclePacking";
+import MyResponsiveCirclePacking from "../../components/charts/cirlclePacking";
 import { mokChartData } from "../../assets/mockData/data";
 import { useState } from "react";
 import { drawerWidth } from "../../config";
