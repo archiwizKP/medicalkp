@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Avatar, Button, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, styled } from '@mui/material';
 
 // project import
 import { activeItem } from '../../../../../store/reducers/menu';
 
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
@@ -49,6 +50,18 @@ const NavItem = ({ item, level }) => {
   const textColor = 'text.primary';
   const iconSelectedColor = 'primary.main';
 
+  // custome styling
+  const BootstrapTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black,
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
   return (
     <ListItemButton
       {...listItemProps}
@@ -62,6 +75,7 @@ const NavItem = ({ item, level }) => {
         ...(drawerOpen && {
           '&:hover': {
             bgcolor: 'primary.lighter'
+
           },
           '&.Mui-selected': {
             bgcolor: 'primary.lighter',
@@ -87,7 +101,8 @@ const NavItem = ({ item, level }) => {
       }}
     >
       {itemIcon && (
-        <ListItemIcon
+        <BootstrapTooltip title={item.title} placement="right-start">
+          <ListItemIcon
           sx={{
             minWidth: 28,
             color: isSelected ? iconSelectedColor : textColor,
@@ -103,15 +118,17 @@ const NavItem = ({ item, level }) => {
             }),
             ...(!drawerOpen &&
               isSelected && {
-                bgcolor: 'primary.lighter',
-                '&:hover': {
-                  bgcolor: 'primary.lighter'
-                }
-              })
+              bgcolor: 'primary.lighter',
+              '&:hover': {
+                bgcolor: 'primary.lighter'
+              }
+            })
           }}
         >
           {itemIcon}
         </ListItemIcon>
+        </BootstrapTooltip>
+
       )}
 
       {(drawerOpen || (!drawerOpen && level !== 1)) && (
@@ -123,6 +140,7 @@ const NavItem = ({ item, level }) => {
           }
         />
       )}
+
       {(drawerOpen || (!drawerOpen && level !== 1)) && item.chip && (
         <Chip
           color={item.chip.color}

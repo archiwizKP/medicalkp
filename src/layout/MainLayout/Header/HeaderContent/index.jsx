@@ -6,6 +6,7 @@ import Search from './Search';
 import Profile from './Profile';
 import Notification from './Notification';
 import MobileSection from './MobileSection';
+import CustomTab from './tabs';
 
 // ==============================|| HEADER - CONTENT ||============================== //
 
@@ -14,8 +15,9 @@ const HeaderContent = () => {
 
   return (
     <>
-      {!matchesXs && <Search />}
-      {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />}
+      {/* {!matchesXs && <Search />} */}
+      {!matchesXs && <CustomTab />}
+      {matchesXs && <Box sx={{ width: '100%', ml: 1.5 }} />}
       <Notification />
       {!matchesXs && <Profile />}
       {matchesXs && <MobileSection />}
