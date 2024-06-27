@@ -1,11 +1,23 @@
 // material-ui
-import { Grid, Typography, Box } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Box,
+  Container,
+  Stack,
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+} from "@mui/material";
 
 // project import
 import AnalyticEcommerce from "../../components/cards/statistics/AnalyticEcommerce";
 import MyResponsiveCirclePacking from "../../components/charts/cirlclePacking";
-import { TowerA, TowerB ,TowerC,TowerD} from "../../assets/mockData/data";
+import { TowerA, TowerB, TowerC, TowerD } from "../../assets/mockData/data";
 import { useState } from "react";
+import MainCard from "../../components/MainCard";
+import Legends from "../../components/cards/Legends";
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
@@ -15,7 +27,6 @@ const DashboardDefault = () => {
   // state for the show details in card
   const [showDetails, setShowDetails] = useState(false);
   const [detailsNode, setDetailsNode] = useState(null);
-
 
   console.log("detailsNode", detailsNode);
   const towersData = [
@@ -27,45 +38,50 @@ const DashboardDefault = () => {
 
   return (
     <>
-      <Grid container spacing={2}>
-        {towersData.map((tower) => (
-          <Grid item md={6} sm={12} key={tower.id}>
-            <Typography variant="body1" sx={{ textAlign: "center" }}>
-              {tower.name}
-            </Typography>
-            <Box sx={{ height: "50vh", position: "relative" }}>
-              <MyResponsiveCirclePacking
-                data={tower.data}
-                setZoomedId={(nodeId) =>
-                  setZoomState((prevState) => ({
-                    ...prevState,
-                    [tower.id]: nodeId,
-                  }))
-                }
-                zoomedId={zoomState[tower.id]}
-                setShowDetails={setShowDetails}
-                showDetails={showDetails}
-                setDetailsNode={setDetailsNode}
-                detailsNode={detailsNode}
-              />
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
+      <Container maxWidth="sm">
+        <Grid container spacing={0}>
+          {towersData.map((tower) => (
+            <Grid item md={6} sm={12} key={tower.id}>
+              <Typography variant="body1" sx={{ textAlign: "center" }}>
+                {tower.name}
+              </Typography>
+              <Box sx={{ height: "50vh", position: "relative" }}>
+                <MyResponsiveCirclePacking
+                  data={tower.data}
+                  setZoomedId={(nodeId) =>
+                    setZoomState((prevState) => ({
+                      ...prevState,
+                      [tower.id]: nodeId,
+                    }))
+                  }
+                  zoomedId={zoomState[tower.id]}
+                  setShowDetails={setShowDetails}
+                  showDetails={showDetails}
+                  setDetailsNode={setDetailsNode}
+                  detailsNode={detailsNode}
+                />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+        {showDetails && (
+          <Box sx={{ position: "absolute", top: 70, right: 1 }}>
+            <AnalyticEcommerce
+              title={detailsNode.color}
+              count={detailsNode.data.name}
+              percentage={27.4}
+              isLoss
+              color="warning"
+              extra="$20,395"
+              colorText={detailsNode.color}
+            />
+          </Box>
+        )}
 
-      {showDetails && (
-        <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-          <AnalyticEcommerce
-            title={detailsNode.color}
-            count={detailsNode.data.name}
-            percentage={27.4}
-            isLoss
-            color="warning"
-            extra="$20,395"
-            colorText={detailsNode.color}
-          />
+        <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
+        <Legends/>
         </Box>
-      )}
+      </Container>
     </>
   );
 };
