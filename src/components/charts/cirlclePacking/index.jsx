@@ -60,9 +60,9 @@ const MyResponsiveCirclePacking = ({
         setDetailsNode(node);
         setShowDetails(true);
       }}
-      onMouseLeave={() => {
-        setShowDetails(false);
-      }}
+      // onMouseLeave={() => {
+      //   setShowDetails(false);
+      // }}
   />
 );
 
