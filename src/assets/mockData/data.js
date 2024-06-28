@@ -1,4 +1,4 @@
-export const TowerA={
+export const TowerA = {
   "name": "Tower A",
   // "color": "hsl(193, 70%, 50%)",
   "children": [
@@ -7,380 +7,2034 @@ export const TowerA={
       "color": "hsl(26, 70%, 50%)",
       "children": [
         {
-          "name": "stack",
+          "name": "A1-CVICU",
           "color": "hsl(305, 70%, 50%)",
           "children": [
             {
-              "name": "cchart",
+              "name": "A101",
               "color": "hsl(82, 70%, 50%)",
-              "loc": 158566
+              "loc":  Math.random() * 100000
             },
             {
-              "name": "xAxis",
-              "color": "hsl(149, 70%, 50%)",
-              "loc": 62405
+              "name": "A102",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
             },
             {
-              "name": "yAxis",
-              "color": "hsl(175, 70%, 50%)",
-              "loc": 102720
+              "name": "A103",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
             },
             {
-              "name": "layers",
-              "color": "hsl(25, 70%, 50%)",
-              "loc": 80766
-            }
+              "name": "A104",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A105",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A106",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A107",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A108",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A109",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A110",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
           ]
         },
-       
       ]
     },
     {
       "name": "Level 2",
       "color": "hsl(307, 70%, 50%)",
       "children": [
+        // Chamber 1
         {
-          "name": "rgb",
-          "color": "hsl(323, 70%, 50%)",
-          "loc": 28961
+          "name": "A2-ICU",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "A231",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A232",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A233",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A234",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A235",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A236",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A237",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A238",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A239",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A240",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
         },
+        // Chamber 2
         {
-          "name": "hsl",
-          "color": "hsl(58, 70%, 50%)",
-          "loc": 111694
-        }
+          "name": "A2-PCU",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "A201",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A202",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A203",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A204",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A205",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A206",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A207",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A208",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A209",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A210",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A211",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A212",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A213",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A214",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A215",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A216",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A217",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A218",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A219",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A220",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A221",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A222",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A223",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A224",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A225",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A226",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A227",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A228",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A229",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A230",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
+        },
       ]
     },
     {
       "name": "Level 3",
       "color": "hsl(331, 70%, 50%)",
       "children": [
+        // Chamber 1
         {
-          "name": "randomize",
-          "color": "hsl(216, 70%, 50%)",
-          "loc": 180118
+          "name": "A3-ICU",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "A331",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A332",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A333",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A334",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A335",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A336",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A337",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A338",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A339",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A340",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
         },
+        // Chamber 2
         {
-          "name": "resetClock",
-          "color": "hsl(134, 70%, 50%)",
-          "loc": 114929
+          "name": "A3-PCU",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "A301",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A302",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A303",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A304",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A305",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A306",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A307",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A308",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A309",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A310",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A311",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A312",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A313",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A314",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A315",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A316",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A317",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A318",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A319",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A320",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A321",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A322",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A323",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A324",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A325",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A326",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A327",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A328",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A329",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A330",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
         },
-        {
-          "name": "noop",
-          "color": "hsl(309, 70%, 50%)",
-          "loc": 169030
-        },
-        {
-          "name": "tick",
-          "color": "hsl(358, 70%, 50%)",
-          "loc": 182970
-        },
-        {
-          "name": "forceGC",
-          "color": "hsl(218, 70%, 50%)",
-          "loc": 171081
-        },
-        {
-          "name": "stackTrace",
-          "color": "hsl(228, 70%, 50%)",
-          "loc": 179654
-        },
-        {
-          "name": "dbg",
-          "color": "hsl(313, 70%, 50%)",
-          "loc": 99895
-        }
       ]
     },
     {
       "name": "Level 4",
       "color": "hsl(46, 70%, 50%)",
       "children": [
+        // Chamber 1
         {
-          "name": "address",
-          "color": "hsl(22, 70%, 50%)",
-          "loc": 102132
-        },
-        {
-          "name": "city",
-          "color": "hsl(127, 70%, 50%)",
-          "loc": 116105
-        },
-        {
-          "name": "animal",
-          "color": "hsl(49, 70%, 50%)",
-          "loc": 156041
-        },
-        {
-          "name": "movie",
-          "color": "hsl(243, 70%, 50%)",
-          "loc": 134394
-        },
-        {
-          "name": "user",
-          "color": "hsl(261, 70%, 50%)",
-          "loc": 93040
-        }
-      ]
-    },
-  ]
-}
-
-
-export const TowerB={
-  "name": "Tower B",
-  "color": "hsl(193, 70%, 50%)",
-  "children": [
-   
-    {
-      "name": "Level 1",
-      "color": "hsl(331, 70%, 50%)",
-      "children": [
-        {
-          "name": "randomize",
-          "color": "hsl(216, 70%, 50%)",
-          "loc": 180118
-        },
-        {
-          "name": "resetClock",
-          "color": "hsl(134, 70%, 50%)",
-          "loc": 114929
-        },
-        {
-          "name": "noop",
-          "color": "hsl(309, 70%, 50%)",
-          "loc": 169030
-        },
-        {
-          "name": "tick",
-          "color": "hsl(358, 70%, 50%)",
-          "loc": 182970
-        },
-        {
-          "name": "forceGC",
-          "color": "hsl(218, 70%, 50%)",
-          "loc": 171081
-        },
-        {
-          "name": "stackTrace",
-          "color": "hsl(228, 70%, 50%)",
-          "loc": 179654
-        }
-      ]
-    },
-  
-    {
-      "name": "Level 2",
-      "color": "hsl(6, 70%, 50%)",
-      "children": [
-        {
-          "name": "clone",
-          "color": "hsl(264, 70%, 50%)",
-          "loc": 12213
-        },
-        {
-          "name": "intersect",
-          "color": "hsl(45, 70%, 50%)",
-          "loc": 135121
-        },
-        {
-          "name": "merge",
-          "color": "hsl(239, 70%, 50%)",
-          "loc": 74406
-        },
-        {
-          "name": "reverse",
-          "color": "hsl(204, 70%, 50%)",
-          "loc": 29960
-        },
-        {
-          "name": "toArray",
-          "color": "hsl(183, 70%, 50%)",
-          "loc": 137323
-        },
-        {
-          "name": "toObject",
-          "color": "hsl(155, 70%, 50%)",
-          "loc": 36039
-        },
-        {
-          "name": "fromCSV",
-          "color": "hsl(97, 70%, 50%)",
-          "loc": 53271
-        },
-        {
-          "name": "slice",
-          "color": "hsl(340, 70%, 50%)",
-          "loc": 172492
-        },
-        {
-          "name": "append",
-          "color": "hsl(277, 70%, 50%)",
-          "loc": 105802
-        },
-        {
-          "name": "prepend",
-          "color": "hsl(241, 70%, 50%)",
-          "loc": 195961
-        },
-        {
-          "name": "shuffle",
-          "color": "hsl(359, 70%, 50%)",
-          "loc": 31523
-        },
-        {
-          "name": "pick",
-          "color": "hsl(147, 70%, 50%)",
-          "loc": 118044
-        },
-        {
-          "name": "plouc",
-          "color": "hsl(158, 70%, 50%)",
-          "loc": 176935
-        }
-      ]
-    },
-    {
-      "name": "Level 3",
-      "color": "hsl(107, 70%, 50%)",
-      "children": [
-        {
-          "name": "trim",
-          "color": "hsl(41, 70%, 50%)",
-          "loc": 83813
-        },
-        {
-          "name": "slugify",
-          "color": "hsl(206, 70%, 50%)",
-          "loc": 133582
-        },
-        {
-          "name": "snakeCase",
-          "color": "hsl(39, 70%, 50%)",
-          "loc": 158971
-        },
-        {
-          "name": "camelCase",
-          "color": "hsl(24, 70%, 50%)",
-          "loc": 13701
-        },
-        {
-          "name": "repeat",
-          "color": "hsl(168, 70%, 50%)",
-          "loc": 44909
-        },
-        {
-          "name": "padLeft",
-          "color": "hsl(78, 70%, 50%)",
-          "loc": 153670
-        },
-        {
-          "name": "padRight",
-          "color": "hsl(276, 70%, 50%)",
-          "loc": 25180
-        },
-        {
-          "name": "sanitize",
-          "color": "hsl(92, 70%, 50%)",
-          "loc": 115855
-        },
-        {
-          "name": "ploucify",
-          "color": "hsl(56, 70%, 50%)",
-          "loc": 188957
-        }
-      ]
-    },
-
-  ]
-}
-
-export const TowerC={
-  "name": "Tower C",
-  "color": "hsl(193, 70%, 50%)",
-  
-  "children": [
-   
-    {
-      "name": "Level 1",
-      "color": "hsl(331, 70%, 50%)",
-      "children": [
-        {
-          "name": "randomize",
-          "color": "hsl(216, 70%, 50%)",
-          "loc": 180118,
+          "name": "A4-ICU",
+          "color": "hsl(305, 70%, 50%)",
           "children": [
             {
-              "name": "cchart",
+              "name": "A431",
               "color": "hsl(82, 70%, 50%)",
-              "loc": 158566
+              "loc":  Math.random() * 100000
             },
             {
-              "name": "xAxis",
-              "color": "hsl(149, 70%, 50%)",
-              "loc": 62405
+              "name": "A432",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A433",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A434",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A435",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A436",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A437",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A438",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A439",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A440",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
             },
           ]
         },
+        // Chamber 2
         {
-          "name": "resetClock",
-          "color": "hsl(134, 70%, 50%)",
-          "loc": 114929
+          "name": "A4-MED",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "A401",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A402",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A403",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A404",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A405",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A406",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A407",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A408",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A409",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A410",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A411",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A412",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A413",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A414",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A415",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A416",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A417",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A418",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A419",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A420",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A421",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A422",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A423",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A424",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A425",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A426",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A427",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A428",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A429",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "A430",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
         },
+      ]
+    },
+  ]
+}
+
+
+export const TowerB = {
+  "name": "Tower B",
+  "color": "hsl(193, 70%, 50%)",
+  "children": [
+    {
+      "name": "Level 1",
+      "color": "hsl(26, 70%, 50%)",
+      "children": [
         {
-          "name": "noop",
-          "color": "hsl(309, 70%, 50%)",
-          "loc": 169030
+          "name": "Observation-UNIT",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "B101",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B102",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B103",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B104",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B105",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B106",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B107",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B108",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B109",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B110",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B211",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B212",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B213",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B214",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B215",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B216",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B217",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B218",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B219",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B120",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+          ]
         },
-        
+      ]
+    },
+
+    // {
+    //   "name": "Level 2",
+    //   "color": "hsl(26, 70%, 50%)",
+    //   "children": [
+    //     {
+    //       "name": "B2-MED",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "B201",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B202",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B203",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B204",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B205",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B206",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B207",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B208",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B209",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B210",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B211",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B212",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B213",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B214",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B215",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B216",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B217",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B218",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B219",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B220",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B220",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B221",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B222",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B223",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B224",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B225",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B226",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B227",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B228",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B229",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B230",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //       ]
+    //     },
+    //     {
+    //       "name": "B2-WMED",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "B231",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B232",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B233",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B234",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B235",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B236",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B237",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B238",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B239",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B240",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+   
+    //       ]
+    //     },
+    //   ]
+    // },
+
+    {
+      "name": "Level 3",
+      "color": "hsl(26, 70%, 50%)",
+      "children": [
+        {
+          "name": "B3-EMED",
+          "color": "hsl(305, 70%, 50%)",
+          "children": [
+            {
+              "name": "B301",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B302",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B303",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B304",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B305",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B306",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B307",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B308",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B309",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B310",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B311",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B312",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B313",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B314",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B315",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B316",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B317",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B318",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B319",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B320",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            {
+              "name": "B321",
+              "color": "hsl(82, 70%, 50%)",
+              "loc": Math.random() * 999999
+            },
+            
+          ]
+        },
+        // {
+        //   "name": "B3-WMED",
+        //   "color": "hsl(305, 70%, 50%)",
+        //   "children": [
+        //     {
+        //       "name": "B321",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B322",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B323",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B324",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B325",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B326",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B327",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B328",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+        //     {
+        //       "name": "B329",
+        //       "color": "hsl(82, 70%, 50%)",
+        //       "loc": Math.random() * 999999
+        //     },
+            
+        //   ]
+        // },
+      ]
+    },
+
+    // {
+    //   "name": "Level 2",
+    //   "color": "hsl(307, 70%, 50%)",
+    //   "children": [
+    //     // Chamber 1
+    //     {
+    //       "name": "B2-MED",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "B211",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B212",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B213",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B214",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B215",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B216",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B217",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B218",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B219",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B220",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B221",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B222",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B223",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B224",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B225",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B226",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B227",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B228",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B229",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //         {
+    //           "name": "B230",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc": Math.random() * 999999
+    //         },
+    //       ]
+    //     },
+    //     // Chamber 2
+    //     {
+    //       "name": "BS-WMED",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "B231",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B232",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B233",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B234",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B235",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B236",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B237",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B238",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B239",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B240",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //       ]
+    //     },
+    //   ]
+    // },
+    // {
+    //   "name": "Level 3",
+    //   "color": "hsl(331, 70%, 50%)",
+    //   "children": [
+    //     // Chamber 1
+    //     {
+    //       "name": "B3-EMED",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "B311",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B312",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B313",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B314",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B315",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B316",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B317",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B318",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B319",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B320",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //       ]
+    //     },
+    //     // Chamber 2
+    //     {
+    //       "name": "A3-PCU",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "A301",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A302",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A303",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A304",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A305",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A306",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A307",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A308",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A309",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A310",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A311",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A312",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A313",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A314",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A315",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A316",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A317",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A318",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A319",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A320",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A321",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A322",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A323",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A324",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A325",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A326",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A327",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A328",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A329",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A330",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //       ]
+    //     },
+    //   ]
+    // },
+    // {
+    //   "name": "Level 4",
+    //   "color": "hsl(46, 70%, 50%)",
+    //   "children": [
+    //     // Chamber 1
+    //     {
+    //       "name": "B3-ICU",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "B321",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B322",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B323",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B324",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B325",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B326",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B327",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B328",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B329",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B330",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B331",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B332",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B333",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B334",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B335",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B336",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B337",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B338",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B339",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "B340",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //       ]
+    //     },
+    //     // Chamber 2
+    //     {
+    //       "name": "A4-MED",
+    //       "color": "hsl(305, 70%, 50%)",
+    //       "children": [
+    //         {
+    //           "name": "A401",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A402",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A403",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A404",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A405",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A406",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A407",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A408",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A409",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A410",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A411",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A412",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A413",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A414",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A415",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A416",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A417",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A418",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A419",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A420",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A421",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A422",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A423",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A424",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A425",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A426",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A427",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A428",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A429",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //         {
+    //           "name": "A430",
+    //           "color": "hsl(82, 70%, 50%)",
+    //           "loc":  Math.random() * 100000
+    //         },
+    //       ]
+    //     },
+    //   ]
+    // },
+  ]
+}
+
+export const TowerC = {
+  "name": "Tower C",
+  "color": "hsl(193, 70%, 50%)",
+
+  "children": [
+
+    {
+      "name": "Level 2",
+      "color": "hsl(331, 70%, 50%)",
+      "children": [
+        {
+          "name": "C2-MED-SURG",
+          "color": "hsl(216, 70%, 50%)",
+          "loc":  Math.random() * 100000,
+          "children": [
+            {
+              "name": "C230",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "C231",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C232",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C233",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C234",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C235",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C236",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C237",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C238",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C239",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "C240",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
+        },
       ]
     }
   ]
 }
 
-
-export const TowerD={
+export const TowerD = {
   "name": "Tower D",
   "color": "hsl(193, 70%, 50%)",
   "children": [
-   
+
     {
       "name": "Level 1",
       "color": "hsl(331, 70%, 50%)",
       "children": [
         {
-          "name": "randomize",
+          "name": "D2-WEST-REHAB",
           "color": "hsl(216, 70%, 50%)",
-          "loc": 180118
+          "loc": Math.random() * 100000,
+          "children": [
+            {
+              "name": "D230",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+            {
+              "name": "D231",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D232",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D233",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D234",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D235",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D236",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D237",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D238",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D239",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            }, {
+              "name": "D240",
+              "color": "hsl(82, 70%, 50%)",
+              "loc":  Math.random() * 100000
+            },
+          ]
         },
-        {
-          "name": "resetClock",
-          "color": "hsl(134, 70%, 50%)",
-          "loc": 114929
-        },
-        {
-          "name": "noop",
-          "color": "hsl(309, 70%, 50%)",
-          "loc": 169030
-        },
-        {
-          "name": "tick",
-          "color": "hsl(358, 70%, 50%)",
-          "loc": 182970
-        },
-        {
-          "name": "forceGC",
-          "color": "hsl(218, 70%, 50%)",
-          "loc": 171081
-        },
-        {
-          "name": "stackTrace",
-          "color": "hsl(228, 70%, 50%)",
-          "loc": 179654
-        }
       ]
-    } 
+    }
   ]
 }
-
-
