@@ -75,15 +75,7 @@ const DashboardDefault = () => {
               </Grid>
               {showDetails && (
                 <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-                  <AnalyticEcommerce
-                    title={detailsNode.color}
-                    count={detailsNode.data.name}
-                    percentage={27.4}
-                    isLoss
-                    color="warning"
-                    extra="$20,395"
-                    colorText={detailsNode.color}
-                  />
+           <LevelsCard/>
                 </Box>
               )}
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
