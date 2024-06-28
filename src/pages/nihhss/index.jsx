@@ -32,66 +32,74 @@ function NIHHSS() {
   ];
 
   return (
-    <Container maxWidth="sm">
-      {
-        tabIndex.index == 0 ? (
-          <>
-            <Grid container spacing={0}>
-              {towersData.map((tower) => (
-                <Grid item md={6} sm={12} key={tower.id}>
-                  <Typography variant="body1" sx={{ textAlign: "center" }}>
-                    {tower.name}
-                  </Typography>
-                  <Box sx={{ height: "50vh", position: "relative" }}>
-                    <MyResponsiveCirclePacking
-                      data={tower.data}
-                      setZoomedId={(nodeId) =>
-                        setZoomState((prevState) => ({
-                          ...prevState,
-                          [tower.id]: nodeId,
-                        }))
-                      }
-                      zoomedId={zoomState[tower.id]}
-                      setShowDetails={setShowDetails}
-                      showDetails={showDetails}
-                      setDetailsNode={setDetailsNode}
-                      detailsNode={detailsNode}
-                    />
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-            {showDetails && (
-              <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-                <AnalyticEcommerce
-                  title={detailsNode.color}
-                  count={detailsNode.data.name}
-                  percentage={27.4}
-                  isLoss
-                  color="warning"
-                  extra="$20,395"
-                  colorText={detailsNode.color}
+    <>
+      <Container maxWidth="sm">
+        {
+          tabIndex.index === 0 ? (
+            <>
+              {/* Default Data Tab */}
+              <Grid container spacing={0}>
+                {towersData.map((tower) => (
+                  <Grid item md={6} sm={12} key={tower.id}>
+                    <Typography variant="body1" sx={{ textAlign: "center" }}>
+                      {tower.name}
+                    </Typography>
+                    <Box sx={{ height: "50vh", position: "relative" }}>
+                      <MyResponsiveCirclePacking
+                        data={tower.data}
+                        tower={tower}
+                        setZoomedId={(nodeId) =>
+                          setZoomState((prevState) => ({
+                            ...prevState,
+                            [tower.id]: nodeId,
+                          }))
+                        }
+                        zoomedId={zoomState[tower.id]}
+                        setShowDetails={setShowDetails}
+                        showDetails={showDetails}
+                        setDetailsNode={setDetailsNode}
+                        detailsNode={detailsNode}
+                      />
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+              {showDetails && detailsNode && (
+                <Box sx={{ position: "absolute", top: 70, right: 1 }}>
+                  {/* <LevelsCard
+                    name={detailsNode.data.name}
+                    children={detailsNode.data.children || []}
+                  /> */}
+                  <LevelsCard
+                  name={detailsNode.data.name}
+                  children={detailsNode.data.children || []}
+                  setZoomedId={(nodeId) =>
+                    setZoomState((prevState) => ({
+                      ...prevState,
+                      [detailsNode.data.name]: nodeId,
+                    }))
+                  }
                 />
+                </Box>
+              )}
+              <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
+                <Legends />
               </Box>
-            )}
+              {/* Default Data Tab */}
+            </>
+          ) : <></>
+        }
 
-          </>
-        ) : <></>
-      }
-
-      {/* Render this Component when 3D tab is clicked */}
-      {
-        tabIndex.index === 1 ? (
-
-          <ThreeD />
-
-        ) : tabIndex.index === 2 && (
-          <Wireframe />
-        )
-      }
-
-
-    </Container>
+        {/* Render this Component when 3D tab is clicked */}
+        {
+          tabIndex.index === 1 ? (
+            <ThreeD />
+          ) : tabIndex.index === 2 && (
+            <Wireframe />
+          )
+        }
+      </Container>
+    </>
   )
 }
 
