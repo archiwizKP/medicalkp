@@ -2,7 +2,7 @@ import React from 'react'
 
 const TwoD = () => {
   return (
-    <div>2D</div>
+    <div>2DD</div>
   )
 }
 
