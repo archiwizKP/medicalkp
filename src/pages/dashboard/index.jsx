@@ -24,7 +24,7 @@ const DashboardDefault = () => {
   // state for the show details in card
   const [showDetails, setShowDetails] = useState(false);
   const [detailsNode, setDetailsNode] = useState(null);
-
+  const [currentLevels, setCurrentLevels] = useState([]);
   // redux tab global state
   const tabIndex = useSelector((state) => state.HeaderTab);
 
@@ -38,8 +38,6 @@ const DashboardDefault = () => {
     { id: "towerC", name: "Tower C", data: TowerC },
     { id: "towerD", name: "Tower D", data: TowerD },
   ];
-
-
   return (
     <>
       <Container maxWidth="sm">
@@ -57,6 +55,7 @@ const DashboardDefault = () => {
                     <Box sx={{ height: "50vh", position: "relative" }}>
                       <MyResponsiveCirclePacking
                         data={tower.data}
+                        tower={tower}
                         setZoomedId={(nodeId) =>
                           setZoomState((prevState) => ({
                             ...prevState,
@@ -73,9 +72,9 @@ const DashboardDefault = () => {
                   </Grid>
                 ))}
               </Grid>
-              {showDetails && (
+              {showDetails && detailsNode  && (
                 <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-           <LevelsCard numberOfLevel={2}/>
+                  <LevelsCard numberOfLevel={5} Name={detailsNode.data.name}/>
                 </Box>
               )}
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
