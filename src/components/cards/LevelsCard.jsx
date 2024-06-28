@@ -23,7 +23,8 @@ function LevelsCard({ numberOfLevel,Name }) {
             </Link>
           ))}
       </Stack>
-    </CardWrapperStyling>
+    </CardWrapper>
+    
   );
 }
 
