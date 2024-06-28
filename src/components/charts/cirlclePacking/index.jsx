@@ -10,71 +10,6 @@ function MyResponsiveCirclePacking({
   detailsNode,
   tower,
 }) {
-  function getLevelData(data) {
-    let levels = [];
-    function traverse(node, depth) {
-      if (!levels[depth]) {
-        levels[depth] = {
-          level: depth + 1,
-          data: [],
-        };
-      }
-      levels[depth].data.push(node);
-
-      if (node.children) {
-        node.children.forEach((child) => traverse(child, depth + 1));
-      }
-    }
-
-    traverse(data, 0);
-    return levels;
-  }
-
-  function getLevelData(data) {
-    let levels = [];
-    function traverse(node, depth) {
-      if (!levels[depth]) {
-        levels[depth] = {
-          level: depth + 1,
-          data: [],
-        };
-      }
-      levels[depth].data.push(node);
-
-      if (node.children) {
-        node.children.forEach((child) => traverse(child, depth + 1));
-      }
-    }
-
-    traverse(data, 0);
-    return levels;
-  }
-
-  function getChildrenLength(data) {
-    // Check if the top-level array and necessary properties exist
-    if (
-      !data ||
-      !data[0] ||
-      !data[0].data ||
-      !data[0].data[0] ||
-      !data[0].data[0].data ||
-      !data[0].data[0].data.children
-    ) {
-      return "Data structure is incomplete or incorrect.";
-    }
-
-    // Access the children array
-    const children = data[0].data[0].data.children;
-
-    // Return the length of the children array
-    return children.length;
-  }
-
-  useEffect(() => {
-    const towerLevels = getLevelData(tower);
-    console.log("Tower Levels:", getChildrenLength(towerLevels));
-  }, [tower]);
-
   return (
     <ResponsiveCirclePacking
       data={data}
@@ -133,9 +68,9 @@ function MyResponsiveCirclePacking({
         }
       }}
 
-      // onMouseLeave={() => {
-      //   setShowDetails(false);
-      // }}
+      onMouseLeave={() => {
+        setShowDetails(false);
+      }}
     />
   );
 }

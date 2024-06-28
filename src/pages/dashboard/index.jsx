@@ -1,3 +1,5 @@
+// DashboardDefault.js
+
 // material-ui
 import {
   Grid,
@@ -16,32 +18,28 @@ import ThreeD from "../3d/3d";
 import Wireframe from "../wireframe/wireframe";
 import LevelsCard from "../../components/cards/LevelsCard";
 
+
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const DashboardDefault = () => {
-  // state for zoom ogf the node
+  // state for zoom of the node
   const [zoomState, setZoomState] = useState({});
   // state for the show details in card
   const [showDetails, setShowDetails] = useState(false);
   const [detailsNode, setDetailsNode] = useState(null);
-  const [currentLevels, setCurrentLevels] = useState([]);
   // redux tab global state
   const tabIndex = useSelector((state) => state.HeaderTab);
 
-  console.log("detailsNode", detailsNode);
-
-  console.log('I am tabIndex from redux toolkit:', tabIndex);
-
   const towersData = [
     { id: "towerA", name: "Tower A", data: TowerA },
-    { id: "towerB", name: "Tower B", data: TowerB }, // Assuming TowerB is imported or defined elsewhere
+    { id: "towerB", name: "Tower B", data: TowerB },
     { id: "towerC", name: "Tower C", data: TowerC },
     { id: "towerD", name: "Tower D", data: TowerD },
   ];
+
   return (
     <>
       <Container maxWidth="sm">
-
         {
           tabIndex.index === 0 ? (
             <>
@@ -72,9 +70,22 @@ const DashboardDefault = () => {
                   </Grid>
                 ))}
               </Grid>
-              {showDetails && detailsNode  && (
+              {showDetails && detailsNode && (
                 <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-                  <LevelsCard numberOfLevel={5} Name={detailsNode.data.name}/>
+                  {/* <LevelsCard
+                    name={detailsNode.data.name}
+                    children={detailsNode.data.children || []}
+                  /> */}
+                  <LevelsCard
+                  name={detailsNode.data.name}
+                  children={detailsNode.data.children || []}
+                  setZoomedId={(nodeId) =>
+                    setZoomState((prevState) => ({
+                      ...prevState,
+                      [detailsNode.data.name]: nodeId,
+                    }))
+                  }
+                />
                 </Box>
               )}
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
@@ -88,15 +99,11 @@ const DashboardDefault = () => {
         {/* Render this Component when 3D tab is clicked */}
         {
           tabIndex.index === 1 ? (
-
             <ThreeD />
-
           ) : tabIndex.index === 2 && (
             <Wireframe />
           )
         }
-
-
       </Container>
     </>
   );
