@@ -70,14 +70,14 @@ const dashboard = {
   children: [
     {
       id: 'Neuro',
-      title: 'Neuro Hospital',
+      title: 'Neuro Hospitalist',
       type: 'item',
       url: '/dashboard/default',
       icon: icons.NeuroIcon,
       breadcrumbs: false
     },
     {
-      id: 'Stroke',
+      id: 'Tele-Stroke',
       title: 'Stroke',
       type: 'item',
       url: '/dashboard/stroke',
@@ -86,7 +86,7 @@ const dashboard = {
     },
     {
       id: 'nihhs',
-      title: 'NIHHS',
+      title: 'Neuro-ICU',
       type: 'item',
       url: '/dashboard/nihhss',
       icon: icons.NihhsIcon,
@@ -110,7 +110,7 @@ const dashboard = {
     },
     {
       id: 'communication',
-      title: 'Communication',
+      title: 'Team Communication',
       type: 'item',
       url: '/dashboard/communication',
       icon: icons.CommunicationsIcon,
