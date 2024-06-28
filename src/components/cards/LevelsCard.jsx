@@ -23,11 +23,22 @@ function LevelsCard({ numberOfLevel,Name }) {
             </Link>
           ))}
       </Stack>
-    </CardWrapper>
+    </CardWrapperStyling>
   );
 }
 
-const CustomBtn = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-}));
+const CustomBtn = styled(Button)({
+  backgroundColor: '#1976d2', // Assuming this is your primary color
+});
+
+const CardWrapperStyling = styled(CardWrapper)({
+  '@media (max-width: 600px)': {
+    backgroundColor: 'red',
+  },
+  '@media (maxx-width: 1200px)': {
+    position: 'fixed',
+    left: '90%',
+  },
+});
+
 export default LevelsCard;
