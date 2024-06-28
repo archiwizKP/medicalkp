@@ -3,11 +3,12 @@ import React from 'react'
 import { Grid, Typography, Box, Container } from "@mui/material";
 
 // project import
-import AnalyticEcommerce from "../../components/cards/statistics/AnalyticEcommerce";
+
 import MyResponsiveCirclePacking from "../../components/charts/cirlclePacking";
 import { TowerA, TowerB, TowerC, TowerD } from "../../assets/mockData/data";
 import { useState } from "react";
 import Legends from "../../components/cards/Legends";
+import LevelsCard from '../../components/cards/LevelsCard';
 
 function Communication() {
   // state for zoom ogf the node
@@ -56,18 +57,11 @@ function Communication() {
       </Grid>
       {showDetails && (
         <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-          <AnalyticEcommerce
-            title={detailsNode.color}
-            count={detailsNode.data.name}
-            percentage={27.4}
-            isLoss
-            color="warning"
-            extra="$20,395"
-            colorText={detailsNode.color}
-          />
+          
+          <LevelsCard numberOfLevel={4}/>
         </Box>
       )}
-      <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
+       <Box sx={{ position: "absolute", right: 10, bottom: 70 ,}}>
         <Legends/>
         </Box>
     </Container>

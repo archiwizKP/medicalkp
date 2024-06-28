@@ -8,6 +8,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // project import
 import Palette from './palette';
 import Typography from './typography';
+import { customPrimaryColors,customSecondaryColors } from "./customColors";
 import CustomShadows from './shadows';
 import componentsOverride from './overrides';
 
@@ -39,7 +40,14 @@ export default function ThemeCustomization({ children }) {
           paddingBottom: 8
         }
       },
-      palette: theme.palette,
+      palette: {
+        primary: {
+          ...customPrimaryColors
+        },
+        secondary: {
+          ...customSecondaryColors
+        }
+      },
       customShadows: themeCustomShadows,
       typography: themeTypography
     }),

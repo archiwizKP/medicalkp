@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 
 // project import
-import AnalyticEcommerce from "../../components/cards/statistics/AnalyticEcommerce";
 import MyResponsiveCirclePacking from "../../components/charts/cirlclePacking";
 import { TowerA, TowerB, TowerC, TowerD } from "../../assets/mockData/data";
 import { useEffect, useState } from "react";
@@ -15,6 +14,7 @@ import Legends from "../../components/cards/Legends";
 import { useSelector } from "react-redux";
 import ThreeD from "../3d/3d";
 import Wireframe from "../wireframe/wireframe";
+import LevelsCard from "../../components/cards/LevelsCard";
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
