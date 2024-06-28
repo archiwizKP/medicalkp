@@ -37,6 +37,7 @@ const NavItem = ({ item, level }) => {
   const itemHandler = (id) => {
     console.log('Menu Item is clicked: ');
     dispatch(activeItem({ openItem: [id] }));
+    dispatch(TabClicked(0));
   };
 
   const Icon = item.icon;

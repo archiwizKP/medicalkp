@@ -4,18 +4,13 @@ import {
   Typography,
   Box,
   Container,
-  Stack,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
 } from "@mui/material";
 
 // project import
 import AnalyticEcommerce from "../../components/cards/statistics/AnalyticEcommerce";
 import MyResponsiveCirclePacking from "../../components/charts/cirlclePacking";
 import { TowerA, TowerB, TowerC, TowerD } from "../../assets/mockData/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Legends from "../../components/cards/Legends";
 import { useSelector } from "react-redux";
 import ThreeD from "../3d/3d";
@@ -30,10 +25,11 @@ const DashboardDefault = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [detailsNode, setDetailsNode] = useState(null);
 
-  console.log("detailsNode", detailsNode);
-
   // redux tab global state
   const tabIndex = useSelector((state) => state.HeaderTab);
+
+  console.log("detailsNode", detailsNode);
+
   console.log('I am tabIndex from redux toolkit:', tabIndex);
 
   const towersData = [
@@ -42,6 +38,7 @@ const DashboardDefault = () => {
     { id: "towerC", name: "Tower C", data: TowerC },
     { id: "towerD", name: "Tower D", data: TowerD },
   ];
+
 
   return (
     <>

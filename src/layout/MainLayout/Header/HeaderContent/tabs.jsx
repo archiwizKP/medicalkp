@@ -1,8 +1,8 @@
 // material-ui
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TabClicked } from '../../../../store/reducers/tab';
 // ==============================|| HEADER CONTENT - SEARCH ||============================== //
 function CustomTabPanel(props) {
@@ -23,19 +23,15 @@ function CustomTabPanel(props) {
 }
 
 
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
 export default function CustomTab() {
 
     const dispatch = useDispatch();
 
-    const [value, setValue] = React.useState(0);
+    const tabIndex = useSelector((state) => state.HeaderTab);
+
+    console.log('I am tabindex in the tabs: ', tabIndex);
+
+    const [value, setValue] = React.useState(tabIndex.index);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -43,13 +39,19 @@ export default function CustomTab() {
         console.log(newValue);
     };
 
+    // When the Tab index is changed assign the value from the redux global state
+    useEffect(() => {
+        setValue(tabIndex.index);
+        console.log('Set Value in UseEffect: ', value);
+    }, [tabIndex])
+
     return (
         <Box sx={{ width: '100%', ml: 10 }}>
-            <Box sx={{display: 'flex', justifyContent:'start', alignItems: "center"}}>
+            <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: "center" }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab spacing={4} label="2D" {...a11yProps(1)} />
-                    <Tab spacing={4} label="3D" {...a11yProps(2)} />
-                    <Tab spacing={4} label="Wire Frame" {...a11yProps(3)} />
+                    <Tab spacing={4} label="2D" />
+                    <Tab spacing={4} label="3D" />
+                    <Tab spacing={4} label="Wire Frame" />
                 </Tabs>
             </Box>
             {/* <CustomTabPanel value={value} index={0}>
