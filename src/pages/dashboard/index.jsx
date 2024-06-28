@@ -75,7 +75,7 @@ const DashboardDefault = () => {
               </Grid>
               {showDetails && (
                 <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-           <LevelsCard/>
+           <LevelsCard numberOfLevel={2}/>
                 </Box>
               )}
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
