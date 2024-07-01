@@ -13,52 +13,62 @@ export const TowerA = {
             {
               "name": "A101",
               "color": "hsl(6%, 17%, 34%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A102",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A103",
               "color": "#102C57",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A104",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A105",
               "color": "hsl(250,75%,50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A106",
               "color": "hsl(250,75%,50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A107",
               "color": "hsl(250,75%,50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A108",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A109",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A110",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
           ]
         },
@@ -76,52 +86,62 @@ export const TowerA = {
             {
               "name": "A231",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A232",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A233",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A234",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A235",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A236",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A237",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A238",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A239",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A240",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
           ]
         },
@@ -133,152 +153,182 @@ export const TowerA = {
             {
               "name": "A201",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A202",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A203",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A204",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A205",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A206",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A207",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A208",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A209",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A210",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A211",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A212",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A213",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A214",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A215",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A216",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A217",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A218",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A219",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A220",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A221",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Stroke"
             },
             {
               "name": "A222",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A223",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A224",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A225",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A226",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A227",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A228",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A229",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A230",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
           ]
         },
@@ -296,52 +346,62 @@ export const TowerA = {
             {
               "name": "A331",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A332",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A333",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A334",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A335",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A336",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A337",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A338",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A339",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A340",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
           ]
         },
@@ -353,152 +413,182 @@ export const TowerA = {
             {
               "name": "A301",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A302",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A303",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A304",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A305",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A306",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A307",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A308",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A309",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A310",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A311",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A312",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A313",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A314",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A315",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A316",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A317",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A318",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A319",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A320",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A321",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A322",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A323",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A324",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A325",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A326",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A327",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A328",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A329",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A330",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
           ]
         },
@@ -516,52 +606,62 @@ export const TowerA = {
             {
               "name": "A431",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A432",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A433",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A434",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A435",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A436",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A437",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A438",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A439",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A440",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
           ]
         },
@@ -573,152 +673,182 @@ export const TowerA = {
             {
               "name": "A401",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A402",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A403",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A404",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A405",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A406",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A407",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A408",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A409",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A410",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A411",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A412",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A413",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A414",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A415",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A416",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A417",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A418",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A419",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A420",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A421",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A422",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+              "type":"Seizure/ Epileptic disorder"
             },
             {
               "name": "A423",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A424",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A425",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A426",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A427",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A428",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A429",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
             {
               "name": "A430",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+               "type":'Neuropathies'
             },
           ]
         },
@@ -1305,22 +1435,30 @@ export const TowerB = {
             {
               "name": "B327",
               "color": "hsl(82, 70%, 50%)",
-              "loc": Math.random() * 999999
+              "loc": Math.random() * 999999,
+     "type":'Neuropathies'
+
             },
             {
               "name": "B328",
               "color": "hsl(82, 70%, 50%)",
-              "loc": Math.random() * 999999
+              "loc": Math.random() * 999999,
+     "type":'Neuropathies'
+
             },
             {
               "name": "B329",
               "color": "hsl(82, 70%, 50%)",
-              "loc": Math.random() * 999999
+              "loc": Math.random() * 999999,
+     "type":'Neuropathies'
+
             },
             {
               "name": "B330",
               "color": "hsl(82, 70%, 50%)",
-              "loc": Math.random() * 999999
+              "loc": Math.random() * 999999,
+     "type":'Neuropathies'
+
             },
             
           ]
@@ -1447,7 +1585,7 @@ export const TowerB = {
     //         {
     //           "name": "B231",
     //           "color": "hsl(82, 70%, 50%)",
-    //           "loc":  Math.random() * 100000
+    //           "loc":  Math.random() * 100000,
     //         },
     //         {
     //           "name": "B232",
@@ -2009,48 +2147,70 @@ export const TowerC = {
             {
               "name": "C230",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             },
             {
               "name": "C231",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C232",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C233",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C234",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C235",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C236",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C237",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C238",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C239",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             }, {
               "name": "C240",
               "color": "hsl(82, 70%, 50%)",
-              "loc":  Math.random() * 100000
+              "loc":  Math.random() * 100000,
+     "type":'Neuropathies'
+
             },
           ]
         },
