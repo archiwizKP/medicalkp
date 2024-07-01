@@ -1911,7 +1911,7 @@ export const TowerC = {
   "children": [
 
     {
-      "name": "Level 2",
+      "name": "Level 1",
       "color": "hsl(331, 70%, 50%)",
       "children": [
         {
