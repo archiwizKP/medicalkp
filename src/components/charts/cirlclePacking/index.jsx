@@ -54,13 +54,15 @@ function MyResponsiveCirclePacking({
       zoomedId={zoomedId} // Use the zoomedId state here
       motionConfig="slow" // Animation configuration
       onClick={(node) => {
+        console.log("this is node",node);
         // Toggle zoom based on the clicked node's ID
         setZoomedId(zoomedId === node.id ? null : node.id);
       }}
       onMouseEnter={(node) => {
+        // setZoomedId(zoomedId === node.id ? null : node.id);
         // Check if the node is the root node
         if (node.depth === 0) {
-          // Assuming 'depth' is available and root has depth 0
+          // Assuming 'depth'f is available and root has depth 0
           setDetailsNode(node);
           setShowDetails(true);
         } else {
@@ -68,9 +70,9 @@ function MyResponsiveCirclePacking({
         }
       }}
 
-      onMouseLeave={() => {
-        setShowDetails(false);
-      }}
+      // onMouseLeave={() => {
+      //   setShowDetails(false);
+      // }}
     />
   );
 }
