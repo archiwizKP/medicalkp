@@ -1,23 +1,48 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ResponsiveCirclePacking } from "@nivo/circle-packing";
 export default function MyResponsiveCirclePacking({
   data,
   setZoomedId,
   zoomedId,
   setShowDetails,
-  showDetails,
   setDetailsNode,
   detailsNode,
   tower,
   setSmallestCircleClicked
 }) {
+  // Define colors array with default scheme
+  const colors = [
+    "hsl(210, 70%, 50%)",
+    "hsl(120, 70%, 50%)",
+    "hsl(60, 70%, 50%)",
+    "hsl(300, 70%, 50%)",
+    "hsl(0, 70%, 50%)",
+  ];
+
+  // Function to dynamically assign colors based on node data
+  const getFillColor = (node) => {
+    if (node.data.type === "Stroke") {
+      return "#102C57"; // Custom color for Stroke
+    } else if (node.data.type === "Neuropathies") {
+      return "#10439F"; // Custom color for Neuropathies
+    } else if (node.data.type === "Critical Patients") {
+      return "#EE4B2B"; // Custom color for Neuropathies
+    } else if (node.data.type === "Seizure/ Epileptic disorder") {
+      return "#000"; // Custom color for Neuropathies
+    }
+    else {
+      // Return default color based on index if not Stroke or Neuropathies
+      return colors[node.depth % colors.length];
+    }
+  };
+
   return (
     <ResponsiveCirclePacking
       data={data}
       margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       id="name"
       value="loc"
-      colors={{ scheme: "nivo" }}
+      colors={(node) => getFillColor(node)} // Dynamic color assignment
       childColor={{
         from: "color",
         modifiers: [["brighter", 0.4]],
@@ -55,18 +80,21 @@ export default function MyResponsiveCirclePacking({
       zoomedId={zoomedId} // Use the zoomedId state here
       motionConfig="slow" // Animation configuration
       onClick={(node) => {
-        console.log("this is node",node);
+        console.log("Clicked node:", node);
         // Toggle zoom based on the clicked node's ID
         setZoomedId(zoomedId === node.id ? null : node.id);
       }}
       onMouseEnter={(node) => {
-        // setZoomedId(zoomedId === node.id ? null : node.id);
-        // Check if the node is the root node
         if (node.depth === 0) {
-          // Assuming 'depth'f is available and root has depth 0
+          // Root node
           setDetailsNode(node);
           setShowDetails(true);
-        } 
+
+        } else if (node.depth === 3) {
+          // Smallest circle node
+          setDetailsNode(node);
+          setSmallestCircleClicked(true);
+        }  
         else if (node.depth === 3) {
           console.log('I am node Depth in index.js cirlepacking component', node.depth);
           setDetailsNode(node);
@@ -77,10 +105,7 @@ export default function MyResponsiveCirclePacking({
           setSmallestCircleClicked(false);
         }
       }}
-
-      // onMouseLeave={() => {
-      //   setShowDetails(false);
-      // }}
     />
   );
+
 }

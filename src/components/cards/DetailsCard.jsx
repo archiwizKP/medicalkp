@@ -17,6 +17,11 @@ const DetailsCard = ({ data, smallestCircleClicked }) => {
         >
           {data.color}
         </Typography>
+        <Typography variant="h6"
+        >
+          {data?.type}
+        </Typography>
+
       </CardWrapper>
     </PatientDetails>
 
