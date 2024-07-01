@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import ThreeD from "../3d/3d";
 import Wireframe from "../wireframe/wireframe";
 import LevelsCard from "../../components/cards/LevelsCard";
+import DetailsCard from "../../components/cards/DetailsCard";
 
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
@@ -29,13 +30,16 @@ const DashboardDefault = () => {
   const [detailsNode, setDetailsNode] = useState(null);
   // redux tab global state
   const tabIndex = useSelector((state) => state.HeaderTab);
-
+  const [smallestCircleClicked, setSmallestCircleClicked] = useState(false);
   const towersData = [
     { id: "towerA", name: "Tower A", data: TowerA },
     { id: "towerB", name: "Tower B", data: TowerB },
     { id: "towerC", name: "Tower C", data: TowerC },
     { id: "towerD", name: "Tower D", data: TowerD },
   ];
+
+  console.log('Smallest circle clicked in index.js circle packing component: ', smallestCircleClicked);
+  console.log('Details node in index.js circle packing component: ', detailsNode);
 
   return (
     <>
@@ -65,6 +69,7 @@ const DashboardDefault = () => {
                         showDetails={showDetails}
                         setDetailsNode={setDetailsNode}
                         detailsNode={detailsNode}
+                        setSmallestCircleClicked={setSmallestCircleClicked}
                       />
                     </Box>
                   </Grid>
@@ -77,17 +82,28 @@ const DashboardDefault = () => {
                     children={detailsNode.data.children || []}
                   /> */}
                   <LevelsCard
-                  name={detailsNode.data.name}
-                  children={detailsNode.data.children || []}
-                  setZoomedId={(nodeId) =>
-                    setZoomState((prevState) => ({
-                      ...prevState,
-                      [detailsNode.data.name]: nodeId,
-                    }))
-                  }
-                />
+                    name={detailsNode.data.name}
+                    color={detailsNode.data.color}
+                    children={detailsNode.data.children || []}
+                    setZoomedId={(nodeId) =>
+                      setZoomState((prevState) => ({
+                        ...prevState,
+                        [detailsNode.data.name]: nodeId,
+                      }))
+                    }
+                  />
                 </Box>
               )}
+              {
+                smallestCircleClicked && detailsNode && (
+
+                  <DetailsCard
+                    data={detailsNode.data}
+                    smallestCircleClicked={smallestCircleClicked}
+                  />
+
+                )
+              }
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
                 <Legends />
               </Box>

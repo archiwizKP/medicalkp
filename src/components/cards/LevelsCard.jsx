@@ -5,7 +5,9 @@ import { colorObject } from "../../themes/customColors";
 function LevelsCard({ name,children,setZoomedId }) {
   return (
     <CardWrapper cardWidth="150px">
-      <Typography variant="h5" sx={{textAlign:"center",mb:1,color:colorObject.white}} color="initial">{name}</Typography>
+      <Typography variant="h5" sx={{textAlign:"center",mb:1,color:colorObject.white}} color="initial">
+        {name}
+      </Typography>
       <Stack direction="column" gap={2}>
       {children.map((child, index) => (
         <Link
@@ -15,14 +17,13 @@ function LevelsCard({ name,children,setZoomedId }) {
         variant="h5"
         onClick={() => {
           // setZoomedId(child.name);
-          console.log("this is child.name",child.name);
+          console.log("this is child.name: ",child.name);
         }}
       >
         {child.name}
       </Link>
            
           ))}
-        
       </Stack>
     </CardWrapper>
     
