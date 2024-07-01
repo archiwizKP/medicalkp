@@ -1,23 +1,18 @@
-// DashboardDefault.js
-
-// material-ui
+// DashboardDefault.jsx
+import React, { useState } from "react";
 import {
   Grid,
   Typography,
   Box,
   Container,
 } from "@mui/material";
-
-// project import
 import MyResponsiveCirclePacking from "../../components/charts/cirlclePacking";
 import { TowerA, TowerB, TowerC, TowerD } from "../../assets/mockData/data";
-import { useEffect, useState } from "react";
 import Legends from "../../components/cards/Legends";
 import { useSelector } from "react-redux";
 import ThreeD from "../3d/3d";
 import Wireframe from "../wireframe/wireframe";
 import LevelsCard from "../../components/cards/LevelsCard";
-
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
@@ -31,11 +26,22 @@ const DashboardDefault = () => {
   const tabIndex = useSelector((state) => state.HeaderTab);
 
   const towersData = [
-    { id: "towerA", name: "Tower A", data: TowerA },
-    { id: "towerB", name: "Tower B", data: TowerB },
-    { id: "towerC", name: "Tower C", data: TowerC },
-    { id: "towerD", name: "Tower D", data: TowerD },
+    { id: "towerA", data: TowerA },
+    { id: "towerB", data: TowerB },
+    { id: "towerC", data: TowerC },
+    { id: "towerD", data: TowerD },
   ];
+
+  console.log("this is zoomState", zoomState);
+
+  const handleZoomStateUpdate = (child) => {
+    if (detailsNode && detailsNode.tower) {
+      setZoomState((prevState) => ({
+        ...prevState,
+        [detailsNode.tower.id]: child.name,  // Ensure `detailsNode.tower.id` is accessed correctly
+      }));
+    }
+  };
 
   return (
     <>
@@ -45,8 +51,12 @@ const DashboardDefault = () => {
             <>
               {/* Default Data Tab */}
               <Grid container spacing={0}>
+             
                 {towersData.map((tower) => (
                   <Grid item md={6} sm={12} key={tower.id}>
+                     <Typography variant="body1" sx={{ textAlign: "center" }}>
+                      {tower.id}
+                    </Typography>
                     <Typography variant="body1" sx={{ textAlign: "center" }}>
                       {tower.name}
                     </Typography>
@@ -63,7 +73,7 @@ const DashboardDefault = () => {
                         zoomedId={zoomState[tower.id]}
                         setShowDetails={setShowDetails}
                         showDetails={showDetails}
-                        setDetailsNode={setDetailsNode}
+                        setDetailsNode={(node) => setDetailsNode({ ...node, tower })}
                         detailsNode={detailsNode}
                       />
                     </Box>
@@ -72,20 +82,11 @@ const DashboardDefault = () => {
               </Grid>
               {showDetails && detailsNode && (
                 <Box sx={{ position: "absolute", top: 70, right: 1 }}>
-                  {/* <LevelsCard
+                  <LevelsCard
                     name={detailsNode.data.name}
                     children={detailsNode.data.children || []}
-                  /> */}
-                  <LevelsCard
-                  name={detailsNode.data.name}
-                  children={detailsNode.data.children || []}
-                  setZoomedId={(nodeId) =>
-                    setZoomState((prevState) => ({
-                      ...prevState,
-                      [detailsNode.data.name]: nodeId,
-                    }))
-                  }
-                />
+                    setZoomedId={handleZoomStateUpdate}
+                  />
                 </Box>
               )}
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
@@ -93,20 +94,20 @@ const DashboardDefault = () => {
               </Box>
               {/* Default Data Tab */}
             </>
-          ) : <></>
+          ) : null
         }
 
         {/* Render this Component when 3D tab is clicked */}
-        {
-          tabIndex.index === 1 ? (
-            <ThreeD />
-          ) : tabIndex.index === 2 && (
-            <Wireframe />
-          )
-        }
+        {tabIndex.index === 1 ? (
+          <ThreeD />
+        ) : tabIndex.index === 2 ? (
+          <Wireframe />
+        ) : null}
       </Container>
     </>
   );
 };
 
 export default DashboardDefault;
+
+
