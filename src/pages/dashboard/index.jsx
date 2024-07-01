@@ -62,7 +62,7 @@ const DashboardDefault = () => {
                     <Typography variant="body1" sx={{ textAlign: "center" }}>
                       {tower.name}
                     </Typography>
-                    <Box sx={{ height: "50vh", position: "relative" }}>
+                    <Box sx={{ height: "40vh", position: "relative" }}>
                       <MyResponsiveCirclePacking
                         data={tower.data}
                         tower={tower}
