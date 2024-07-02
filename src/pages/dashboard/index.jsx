@@ -55,7 +55,7 @@ const DashboardDefault = () => {
               <Grid container spacing={0}>
              
                 {towersData.map((tower) => (
-                  <Grid item md={6} sm={12} key={tower.id}>
+                  <Grid item md={6} sm={12} xs={12} key={tower.id}>
                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                       {tower.id}
                     </Typography>
@@ -92,7 +92,7 @@ const DashboardDefault = () => {
                   />
                 </Box>
               )}
-              {
+              {/* {
                 smallestCircleClicked && detailsNode && (
 
                   <DetailsCard
@@ -101,7 +101,7 @@ const DashboardDefault = () => {
                   />
 
                 )
-              }
+              } */}
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
                 <Legends />
               </Box>
