@@ -1,5 +1,28 @@
 import React from "react";
 import { ResponsiveCirclePacking } from "@nivo/circle-packing";
+import { Typography } from "@mui/material";
+import { CardWrapper } from "../../cards/commanStyle";
+
+const CustomTooltip = ({ node }) => {
+  return (
+    <><CardWrapper cardWidth="150px">
+      <Typography variant="h6">
+        {node.data.name}
+      </Typography>
+      <Typography variant="h6"
+      >
+        {node.data.color}
+      </Typography>
+      <Typography variant="h6"
+      >
+        {node.data?.type}
+      </Typography>
+
+    </CardWrapper>
+   </>
+  );
+};
+
 export default function MyResponsiveCirclePacking({
   data,
   setZoomedId,
@@ -8,7 +31,7 @@ export default function MyResponsiveCirclePacking({
   setDetailsNode,
   detailsNode,
   tower,
-  setSmallestCircleClicked
+  setSmallestCircleClicked,
 }) {
   // Define colors array with default scheme
   const colors = [
@@ -29,8 +52,7 @@ export default function MyResponsiveCirclePacking({
       return "#EE4B2B"; // Custom color for Neuropathies
     } else if (node.data.type === "Seizure/ Epileptic disorder") {
       return "#000"; // Custom color for Neuropathies
-    }
-    else {
+    } else {
       // Return default color based on index if not Stroke or Neuropathies
       return colors[node.depth % colors.length];
     }
@@ -89,23 +111,20 @@ export default function MyResponsiveCirclePacking({
           // Root node
           setDetailsNode(node);
           setShowDetails(true);
-
         } else if (node.depth === 3) {
           // Smallest circle node
           setDetailsNode(node);
           setSmallestCircleClicked(true);
-        }  
-        else if (node.depth === 3) {
-          console.log('I am node Depth in index.js cirlepacking component', node.depth);
+        } else if (node.depth === 3) {
+          console.log("I am node Depth in index.js circle packing component", node.depth);
           setDetailsNode(node);
           setSmallestCircleClicked(true);
-        }
-        else {
+        } else {
           setShowDetails(false);
           setSmallestCircleClicked(false);
         }
       }}
+      tooltip={(node) => <CustomTooltip node={node} />}
     />
   );
-
 }

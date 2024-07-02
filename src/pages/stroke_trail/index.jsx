@@ -13,12 +13,14 @@ import { useSelector } from 'react-redux';
 import ThreeD from '../3d/3d';
 import Wireframe from '../wireframe/wireframe';
 import LevelsCard from '../../components/cards/LevelsCard';
+import DetailsCard from '../../components/cards/DetailsCard';
 function StrokeTrail() {
   // state for zoom ogf the node
   const [zoomState, setZoomState] = useState({});
   // state for the show details in card
   const [showDetails, setShowDetails] = useState(false);
   const [detailsNode, setDetailsNode] = useState(null);
+  const [smallestCircleClicked, setSmallestCircleClicked] = useState(false);
 
   console.log("detailsNode", detailsNode);
   const towersData = [
@@ -28,7 +30,14 @@ function StrokeTrail() {
   ];
 
   const tabIndex = useSelector((state) => state.HeaderTab);
-
+  const handleZoomStateUpdate = (child) => {
+    if (detailsNode && detailsNode.tower) {
+      setZoomState((prevState) => ({
+        ...prevState,
+        [detailsNode.tower.id]: child.name,  // Ensure `detailsNode.tower.id` is accessed correctly
+      }));
+    }
+  };
   return (
     <>
     <>
@@ -81,6 +90,16 @@ function StrokeTrail() {
                 />
                 </Box>
               )}
+              {
+                smallestCircleClicked && detailsNode && (
+
+                  <DetailsCard
+                    data={detailsNode.data}
+                    smallestCircleClicked={smallestCircleClicked}
+                  />
+
+                )
+              }
               <Box sx={{ position: "absolute", right: 0, bottom: 70 }}>
                 <Legends />
               </Box>
