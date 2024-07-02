@@ -24,18 +24,18 @@ const closedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
   width: '60px',
-  // paddingTop: '10px',
   borderRight: 'none',
   boxShadow: theme.customShadows.z1
 });
 
+
 // ==============================|| DRAWER - MINI STYLED ||============================== //
 
 const MiniDrawerStyled = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
+  widxShrink: 0,
   whiteSpace: 'nowrap',
-  boxSizing: 'border-box',
+  boxSth: drawerWidth,
+  fleizing: 'border-box',
   ...(open && {
     ...openedMixin(theme),
     '& .MuiDrawer-paper': openedMixin(theme)
