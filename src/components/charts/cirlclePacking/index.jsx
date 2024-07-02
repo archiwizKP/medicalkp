@@ -1,23 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { ResponsiveCirclePacking } from "@nivo/circle-packing";
 import { Typography } from "@mui/material";
 import { CardWrapper } from "../../cards/commanStyle";
 
-const CustomTooltip = ({ node }) => {
+const CustomTooltip = ({ node, position }) => {
+  const { x, y } = position;
   return (
-    <><CardWrapper cardWidth="150px">
+    <><CardWrapper cardWidth="200px" 
+    
+    >
       <Typography variant="h6">
         {node.data.name}
-      </Typography>
-      <Typography variant="h6"
-      >
-        {node.data.color}
       </Typography>
       <Typography variant="h6"
       >
         {node.data?.type}
       </Typography>
 
+      {node.data.Inpatient_occupancy && (<>
+        
+      <Typography variant="h6"
+      >
+        Inpatient occupancy : {node.data?.Inpatient_occupancy}
+      </Typography>
+      <Typography variant="h6"
+      >
+        Total inpatient beds : {node.data?.Total_inpatient_beds}
+      </Typography>
+      <Typography variant="h6"
+      >
+       Total inpatients : {node.data?.Total_inpatients}
+      </Typography>
+      <Typography variant="h6"
+      >
+       Potential discharges today : {node.data?.Potential_discharges_today}
+      </Typography>
+      <Typography variant="h6"
+      >
+       Potential discharges tomorrow : {node.data?.Potential_discharges_tomorrow}
+      </Typography>
+      <Typography variant="h6"
+      >
+       Available : {node.data?.Available}
+      </Typography>
+      <Typography variant="h6"
+      >
+        Total blocked beds: {node.data?.Total_blocked_beds}
+      </Typography>
+      </>) }
+      
     </CardWrapper>
    </>
   );
@@ -32,7 +63,10 @@ export default function MyResponsiveCirclePacking({
   detailsNode,
   tower,
   setSmallestCircleClicked,
+  setDialogOpen
 }) {
+
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   // Define colors array with default scheme
   const colors = [
     "hsl(210, 70%, 50%)",
@@ -105,8 +139,13 @@ export default function MyResponsiveCirclePacking({
         console.log("Clicked node:", node);
         // Toggle zoom based on the clicked node's ID
         setZoomedId(zoomedId === node.id ? null : node.id);
+        if (node.depth === 3) {
+          setDetailsNode(node);
+          setDialogOpen(true);
+        }
+
       }}
-      onMouseEnter={(node) => {
+      onMouseEnter={(node,event) => {
         if (node.depth === 0) {
           // Root node
           setDetailsNode(node);
@@ -114,17 +153,16 @@ export default function MyResponsiveCirclePacking({
         } else if (node.depth === 3) {
           // Smallest circle node
           setDetailsNode(node);
-          setSmallestCircleClicked(true);
         } else if (node.depth === 3) {
           console.log("I am node Depth in index.js circle packing component", node.depth);
           setDetailsNode(node);
-          setSmallestCircleClicked(true);
         } else {
           setShowDetails(false);
-          setSmallestCircleClicked(false);
         }
+        // Capture mouse coordinates
+        setTooltipPosition({ x: event.clientX, y: event.clientY });
       }}
-      tooltip={(node) => <CustomTooltip node={node} />}
+      tooltip={(node) =>  <CustomTooltip node={node} position={tooltipPosition} />}
     />
   );
 }
