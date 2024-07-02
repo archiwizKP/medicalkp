@@ -14,6 +14,7 @@ import ThreeD from "../3d/3d";
 import Wireframe from "../wireframe/wireframe";
 import LevelsCard from "../../components/cards/LevelsCard";
 import DetailsCard from "../../components/cards/DetailsCard";
+import PatientDataModal from "../../components/modal/PatientDataModal";
 
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
@@ -27,6 +28,8 @@ const DashboardDefault = () => {
   // redux tab global state
   const tabIndex = useSelector((state) => state.HeaderTab);
   const [smallestCircleClicked, setSmallestCircleClicked] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   const towersData = [
     { id: "towerA", data: TowerA },
     { id: "towerB", data: TowerB },
@@ -78,6 +81,7 @@ const DashboardDefault = () => {
                         setDetailsNode={(node) => setDetailsNode({ ...node, tower })}
                         detailsNode={detailsNode}
                         setSmallestCircleClicked={setSmallestCircleClicked}
+                        setDialogOpen={setDialogOpen}
                       />
                     </Box>
                   </Grid>
@@ -117,6 +121,16 @@ const DashboardDefault = () => {
           <Wireframe />
         ) : null}
       </Container>
+      {
+         detailsNode && (
+          <PatientDataModal
+          open={dialogOpen}
+          setOpen={setDialogOpen}
+          PatientData={detailsNode.data}
+         />
+        )
+      }
+     
     </>
   );
 };
