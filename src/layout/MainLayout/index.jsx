@@ -28,10 +28,11 @@ const MainLayout = () => {
   const { drawerOpen } = useSelector((state) => state.menu);
 
   // drawer toggler
-  const [open, setOpen] = useState(drawerOpen);
+  const [open, setOpen] = useState(!drawerOpen); 
   const handleDrawerToggle = () => {
     setOpen(!open);
     dispatch(openDrawer({ drawerOpen: !open }));
+    console.log('Hamburger icon is clicked:');
   };
 
   // set media wise responsive drawer
@@ -46,6 +47,12 @@ const MainLayout = () => {
     if (open !== drawerOpen) setOpen(drawerOpen);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [drawerOpen]);
+
+  useEffect(() => {
+      setOpen(!open);
+      dispatch(openDrawer({ drawerOpen: !open }));
+      console.log('I am handle drawer toggle in useEffect:');
+  }, []);
 
   return (
     <Box sx={{ display: 'flex', width: '100%' }}>

@@ -57,6 +57,10 @@ const NavItem = ({ item, level }) => {
 
   const textColor = 'text.primary';
   const iconSelectedColor = 'primary.main';
+  const selectedIconColor = theme.palette.primary.main;
+  // const selectedIconBgColor = '#f06292';
+
+  console.log(selectedIconColor);
 
   // custome styling
   const BootstrapTooltip = styled(({ className, ...props }) => (
@@ -116,7 +120,7 @@ const NavItem = ({ item, level }) => {
             minWidth: 28,
             color: isSelected ? iconSelectedColor : textColor,
             ...(!drawerOpen && {
-              borderRadius: 1.5,
+              borderRight: isSelected ? `2px solid ${selectedIconColor}` : textColor, 
               width: 36,
               height: 36,
               alignItems: 'center',
@@ -131,7 +135,8 @@ const NavItem = ({ item, level }) => {
               '&:hover': {
                 bgcolor: 'primary.lighter'
               }
-            })
+            }),
+          
           }}
         >
           {itemIcon}
