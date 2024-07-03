@@ -9,11 +9,13 @@ function Legends() {
   }
   return (
     <CardWrapper>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pb: "5px" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center",  }}>
         <Typography variant="h5" color="#fff" sx={{ textAlign: "center" }}>
           Legend
         </Typography>
-        <Button variant="outlined" size="small" color="secondary" sx={{ mt: 0.5 }} onClick={handleShowHideToggle}>{showAndHide ? "Hide" : "Show"}</Button>
+        <Button variant='outlined' color='secondary' onClick={handleShowHideToggle}>
+        {showAndHide ? "Hide" : "Show"}
+        </Button>
       </Box>
       {
         showAndHide ? (
@@ -40,6 +42,18 @@ function Legends() {
               <ColorBox PatientColor="red" />
               <Typography variant="body1" color="#fff">
                 Critical Patients
+              </Typography>
+            </Stack>
+            <Stack direction="row" gap={2} sx={{ alignItems: "center", mt: 1, mb: 1 }}>
+              <ColorBox PatientColor="gray" />
+              <Typography variant="body1" color="#fff">
+              Telemedicine  
+              </Typography>
+            </Stack>
+            <Stack direction="row" gap={2} sx={{ alignItems: "center", mt: 1, mb: 1 }}>
+              <ColorBox PatientColor="pink" />
+              <Typography variant="body1" color="#fff">
+              Concern Patient   
               </Typography>
             </Stack>
 
