@@ -57,7 +57,7 @@ function Communication() {
                   <Typography variant="body1" sx={{ textAlign: "center" }}>
                     {tower.name}
                   </Typography>
-                  <Box sx={{ height: "40vh", position: "relative" }}>
+                 
                     <MyResponsiveCirclePacking
                       data={tower.data}
                       tower={tower}
@@ -74,7 +74,7 @@ function Communication() {
                       detailsNode={detailsNode}
                       setSmallestCircleClicked={setSmallestCircleClicked}
                     />
-                  </Box>
+                  
                 </Grid>
               ))}
             </Grid>

@@ -1,7 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -42,6 +41,7 @@ function PatientDataModal({ open, setOpen, PatientData }) {
       }
     }
   }, [open]);
+  console.log('PatientData',PatientData);
   return (
     <Dialog
       fullScreen={fullScreen}
@@ -56,7 +56,7 @@ function PatientDataModal({ open, setOpen, PatientData }) {
         flexDirection={"row"}
         justifyContent={"space-between"}
       >
-        {PatientData.name} {PatientData.type}
+        {PatientData?.patientName}  {PatientData.name} {PatientData.type} 
         <Button onClick={handleClose} autoFocus>
           X
         </Button>
@@ -73,9 +73,9 @@ function PatientDataModal({ open, setOpen, PatientData }) {
               <Button variant="outlined" color="primary">
                 Hide PHI
               </Button>
-              <Typography variant="h6">35 | M | 85kg | H00740943659</Typography>
+              <Typography variant="h6">{PatientData?.age} | {PatientData?.gender} | 85kg | {PatientData?.accountNumber}</Typography>
               <Typography variant="h6">
-                14 - OTHER -SUNSHINE HIX AMBETTER
+                {PatientData?.InsuranceCompany}
               </Typography>
               <Stack
                 direction={"row"}
@@ -85,12 +85,13 @@ function PatientDataModal({ open, setOpen, PatientData }) {
                 justifyContent={"space-between"}
               >
                 <Typography variant="h5" color="initial">
-                  Add patient to MDR
+                  Add patient to MDR 
                 </Typography>
                 <Button variant="outlined" color="primary">
                   +
                 </Button>
-              </Stack>
+              </Stack><Typography variant="h6">MR # {PatientData?.MR}</Typography>
+
               <Typography variant="h6">Chief Complaint</Typography>
               <Typography variant="h6">Admitted</Typography>
               <Typography variant="h6">Forecast DRG</Typography>
@@ -251,10 +252,13 @@ function PatientDataModal({ open, setOpen, PatientData }) {
                   </TabPanel>
                   <TabPanel value="2">
                     <Box display="flex" flexDirection={"column"} gap={1}>
-                      <Typography variant="h4">Order</Typography>
-                      <Typography variant="h5" color="initial">
-                        Outstanding 2
+                      <Typography variant="h4">History of Patient</Typography>
+                      
+                       {PatientData?.history?.map((item)=>(
+                        <Typography variant="body2" >
+                        {item}
                       </Typography>
+                       ))}
                       <Divider />
                       <Typography variant="h4">
                         COMPREHENSIVE METABOLIC PANEL
