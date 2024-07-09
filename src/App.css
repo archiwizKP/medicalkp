@@ -1,0 +1,4 @@
+body {
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: blue #FB2E86;   /* scroll thumb and track */ 
+  }
