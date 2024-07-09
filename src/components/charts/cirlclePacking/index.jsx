@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ResponsiveCirclePacking } from "@nivo/circle-packing";
-import { Box, Typography } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItemButton,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import { CardWrapper } from "../../cards/commanStyle";
 
 const countEmptyBeds = (node) => {
@@ -26,14 +32,23 @@ const countBlockedBeds = (node) => {
 //   return `${percentage.toFixed(2)}%`; // Round to 2 decimal places
 // };
 
+// const getBedsList = (node) => {
+//   if (!node.children) {
+//     return node.bedStatus ? [node] : [];
+//   }
+//   return node.children.reduce(
+//     (acc, child) => acc.concat(getBedsList(child)),
+//     []
+//   );
+// };
 
-const CustomTooltip = ({ node, position }) => {
+const CustomTooltip = ({ node, position}) => {
   const { x, y } = position;
-  console.log("This is node", node);
+  console.log("This is node");
 
   let emptyBeds = 0;
   let blockedBeds = 0;
-  let occupancyPercentage = '0%';
+  let occupancyPercentage = "0%";
 
   if (node.data && node.data.children) {
     emptyBeds = node.data.children.reduce(
@@ -46,6 +61,14 @@ const CustomTooltip = ({ node, position }) => {
     );
   }
 
+  // // const bedsList = getBedsList(node.data);
+  // useEffect(() => {
+  //   if(showBeds){
+  //     setBeds(bedsList)
+
+  //   }
+  // }, [bedsList])
+  
   // if (node.data) {
   //   occupancyPercentage = calculateOccupancyPercentage(
   //     node.data.Total_inpatient_beds,
@@ -53,27 +76,22 @@ const CustomTooltip = ({ node, position }) => {
   //   );
   // }
   return (
-    <CardWrapper cardWidth="200px">
+    <CardWrapper cardWidth="200px" sx={{ overflow: "auto" }}>
       <Typography variant="h6">{node.data.name}</Typography>
-      {
-  node.data?.bedStatus === "empty" ? (
-    <Typography variant="h6">Bed : {node.data?.bedStatus}</Typography>
-  ) : (
-    <Typography variant="h6">{node.data?.type}</Typography>
-  )
-}
-
+      {node.data?.bedStatus === "empty" ? (
+        <Typography variant="h6">Bed : {node.data?.bedStatus}</Typography>
+      ) : (
+        <Typography variant="h6">{node.data?.type}</Typography>
+      )}
       {node.data.Inpatient_occupancy && (
         <>
           <Typography variant="h6">
             Inpatient occupancy: {node.data?.Inpatient_occupancy}
           </Typography>
           <Typography variant="h6">
-            Total inpatient beds : {emptyBeds+blockedBeds}
+            Total inpatient beds : {emptyBeds + blockedBeds}
           </Typography>
-          <Typography variant="h6">
-            Total inpatients : {blockedBeds}
-          </Typography>
+          <Typography variant="h6">Total inpatients : {blockedBeds}</Typography>
           <Typography variant="h6">
             Potential discharges today : {node.data?.Potential_discharges_today}
           </Typography>
@@ -81,12 +99,21 @@ const CustomTooltip = ({ node, position }) => {
             Potential discharges tomorrow :{" "}
             {node.data?.Potential_discharges_tomorrow}
           </Typography>
-          <Typography variant="h6">
-            Available : {emptyBeds}
-          </Typography>
+          <Typography variant="h6">Available : {emptyBeds}</Typography>
           <Typography variant="h6">
             Total blocked beds: {blockedBeds}
           </Typography>
+          {/* {showBeds && (
+            <List>
+              {bedsList.map((bed, bedIndex) => (
+                <ListItemButton key={bedIndex} sx={{ pl: 2 }}>
+                  <ListItemText
+                    primary={`Bed: ${bed.name} - Status: ${bed.bedStatus}`}
+                  />
+                </ListItemButton>
+              ))}
+            </List>
+          )} */}
         </>
       )}
     </CardWrapper>
@@ -103,6 +130,7 @@ export default function MyResponsiveCirclePacking({
   tower,
   setSmallestCircleClicked,
   setDialogOpen,
+  setShowBeds
 }) {
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [hoveredNode, setHoveredNode] = useState(null);
@@ -137,7 +165,7 @@ export default function MyResponsiveCirclePacking({
       <Box sx={{ height: "40vh", position: "relative" }}>
         <ResponsiveCirclePacking
           data={data}
-          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
           id="name"
           value="loc"
           colors={(node) => getFillColor(node)} // Dynamic color assignment
@@ -179,6 +207,8 @@ export default function MyResponsiveCirclePacking({
             if (node.depth === 3) {
               setDetailsNode(node);
               setDialogOpen(true);
+              // setShowBeds(false);
+
             }
           }}
           onMouseEnter={(node, event) => {
@@ -186,15 +216,21 @@ export default function MyResponsiveCirclePacking({
               // Root node
               setDetailsNode(node);
               setShowDetails(true);
-            } else if (node.depth === 3) {
+
+            } else if (node.depth === 2) {
               // Smallest circle node
+              
               setDetailsNode(node);
-            } else if (node.depth === 3) {
+              setShowBeds(true);
               console.log(
                 "I am node Depth in index.js circle packing component",
-                node.depth
+                node.depth,
+                showBeds
               );
+            } else if (node.depth === 3) {
+              console.log("in depth 3");
               setDetailsNode(node);
+              setShowBeds(false);
             } else {
               setShowDetails(false);
             }
@@ -214,7 +250,10 @@ export default function MyResponsiveCirclePacking({
                 : "rgba(0, 0, 0, 0.3)" // Dynamic border color
           }
           tooltip={(node) => (
-            <CustomTooltip node={node} position={tooltipPosition} />
+            <CustomTooltip
+              node={node}
+              position={tooltipPosition}
+            />
           )}
         />
       </Box>
