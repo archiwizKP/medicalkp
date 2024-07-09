@@ -1381,7 +1381,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "74",
               accountNumber: "H00738086859",
               gender: "male",
@@ -1402,7 +1401,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "53",
               accountNumber: "H00737929034",
               gender: "male",
@@ -1423,7 +1421,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "66",
               accountNumber: "H00738101601",
               gender: "male",
@@ -1473,7 +1470,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "60",
               accountNumber: "H00737963036",
               gender: "male",
@@ -1494,7 +1490,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "60",
               accountNumber: "H00738103516",
               gender: "male",
@@ -1537,7 +1532,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "59",
               accountNumber: "H00738030484",
               gender: "male",
@@ -1558,7 +1552,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "69",
               accountNumber: "H00738094375",
               gender: "male",
@@ -1586,7 +1579,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "70",
               accountNumber: "H00738077026",
               gender: "male",
@@ -1627,7 +1619,6 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "75",
               accountNumber: "H00738075452",
               gender: "male",
@@ -1699,7 +1690,6 @@ export const TowerA = {
               type: "Neuropathies",
               bedbStatus:'bocked',
               patientName: "John Doe",
-
               age: "73",
               accountNumber: "H00737870899",
               gender: "male",
