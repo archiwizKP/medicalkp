@@ -16,7 +16,7 @@ export const TowerA = {
       children: [
         // Chamber 1
         {
-          name: "A1-CVICU",
+          name: "A1-ICU",
           color: "hsl(305, 70%, 50%)",
           Inpatient_occupancy: "100%",
           Total_inpatient_beds: 40,
@@ -81,190 +81,162 @@ export const TowerA = {
               ],
               labStatus: "B12 799, FOLATE >15.0, THIAMINE: PENDING.",
             },
-            {
-              name: "A107",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A108",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A109",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A110",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
           ],
         },
         // Chamber 2
-        {
-          name: "A1-PACU",
-          color: "hsl(305, 70%, 50%)",
-          Inpatient_occupancy: "100%",
-          Total_inpatient_beds: 37,
-          Total_inpatients: 39,
-          Potential_discharges_today: 43,
-          Potential_discharges_tomorrow: 4,
-          Available: 1,
-          Total_blocked_beds: 3,
-          children: [
-            {
-              name: "A111",
-              color: "hsl(6%, 17%, 34%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A112",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A113",
-              color: "#102C57",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A114",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A115",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A116",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A117",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A118",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A119",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A120",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A121",
-              color: "hsl(6%, 17%, 34%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A122",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A123",
-              color: "#102C57",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A124",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A125",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A126",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A127",
-              color: "hsl(250,75%,50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A128",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A129",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-            {
-              name: "A130",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-            },
-          ],
-        },
+        // {
+        //   name: "A1-PACU",
+        //   color: "hsl(305, 70%, 50%)",
+        //   Inpatient_occupancy: "100%",
+        //   Total_inpatient_beds: 37,
+        //   Total_inpatients: 39,
+        //   Potential_discharges_today: 43,
+        //   Potential_discharges_tomorrow: 4,
+        //   Available: 1,
+        //   Total_blocked_beds: 3,
+        //   children: [
+        //     {
+        //       name: "A111",
+        //       color: "hsl(6%, 17%, 34%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A112",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A113",
+        //       color: "#102C57",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A114",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A115",
+        //       color: "hsl(250,75%,50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A116",
+        //       color: "hsl(250,75%,50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A117",
+        //       color: "hsl(250,75%,50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A118",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A119",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A120",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A121",
+        //       color: "hsl(6%, 17%, 34%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A122",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A123",
+        //       color: "#102C57",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A124",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A125",
+        //       color: "hsl(250,75%,50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A126",
+        //       color: "hsl(250,75%,50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A127",
+        //       color: "hsl(250,75%,50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A128",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A129",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //     {
+        //       name: "A130",
+        //       color: "hsl(82, 70%, 50%)",
+        //       loc: 50,
+        //       type: "Stroke",
+        //       bedStatus:'empty'
+        //     },
+        //   ],
+        // },
       ],
     },
     // Level 2
@@ -1783,7 +1755,7 @@ export const TowerA = {
       children: [
         // Chamber 1
         {
-          name: "A5-PCU",
+          name: "A5-MED",
           Inpatient_occupancy: "100%",
           Total_inpatient_beds: 4,
           Total_inpatients: 5,
@@ -1842,29 +1814,141 @@ export const TowerA = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
+            // {
+            //   name: "A506",
+            //   color: "hsl(82, 70%, 50%)",
+            //   loc: 50,
+            //   type: "Seizure/ Epileptic disorder",
+            //   bedStatus:'empty'
+            // },
+            // {
+            //   name: "A507",
+            //   color: "hsl(82, 70%, 50%)",
+            //   loc: 50,
+            //   type: "Seizure/ Epileptic disorder",
+            //   bedStatus:'empty'
+            // },
+            // {
+            //   name: "A508",
+            //   color: "hsl(82, 70%, 50%)",
+            //   loc: 50,
+            //   type: "Seizure/ Epileptic disorder",
+            //   bedStatus:'empty'
+            // },
+            // {
+            //   name: "A509",
+            //   color: "hsl(82, 70%, 50%)",
+            //   loc: 50,
+            //   type: "Seizure/ Epileptic disorder",
+            //   bedStatus:'booked',
+            //   patientName: "John Doe",
+
+            //   age: "89",
+            //   accountNumber: "H00738086948",
+            //   gender: "male",
+            //   disease: "hypertension, psoriasis, neuropathy, CAD",
+            //   MR: "H001177473",
+            //   InsuranceCompany: "PPO",
+            //   history: [
+            //     "S: 02/05: HPI was unable to obtain by pt due to altered mental status obtained by chart review.",
+            //     "02/05",
+            //     "HPI was unable to obtain by pt due to altered mental status obtained by chart review.",
+            //   ],
+            //   labStatus: "B12 253, FOLATE 9.4\n\nTHIAMINE: PENDING.",
+            // },
+            // {
+            //   name: "A510",
+            //   color: "hsl(82, 70%, 50%)",
+            //   loc: 50,
+            //   type: "Seizure/ Epileptic disorder",
+            //   bedStatus:'empty'
+            // },
+          ],
+        },
+        // Chamber 2
+        {
+          name: "A5-PCU",
+          Inpatient_occupancy: "100%",
+          Total_inpatient_beds: 4,
+          Total_inpatients: 5,
+          Potential_discharges_today: 3,
+          Potential_discharges_tomorrow: 4,
+          Available: 43,
+          Total_blocked_beds: 4,
+          color: "hsl(305, 70%, 50%)",
+          children: [
             {
-              name: "A506",
+              name: "A531",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
             {
-              name: "A507",
+              name: "A532",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
             {
-              name: "A508",
+              name: "A533",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'booked',
+              patientName: "John Doe",
+
+              age: "72",
+              accountNumber: "H00738060641",
+              gender: "male",
+              disease: "STROKE.",
+              MR: "H000001473",
+              InsuranceCompany: "PPO",
+              history: [
+                "S: 02/05: HPI was unable to obtain by pt due to altered mental status obtained by chart review.",
+                "02/05",
+                "HPI was unable to obtain by pt due to altered mental status obtained by chart review.",
+              ],
+              labStatus: "B12 253, FOLATE 9.4\n\nTHIAMINE: PENDING.",
+            },
+            {
+              name: "A534",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
             {
-              name: "A509",
+              name: "A535",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "A536",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "A537",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "A538",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "A539",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Seizure/ Epileptic disorder",
@@ -1885,7 +1969,7 @@ export const TowerA = {
               labStatus: "B12 253, FOLATE 9.4\n\nTHIAMINE: PENDING.",
             },
             {
-              name: "A510",
+              name: "A540",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Seizure/ Epileptic disorder",
@@ -1913,8 +1997,9 @@ export const TowerB = {
       Available: 64,
       Total_blocked_beds: 2,
       children: [
+        // Chamber 1
         {
-          name: "Observation-UNIT",
+          name: "B1-ADMIT",
           Inpatient_occupancy: "100%",
           Total_inpatient_beds: 64,
           Total_inpatients: 643,
@@ -2077,6 +2162,20 @@ export const TowerB = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
+            {
+              name: 'B121',
+              color: "hsl(289, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus: "empty"
+            },
+            {
+              name: 'B122',
+              color: "hsl(289, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus: "empty"
+            }
           ],
         },
       ],
@@ -2093,6 +2192,55 @@ export const TowerB = {
       Total_blocked_beds: 0,
       children: [
         // Chamber 1
+        {
+          name: "B2-PED",
+          Inpatient_occupancy: "100%",
+          Total_inpatient_beds: 64,
+          Total_inpatients: 32,
+          Potential_discharges_today: 25,
+          Potential_discharges_tomorrow: 36,
+          Available: 2,
+          Total_blocked_beds: 6,
+          color: "hsl(305, 70%, 50%)",
+          children: [
+            {
+              name: "B202",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "B203",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "B206",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "B207",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+            {
+              name: "B208",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
+            },
+          ],
+        },
+        // Chamber 2
         {
           name: "B2-MED",
           Inpatient_occupancy: "100%",
@@ -2172,309 +2320,7 @@ export const TowerB = {
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B221",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B222",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B223",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B224",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B225",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B226",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B227",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'booked',
-              patientName: "John Doe",
-
-              age: "70",
-              accountNumber: "H00737925694",
-              gender: "male",
-              disease:
-                "cancer, recent diagnosis almost complete aortic and bilateral iliac occlusions, CAD, COPD, hypertension, hyperlipidemia.",
-              MR: "H000507922",
-              InsuranceCompany: "POS",
-              history: [
-                "S:  02/04: Pt presented to hospital with right-sided weakness and right vision changes. She has had symptoms of upper respiratory infection and GI virus for approximately 2 weeks.  Two days ago she noticed right upper and lower extremity numbness and weakness and decreased vision in her right eye.  She sees colors and vague outline of objects, no clarity right eye, left eye is normal.  She has had a history of optic neuritis, diagnosed with ophthalmology.  Her last reported MS flare was 10/20/2022 and was COVID related.  Prior to that she has exacerbation usually once per year.  At baseline she is independent in ambulation from poor tolerance- for example when cooking it is hard to stand for longer than 20 minutes at a time.  She has tried yoga, swimming, weight loss.  She still experiences intermittent pain, her thighs remain weak- when getting up from a squatting position, etc.  ",
-                "02/04",
-                "Pt presented to hospital with right-sided weakness and right vision changes. She has had symptoms of upper respiratory infection and GI virus for approximately 2 weeks.  Two days ago she noticed right upper and lower extremity numbness and weakness and decreased vision in her right eye.  She sees colors and vague outline of objects, no clarity right eye, left eye is normal.  She has had a history of optic neuritis, diagnosed with ophthalmology.  Her last reported MS flare was 10/20/2022 and was COVID related.  Prior to that she has exacerbation usually once per year.  At baseline she is independent in ambulation from poor tolerance- for example when cooking it is hard to stand for longer than 20 minutes at a time.  She has tried yoga, swimming, weight loss.  She still experiences intermittent pain, her thighs remain weak- when getting up from a squatting position, etc.  ",
-              ],
-              labStatus: "No labs ordered on 01/20/23",
-            },
-            {
-              name: "B228",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B229",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B230",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-          ],
-        },
-        // Chamber 2
-        {
-          name: "B2-WMED",
-          Inpatient_occupancy: "100%",
-          Total_inpatient_beds: 64,
-          Total_inpatients: 32,
-          Potential_discharges_today: 25,
-          Potential_discharges_tomorrow: 36,
-          Available: 2,
-          Total_blocked_beds: 6,
-          color: "hsl(305, 70%, 50%)",
-          children: [
-            {
-              name: "B231",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B232",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B233",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B234",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B235",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B236",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B237",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'booked',
-              patientName: "John Doe",
-
-              age: "45",
-              accountNumber: "H00738081227",
-              gender: "male",
-              disease: "STROKE",
-              MR: "H001279519",
-              InsuranceCompany: "HIX",
-              history: [
-                "S:  02/04: Pt presented to hospital with right-sided weakness and right vision changes. She has had symptoms of upper respiratory infection and GI virus for approximately 2 weeks.  Two days ago she noticed right upper and lower extremity numbness and weakness and decreased vision in her right eye.  She sees colors and vague outline of objects, no clarity right eye, left eye is normal.  She has had a history of optic neuritis, diagnosed with ophthalmology.  Her last reported MS flare was 10/20/2022 and was COVID related.  Prior to that she has exacerbation usually once per year.  At baseline she is independent in ambulation from poor tolerance- for example when cooking it is hard to stand for longer than 20 minutes at a time.  She has tried yoga, swimming, weight loss.  She still experiences intermittent pain, her thighs remain weak- when getting up from a squatting position, etc.  ",
-                "02/04",
-                "Pt presented to hospital with right-sided weakness and right vision changes. She has had symptoms of upper respiratory infection and GI virus for approximately 2 weeks.  Two days ago she noticed right upper and lower extremity numbness and weakness and decreased vision in her right eye.  She sees colors and vague outline of objects, no clarity right eye, left eye is normal.  She has had a history of optic neuritis, diagnosed with ophthalmology.  Her last reported MS flare was 10/20/2022 and was COVID related.  Prior to that she has exacerbation usually once per year.  At baseline she is independent in ambulation from poor tolerance- for example when cooking it is hard to stand for longer than 20 minutes at a time.  She has tried yoga, swimming, weight loss.  She still experiences intermittent pain, her thighs remain weak- when getting up from a squatting position, etc.  ",
-              ],
-              labStatus: "No labs ordered on 02/07/23",
-            },
-            {
-              name: "B238",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B239",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B240",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-          ],
-        },
-        // Chamber 3
-        {
-          name: "B2-PAEDS",
-          Inpatient_occupancy: "100%",
-          Total_inpatient_beds: 64,
-          Total_inpatients: 32,
-          Potential_discharges_today: 25,
-          Potential_discharges_tomorrow: 36,
-          Available: 2,
-          Total_blocked_beds: 6,
-          color: "hsl(305, 70%, 50%)",
-          children: [
-            {
-              name: "B241",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B242",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B243",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B244",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B245",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B246",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B247",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B248",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B249",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B250",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B251",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B252",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B253",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B254",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
-            },
-            {
-              name: "B255",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Seizure/ Epileptic disorder",
-              bedStatus:'empty'
+              bedStatus: 'empty'
             },
           ],
         },
@@ -2493,7 +2339,7 @@ export const TowerB = {
       children: [
         // Chamber 1
         {
-          name: "B3-EMED",
+          name: "B3-WMED",
           Inpatient_occupancy: "100%",
           Total_inpatient_beds: 30,
           Total_inpatients: 30,
@@ -2517,7 +2363,6 @@ export const TowerB = {
               loc: 50,
               type: "Neuropathies",
               bedStatus:'bocked',
-              
               patientName: "John Doe",
               age: "40",
               accountNumber: "H00738063813",
@@ -2576,7 +2421,6 @@ export const TowerB = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "49",
               accountNumber: "H00738096381",
               gender: "male",
@@ -2640,7 +2484,6 @@ export const TowerB = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "34",
               accountNumber: "H00738092725",
               gender: "male",
@@ -2662,7 +2505,6 @@ export const TowerB = {
               type: "Seizure/ Epileptic disorder",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "68",
               accountNumber: "H00738089538",
               gender: "male",
@@ -2719,7 +2561,6 @@ export const TowerB = {
               type: "Stroke",
               bedStatus:'booked',
               patientName: "John Doe",
-
               age: "73",
               accountNumber: "H00738088473",
               gender: "male",
@@ -2748,150 +2589,181 @@ export const TowerB = {
               type: "Stroke",
               bedStatus:'empty'
             },
-          ],
-        },
-        // Chamber 2
-        {
-          name: "B3-WMED",
-          Inpatient_occupancy: "100%",
-          Total_inpatient_beds: 30,
-          Total_inpatients: 30,
-          Potential_discharges_today: 2,
-          Potential_discharges_tomorrow: 6,
-          Available: 0,
-          Total_blocked_beds: 0,
-          color: "hsl(305, 70%, 50%)",
-          children: [
             {
               name: "B321",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
+              type: "Neuropathies",
               bedStatus:'empty'
+             
             },
             {
               name: "B322",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
+              type: "Neuropathies",
+              bedStatus:'bocked',
+              patientName: "John Doe",
+              age: "40",
+              accountNumber: "H00738063813",
+              gender: "male",
+              disease: "STROKE ALERT, SYNCOPE DYSARTHRIA.",
+              MR: "H000867255",
+              InsuranceCompany: "HCA",
+              history: [
+                "S: 02/01: Less than 50% bilateral ICA stenosis.",
+                "02/01",
+                "Less than 50% bilateral ICA stenosis.",
+              ],
+              labStatus: "No labs ordered on 02/02/23.",
             },
             {
               name: "B323",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
+              type: "Neuropathies",
               bedStatus:'empty'
+              
             },
             {
               name: "B324",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
+              type: "Neuropathies",
               bedStatus:'empty'
-
+             
             },
             {
               name: "B325",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
-              bedStatus:'empty'
-
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'booked',
+              patientName: "John Doe",
+              age: "63",
+              accountNumber: "H00737510138",
+              gender: "male",
+              disease: "STROKE.",
+              MR: "H001167328",
+              InsuranceCompany: "HCA",
+              history: [
+                "S: 10/27: Pt presented to hospital as a transfer from South Shore Hospital for necrotizing fasciitis of lower right foot and DKA. Per chart review upon arrival to hospital pt was somnolent but arousable to sternal rub, would not answer questions or follow any commands. Overnight while pt in ICU patient seemed to be more somnolent with minimal responsiveness to sternal rub. Stroke alert was called, NIH of 9, patient was deemed not a candidate for tenecteplase or mechanical thrombectomy.  Patient then underwent emergent debridement for necrotizing fasciitis with toe amputation. Pt also has elevated troponins, Cardiology consulted for possible NSTEMI. ",
+                "10/27",
+                "Pt presented to hospital as a transfer from South Shore Hospital for necrotizing fasciitis of lower right foot and DKA. Per chart review upon arrival to hospital pt was somnolent but arousable to sternal rub, would not answer questions or follow any commands. Overnight while pt in ICU patient seemed to be more somnolent with minimal responsiveness to sternal rub. Stroke alert was called, NIH of 9, patient was deemed not a candidate for tenecteplase or mechanical thrombectomy.  Patient then underwent emergent debridement for necrotizing fasciitis with toe amputation. Pt also has elevated troponins, Cardiology consulted for possible NSTEMI. ",
+              ],
+              labStatus: "No labs ordered on 11/14/22",
             },
             {
               name: "B326",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'booked',
+              patientName: "John Doe",
+              age: "49",
+              accountNumber: "H00738096381",
+              gender: "male",
+              disease: "STROKE.",
+              MR: "H000525817",
+              InsuranceCompany: "PPO",
+              history: [
+                "S:  ED 01/26:  43-year-old female presents with acute on chronic back pain.  She says she fell 4 months ago and had thoracic spine fusions approximately 4 months ago T GH.  Here in December for Staph bacteremia.  Patient states he fell again yesterday while ambulating fell on her butt and has increased pain to her spine, thoracic area.  Denies any fever denies chest pain or chest discomfort or shortness of breath no headache no vomiting.  Max pain 10/10 current pain 10 in 10 brought in by EMS.",
+                "01/26",
+                "43-year-old female presents with acute on chronic back pain.  She says she fell 4 months ago and had thoracic spine fusions approximately 4 months ago T GH.  Here in December for Staph bacteremia.  Patient states he fell again yesterday while ambulating fell on her butt and has increased pain to her spine, thoracic area.  Denies any fever denies chest pain or chest discomfort or shortness of breath no headache no vomiting.  Max pain 10/10 current pain 10 in 10 brought in by EMS.",
+              ],
+              labStatus:
+                "U BENZO PRESUMPTIVE POSITIVE otherwise UDS NEGATIVE. A1c 5.2, TSH 0.97, TRIGLY 75, CHOLEST 116, LDL 55, HDL 47.",
             },
             {
               name: "B327",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'booked',
+              patientName: "John Doe",
+              age: "43",
+              accountNumber: "H00738031892",
+              gender: "male",
+              disease: "STROKE",
+              MR: "H001268644",
+              InsuranceCompany: "HCA",
+              history: [
+                "S:  ED 01/26:  43-year-old female presents with acute on chronic back pain.  She says she fell 4 months ago and had thoracic spine fusions approximately 4 months ago T GH.  Here in December for Staph bacteremia.  Patient states he fell again yesterday while ambulating fell on her butt and has increased pain to her spine, thoracic area.  Denies any fever denies chest pain or chest discomfort or shortness of breath no headache no vomiting.  Max pain 10/10 current pain 10 in 10 brought in by EMS.",
+                "01/26",
+                "43-year-old female presents with acute on chronic back pain.  She says she fell 4 months ago and had thoracic spine fusions approximately 4 months ago T GH.  Here in December for Staph bacteremia.  Patient states he fell again yesterday while ambulating fell on her butt and has increased pain to her spine, thoracic area.  Denies any fever denies chest pain or chest discomfort or shortness of breath no headache no vomiting.  Max pain 10/10 current pain 10 in 10 brought in by EMS.",
+              ],
+              labStatus:
+                "Vitamin B12 201 L, folic acid 11.8\n\nTHIAMINE: Pending.",
             },
             {
               name: "B328",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
             {
               name: "B329",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
             {
               name: "B330",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Seizure/ Epileptic disorder",
               bedStatus:'empty'
             },
             {
               name: "B331",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'booked',
               patientName: "John Doe",
-
-              age: "87",
-              accountNumber: "H00738046413",
+              age: "34",
+              accountNumber: "H00738092725",
               gender: "male",
-              disease: "diabetes",
-              MR: "H000738969",
-              InsuranceCompany: "MEDICARE",
+              disease: "STROKE",
+              MR: "H001083952",
+              InsuranceCompany: "MEDICAID",
               history: [
-                "S: 02/01: Pt presents to the hospital on 1/28/23 for further evaluation of increased dyspnea. Pt initially admitted to ICU for sepsis due to infection. Cardiology and pulmonary following. Neurology consulted for altered mental status. Pt has been downgraded to medical floor. Pt is alert, oriented to person, place, time, situation. Spouse at the bedside. Patient reports history of forgetfulness going on for some time, but most recently worsened since Saturday 01/28/23 in which the patient and spouse at the bedside describe him as not making sense when talking, visual disturbances, and vivid dreams. Pt knows he is in hospital, but reports earlier when he awoke from nap, he didn't know where he was. Patient denies symptoms of headache, vertigo/lightheadedness, visual changes, dysarthria, dysphagia, hemiplegia, paresthesias.",
-                "02/01",
-                "Pt presents to the hospital on 1/28/23 for further evaluation of increased dyspnea. Pt initially admitted to ICU for sepsis due to infection. Cardiology and pulmonary following. Neurology consulted for altered mental status. Pt has been downgraded to medical floor. Pt is alert, oriented to person, place, time, situation. Spouse at the bedside. Patient reports history of forgetfulness going on for some time, but most recently worsened since Saturday 01/28/23 in which the patient and spouse at the bedside describe him as not making sense when talking, visual disturbances, and vivid dreams. Pt knows he is in hospital, but reports earlier when he awoke from nap, he didn't know where he was. Patient denies symptoms of headache, vertigo/lightheadedness, visual changes, dysarthria, dysphagia, hemiplegia, paresthesias.",
+                "S:  02/07:  Patient presents initially on (2/5/23) with shortness of breath and fever. Patient is awake, alert and oriented to self only however has difficulty expressing herself.  Patient was recently seen in January for acute encephalopathy secondary to COVID-19.  Currently patient denies facial weakness, extremity weakness or numbness.  Neurology was consulted for aphasia. According to son, patient had similar symptoms during her prior visit that resolved then returned few days after discharge. Symptoms has been going on 3 weeks now. Patient denies vaccination to COVID-19. Patient has not used her CPAP in awhile due to recall.  CTA head/neck in 1/11/23 negative.  Patient still positive for COVID-19.",
+                "02/07",
+                "Patient presents initially on (2/5/23) with shortness of breath and fever. Patient is awake, alert and oriented to self only however has difficulty expressing herself.  Patient was recently seen in January for acute encephalopathy secondary to COVID-19.  Currently patient denies facial weakness, extremity weakness or numbness.  Neurology was consulted for aphasia. According to son, patient had similar symptoms during her prior visit that resolved then returned few days after discharge. Symptoms has been going on 3 weeks now. Patient denies vaccination to COVID-19. Patient has not used her CPAP in awhile due to recall.  CTA head/neck in 1/11/23 negative.  Patient still positive for COVID-19.",
               ],
-              labStatus: "TSH 0.07 L, B12 653, FOLATE 8.3. THIAMINE 125.4.",
+              labStatus:
+                "Vitamin B12 201 L, folic acid 11.8\n\nTHIAMINE: Pending.",
             },
             {
               name: "B332",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'booked',
               patientName: "John Doe",
-
-              age: "89",
-              accountNumber: "H00738004833",
+              age: "68",
+              accountNumber: "H00738089538",
               gender: "male",
-              disease: "hypertension, dyslipidemia, COPD",
-              MR: "H000737859",
-              InsuranceCompany: "MEDICARE",
+              disease: "diabetes and MS",
+              MR: "H000528851",
+              InsuranceCompany: "MCR",
               history: [
-                "S: 01/25: HPI obtained from chart, patient is confused and agitated, no family at bedside. Pt is presented originally at BRH ER on 01/21/22 for wheezing, flu like symptoms with cough, and poor oral intake.  Upon arrival, he was found COVID 19 +. Pt developed A fib with RVR while he is hospitalzied, cardiology is consulted and started him on Cardizem and Eliquis. Neurology is consulted for alert mental status, patient is getting more confused. Patient is started on Azithromycin, Rocephin, and Solu medrol. ",
-                "01/25",
-                "HPI obtained from chart, patient is confused and agitated, no family at bedside. Pt is presented originally at BRH ER on 01/21/22 for wheezing, flu like symptoms with cough, and poor oral intake.  Upon arrival, he was found COVID 19 +. Pt developed A fib with RVR while he is hospitalzied, cardiology is consulted and started him on Cardizem and Eliquis. Neurology is consulted for alert mental status, patient is getting more confused. Patient is started on Azithromycin, Rocephin, and Solu medrol. ",
+                "S:  02/07:  Patient presents initially on (2/5/23) with shortness of breath and fever. Patient is awake, alert and oriented to self only however has difficulty expressing herself.  Patient was recently seen in January for acute encephalopathy secondary to COVID-19.  Currently patient denies facial weakness, extremity weakness or numbness.  Neurology was consulted for aphasia. According to son, patient had similar symptoms during her prior visit that resolved then returned few days after discharge. Symptoms has been going on 3 weeks now. Patient denies vaccination to COVID-19. Patient has not used her CPAP in awhile due to recall.  CTA head/neck in 1/11/23 negative.  Patient still positive for COVID-19.",
+                "02/07",
+                "Patient presents initially on (2/5/23) with shortness of breath and fever. Patient is awake, alert and oriented to self only however has difficulty expressing herself.  Patient was recently seen in January for acute encephalopathy secondary to COVID-19.  Currently patient denies facial weakness, extremity weakness or numbness.  Neurology was consulted for aphasia. According to son, patient had similar symptoms during her prior visit that resolved then returned few days after discharge. Symptoms has been going on 3 weeks now. Patient denies vaccination to COVID-19. Patient has not used her CPAP in awhile due to recall.  CTA head/neck in 1/11/23 negative.  Patient still positive for COVID-19.",
               ],
-              labStatus: "No labs ordered on 02/07/23.",
+              labStatus:
+                "TRIGLYCERIDES 273, CHOLESTEROL 173, LDL 120, HDL 27\n\nPENDING:  CT BRAIN, MRI BRAIN, ECHO",
             },
             {
               name: "B333",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Stroke",
-              patientName: "John Doe",
-              age: "41",
-              accountNumber: "H00738094301",
-              gender: "male",
-              disease: "STROKE",
-              MR: "H001035876",
-              InsuranceCompany: "HCA",
-              history: [
-                "S:  02/07:  Patient presents by EMS for status post seizures at home.  Each episode is prescribed as tonic-clonic with lasting about 1 minutes. Patient was given Ativan and 1 g of Keppra in the ED. Per chart, patient has not been compliance with his medications or following up with neurologist. Patient also has been drinking alcohol (6pack of beer prior his seizure episode) and tested positive for marijuana. Patient is supposed to take Keppra 750 mg bid daily but he missed dose the day prior.  Patient is found to be alert and oriented to name, place and time, following up all commands, neurological exam is negative. Patient c/o of mild headache but denied any dizziness, vision changes, numbness, focal weakness at this time. He stated that he felt sick and threw up prior his seizure then the second thing he remembered when he was in the ED.  He stated that he drinks 6 packs of beer daily, he smokes marijuana daily and he smoke 3 cigar daily. He stated that he is usually compliance with his medications but he missed dose the day before because he has been stressful since he just found out he is going to have a child. He stated that he has not seen neurologist for over months, he used to see Dr. Zala. He stated that he was diagnosed with seizure at age 19, he does not know the etiology as he stated they have not figured it out. He stated that the last breakthrough was about 3 months ago and he was hospitalized at TGH.",
-                "02/07",
-                "Patient presents by EMS for status post seizures at home.  Each episode is prescribed as tonic-clonic with lasting about 1 minutes. Patient was given Ativan and 1 g of Keppra in the ED. Per chart, patient has not been compliance with his medications or following up with neurologist. Patient also has been drinking alcohol (6pack of beer prior his seizure episode) and tested positive for marijuana. Patient is supposed to take Keppra 750 mg bid daily but he missed dose the day prior.  Patient is found to be alert and oriented to name, place and time, following up all commands, neurological exam is negative. Patient c/o of mild headache but denied any dizziness, vision changes, numbness, focal weakness at this time. He stated that he felt sick and threw up prior his seizure then the second thing he remembered when he was in the ED.  He stated that he drinks 6 packs of beer daily, he smokes marijuana daily and he smoke 3 cigar daily. He stated that he is usually compliance with his medications but he missed dose the day before because he has been stressful since he just found out he is going to have a child. He stated that he has not seen neurologist for over months, he used to see Dr. Zala. He stated that he was diagnosed with seizure at age 19, he does not know the etiology as he stated they have not figured it out. He stated that the last breakthrough was about 3 months ago and he was hospitalized at TGH.",
-              ],
-              labStatus: "No labs ordered on 02/07/23.",
+              type: "Seizure/ Epileptic disorder",
+              bedStatus:'empty'
             },
             {
               name: "B334",
@@ -2899,7 +2771,6 @@ export const TowerB = {
               loc: 50,
               type: "Stroke",
               bedStatus:'empty'
-
             },
             {
               name: "B335",
@@ -2907,41 +2778,54 @@ export const TowerB = {
               loc: 50,
               type: "Stroke",
               bedStatus:'empty'
-
             },
             {
               name: "B336",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Stroke",
               bedStatus:'empty'
             },
             {
               name: "B337",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Stroke",
               bedStatus:'empty'
             },
             {
               name: "B338",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
+              type: "Stroke",
+              bedStatus:'booked',
+              patientName: "John Doe",
+              age: "73",
+              accountNumber: "H00738088473",
+              gender: "male",
+              disease: "STROKE",
+              MR: "H001279746",
+              InsuranceCompany: "MEDICARE",
+              history: [
+                "S: 02/01: Pt presents to the hospital on 1/28/23 for further evaluation of increased dyspnea. Pt initially admitted to ICU for sepsis due to infection. Cardiology and pulmonary following. Neurology consulted for altered mental status. Pt has been downgraded to medical floor. Pt is alert, oriented to person, place, time, situation. Spouse at the bedside. Patient reports history of forgetfulness going on for some time, but most recently worsened since Saturday 01/28/23 in which the patient and spouse at the bedside describe him as not making sense when talking, visual disturbances, and vivid dreams. Pt knows he is in hospital, but reports earlier when he awoke from nap, he didn't know where he was. Patient denies symptoms of headache, vertigo/lightheadedness, visual changes, dysarthria, dysphagia, hemiplegia, paresthesias.",
+                "02/01",
+                "Pt presents to the hospital on 1/28/23 for further evaluation of increased dyspnea. Pt initially admitted to ICU for sepsis due to infection. Cardiology and pulmonary following. Neurology consulted for altered mental status. Pt has been downgraded to medical floor. Pt is alert, oriented to person, place, time, situation. Spouse at the bedside. Patient reports history of forgetfulness going on for some time, but most recently worsened since Saturday 01/28/23 in which the patient and spouse at the bedside describe him as not making sense when talking, visual disturbances, and vivid dreams. Pt knows he is in hospital, but reports earlier when he awoke from nap, he didn't know where he was. Patient denies symptoms of headache, vertigo/lightheadedness, visual changes, dysarthria, dysphagia, hemiplegia, paresthesias.",
+              ],
+              labStatus:
+                "VIT B12 843, FOLATE 10.3.\n\nPENDING:  THIAMINE, MRI BRAIN, MRI C-SPINE, L-SPINE",
             },
             {
               name: "B339",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Stroke",
               bedStatus:'empty'
             },
             {
               name: "B340",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
-              type: "Neuropathies",
+              type: "Stroke",
               bedStatus:'empty'
             },
           ],
@@ -2956,6 +2840,7 @@ export const TowerC = {
   color: "hsl(193, 70%, 50%)",
 
   children: [
+    // Level 2
     {
       name: "Level 2",
       Inpatient_occupancy: "100%",
@@ -2968,7 +2853,7 @@ export const TowerC = {
       children: [
         // Chamber 1
         {
-          name: "C2-MED-SURG",
+          name: "C2-MED",
           Inpatient_occupancy: "100%",
           Total_inpatient_beds: 30,
           Total_inpatients: 30,
@@ -2979,6 +2864,55 @@ export const TowerC = {
           color: "hsl(216, 70%, 50%)",
           loc: 50,
           children: [
+            {
+              name: "C209",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+            {
+              name: "C210",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+            {
+              name: "C211",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+            {
+              name: "C226",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+            {
+              name: "C227",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+            {
+              name: "C228",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+            {
+              name: "C229",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
             {
               name: "C230",
               color: "hsl(82, 70%, 50%)",
@@ -3014,53 +2948,11 @@ export const TowerC = {
               type: "Neuropathies",
               bedStatus:'empty'
             },
-            {
-              name: "C235",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C236",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C237",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C238",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C239",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C240",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
           ],
         },
         // Chamber 2
         {
-          name: "C2-NICU",
+          name: "C2-GYN",
           Inpatient_occupancy: "100%",
           Total_inpatient_beds: 30,
           Total_inpatients: 30,
@@ -3072,259 +2964,182 @@ export const TowerC = {
           loc: 50,
           children: [
             {
-              name: "C241",
+              name: "C212",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C242",
+              name: "C213",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C243",
+              name: "C214",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C244",
+              name: "C215",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C245",
+              name: "C216",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C246",
+              name: "C217",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C247",
+              name: "C218",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C248",
+              name: "C219",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C249",
+              name: "C220",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C250",
+              name: "C221",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C251",
+              name: "C222",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C252",
+              name: "C223",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C253",
+              name: "C224",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C254",
+              name: "C225",
+              color: "hsl(82, 70%, 50%)",
+              loc: 50,
+              type: "Neuropathies",
+              bedStatus:'empty'
+            },
+          ],
+        },
+      ],
+    },
+    // Level 3
+    {
+      name: "Level 3",
+      Inpatient_occupancy: "100%",
+      Total_inpatient_beds: 75,
+      Total_inpatients: 30,
+      Potential_discharges_today: 2,
+      Potential_discharges_tomorrow: 6,
+      Available: 0,
+      Total_blocked_beds: 0,
+      children: [
+        // Chamber 1
+        {
+          name: "C3-MAB",
+          Inpatient_occupancy: "100%",
+          Total_inpatient_beds: 30,
+          Total_inpatients: 30,
+          Potential_discharges_today: 2,
+          Potential_discharges_tomorrow: 6,
+          Available: 0,
+          Total_blocked_beds: 0,
+          color: "hsl(216, 70%, 50%)",
+          loc: 50,
+          children: [
+            {
+              name: "C305",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C255",
+              name: "C306",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C256",
+              name: "C309",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C257",
+              name: "C310",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C258",
+              name: "C311",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C259",
+              name: "C312",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C260",
+              name: "C314",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
               bedStatus:'empty'
             },
             {
-              name: "C261",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C262",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C263",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C264",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C265",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C266",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C267",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C268",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C269",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C270",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C271",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C272",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C273",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C274",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C275",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C276",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "C277",
+              name: "C328",
               color: "hsl(82, 70%, 50%)",
               loc: 50,
               type: "Neuropathies",
@@ -3341,8 +3156,9 @@ export const TowerD = {
   name: "Tower D",
   color: "hsl(206, 70%, 50%)",
   children: [
+    // Level 2
     {
-      name: "Level 1",
+      name: "Level 2",
       Inpatient_occupancy: "100%",
       Total_inpatient_beds: 59,
       Total_inpatients: 30,
@@ -3350,7 +3166,6 @@ export const TowerD = {
       Potential_discharges_tomorrow: 6,
       Available: 0,
       Total_blocked_beds: 0,
-
       children: [
         {
           name: "D2-WEST-REHAB",
@@ -3364,84 +3179,75 @@ export const TowerD = {
           Total_blocked_beds: 0,
           loc: 50,
           children: [
-            {
-              name: "D230",
-              color: "hsl(206, 70%, 50%)",
-              loc: 50,
-              type: "stroke",
-              bedStatus:'empty'
-
-            },
-            {
-              name: "D231",
-              color: "hsl(206, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D232",
-              color: "hsl(206, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D233",
-              color: "hsl(206, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D234",
-              color: "hsl(206, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D235",
-              color: "hsl(206, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D236",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D237",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D238",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D239",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
-            {
-              name: "D240",
-              color: "hsl(82, 70%, 50%)",
-              loc: 50,
-              type: "Neuropathies",
-              bedStatus:'empty'
-            },
+            { name: "D201", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D202", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D203", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D204", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D206", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D208", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D209", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D210", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D211", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D213", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D214", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D216", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D217", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D218", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D219", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D220", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D221", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D223", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+          ],
+        },
+      ],
+    },
+    // Level 3
+    {
+      name: "Level 3",
+      Inpatient_occupancy: "100%",
+      Total_inpatient_beds: 59,
+      Total_inpatients: 30,
+      Potential_discharges_today: 2,
+      Potential_discharges_tomorrow: 6,
+      Available: 0,
+      Total_blocked_beds: 0,
+      children: [
+        {
+          name: "D3-MED",
+          color: "hsl(206, 70%, 50%)",
+          Inpatient_occupancy: "100%",
+          Total_inpatient_beds: 30,
+          Total_inpatients: 30,
+          Potential_discharges_today: 2,
+          Potential_discharges_tomorrow: 6,
+          Available: 0,
+          Total_blocked_beds: 0,
+          loc: 50,
+          children: [
+            { name: "D301", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D302", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D303", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D304", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D305", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D306", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D307", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D308", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D309", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D310", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D311", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D312", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D313", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D314", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D315", color: "hsl(206, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D316", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D317", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D318", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D319", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D320", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D321", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D322", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D323", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
+            { name: "D324", color: "hsl(82, 70%, 50%)", loc: 50, type: "Neuropathies", bedStatus: 'empty' },
           ],
         },
       ],
