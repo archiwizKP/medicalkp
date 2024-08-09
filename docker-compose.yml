@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  react-app:
+    build: .
+    container_name: react-app
+    ports:
+      - '4171:4171'  # Adjust this to match the port in your Dockerfile
+    volumes:
+      - '.:/app'
