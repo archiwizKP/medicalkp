@@ -1,6 +1,6 @@
 // material-ui
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography'
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 /**
  * if you want to use image instead of <svg> uncomment following.
  *
@@ -14,8 +14,12 @@ import Typography from '@mui/material/Typography'
 const Logo = () => {
   const theme = useTheme();
 
-  return (
+  const loginInfo = {
+    isLogin: true,
+    role: "Operator",
+  };
 
+  return (
     /**
      * if you want to use image instead of svg uncomment following, and comment out <svg> element.
      *
@@ -23,8 +27,16 @@ const Logo = () => {
      *
      */
     <>
-
-      <Typography variant="body1" color="initial" fontWeight="bold" sx={{fontSize: "23px", color: theme.primary}}> Medical System</Typography>
+      <Typography
+        variant="body1"
+        color="initial"
+        fontWeight="bold"
+        sx={{ fontSize: "23px", color: theme.primary }}
+      >
+        {loginInfo.isLogin && loginInfo.role === "Operator"
+          ? "Medical System"
+          : "Nate"}
+      </Typography>
 
       {/* <svg width="118" height="35" viewBox="0 0 118 35" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
