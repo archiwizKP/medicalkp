@@ -23,6 +23,13 @@ import { Formik } from "formik";
 // assets
 
 const AddCategory = () => {
+  // server response
+  const [serverResponse, setServerResponse] = useState({
+    msg: "",
+    res: "",
+    authentication: false,
+  });
+
   const [level, setLevel] = useState();
   const [showlevel, setShowlevel] = useState(false);
   const handleClickShowlevel = () => {
