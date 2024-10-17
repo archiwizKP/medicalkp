@@ -173,7 +173,7 @@ const Login = () => {
                             if (response.user.role === "operator") {
                               navigate("/operator");
                             } else if (response.user.role === "doctor") {
-                              navigate("/dashboard");
+                              navigate("/dashboard/default");
                             }
                           }
                         } catch (err) {

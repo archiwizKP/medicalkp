@@ -55,8 +55,8 @@ const AddPatient = () => {
         {/* // ============================|| Add Patient ||============================ // */}
         <Formik
           initialValues={{
-            tower: "",
-            level: "",
+            firstname: "",
+            lastname: "",
             floor: "",
             chamber: "",
             submit: null,
@@ -64,11 +64,18 @@ const AddPatient = () => {
           validationSchema={Yup.object().shape({
             firstname: Yup.string().max(255).required("First Name is required"),
             lastname: Yup.string().max(255).required("Last Name is required"),
-            email: Yup.string()
-              .email("Must be a valid email")
+            roundingDoctor: Yup.string()
               .max(255)
-              .required("Email is required"),
-            password: Yup.string().max(255).required("Password is required"),
+              .required("Rounding Doctor is required"),
+            lastScene: Yup.string().max(255).required("Last Scene is required"),
+            dob: Yup.string().max(255).required("Date of Birth is required"),
+            mrNumber: Yup.string().max(255).required("Mr number is required"),
+            accountNumber: Yup.string()
+              .max(255)
+              .required("Account number is required"),
+            reviewDoctor: Yup.string()
+              .max(255)
+              .required("Review doctor is required"),
           })}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
             try {
@@ -140,117 +147,254 @@ const AddPatient = () => {
                     )}
                   </Stack>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
-                    <InputLabel htmlFor="company-signup">Company</InputLabel>
+                    <InputLabel htmlFor="roundingDoctor-signup">
+                      Rounding Doctor
+                    </InputLabel>
                     <OutlinedInput
                       fullWidth
-                      error={Boolean(touched.company && errors.company)}
-                      id="company-signup"
-                      value={values.company}
-                      name="company"
+                      error={Boolean(
+                        touched.roundingDoctor && errors.roundingDoctor
+                      )}
+                      id="roundingDoctor-signup"
+                      value={values.roundingDoctor}
+                      name="roundingDoctor"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       placeholder="Demo Inc."
                       inputProps={{}}
                     />
-                    {touched.company && errors.company && (
-                      <FormHelperText error id="helper-text-company-signup">
-                        {errors.company}
+                    {touched.roundingDoctor && errors.roundingDoctor && (
+                      <FormHelperText
+                        error
+                        id="helper-text-roundingDoctor-signup"
+                      >
+                        {errors.roundingDoctor}
                       </FormHelperText>
                     )}
                   </Stack>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
-                    <InputLabel htmlFor="email-signup">
-                      Email Address*
+                    <InputLabel htmlFor="arnp-signup">
+                      Advance Register Nurse Practioner
                     </InputLabel>
                     <OutlinedInput
                       fullWidth
-                      error={Boolean(touched.email && errors.email)}
-                      id="email-login"
-                      type="email"
-                      value={values.email}
-                      name="email"
+                      error={Boolean(touched.arnp && errors.arnp)}
+                      id="arnp-login"
+                      type="arnp"
+                      value={values.arnp}
+                      name="arnp"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       placeholder="demo@company.com"
                       inputProps={{}}
                     />
-                    {touched.email && errors.email && (
-                      <FormHelperText error id="helper-text-email-signup">
-                        {errors.email}
+                    {touched.arnp && errors.arnp && (
+                      <FormHelperText error id="helper-text-arnp-signup">
+                        {errors.arnp}
                       </FormHelperText>
                     )}
                   </Stack>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
-                    <InputLabel htmlFor="password-signup">Password</InputLabel>
+                    <InputLabel htmlFor="lastScene-signup">
+                      Last Scene
+                    </InputLabel>
                     <OutlinedInput
                       fullWidth
-                      error={Boolean(touched.password && errors.password)}
-                      id="password-signup"
-                      type={showPassword ? "text" : "password"}
-                      value={values.password}
-                      name="password"
+                      error={Boolean(touched.lastScene && errors.lastScene)}
+                      id="lastScene-signup"
+                      value={values.lastScene}
+                      name="lastScene"
                       onBlur={handleBlur}
-                      onChange={(e) => {
-                        handleChange(e);
-                        changePassword(e.target.value);
-                      }}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                            size="large"
-                          >
-                            {showPassword ? (
-                              <EyeOutlined />
-                            ) : (
-                              <EyeInvisibleOutlined />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      placeholder="******"
+                      onChange={handleChange}
+                      placeholder="Demo Inc."
                       inputProps={{}}
                     />
-                    {touched.password && errors.password && (
-                      <FormHelperText error id="helper-text-password-signup">
-                        {errors.password}
+                    {touched.lastScene && errors.lastScene && (
+                      <FormHelperText error id="helper-text-lastScene-signup">
+                        {errors.lastScene}
                       </FormHelperText>
                     )}
                   </Stack>
-                  <FormControl fullWidth sx={{ mt: 2 }}>
-                    <Grid container spacing={2} alignItems="center">
-                      <Grid item>
-                        <Box
-                          sx={{
-                            bgcolor: level?.color,
-                            width: 85,
-                            height: 8,
-                            borderRadius: "7px",
-                          }}
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Typography variant="subtitle1" fontSize="0.75rem">
-                          {level?.label}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </FormControl>
                 </Grid>
-                {errors.submit && (
-                  <Grid item xs={12}>
-                    <FormHelperText error>{errors.submit}</FormHelperText>
-                  </Grid>
-                )}
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="dob-signup">Date of Birth</InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.dob && errors.dob)}
+                      id="dob-login"
+                      type="dob"
+                      value={values.dob}
+                      name="dob"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.dob && errors.dob && (
+                      <FormHelperText error id="helper-text-dob-signup">
+                        {errors.dob}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="accountNumber-signup">
+                      Mr Number
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.mrNumber && errors.mrNumber)}
+                      id="mrNumber-signup"
+                      value={values.mrNumber}
+                      name="mrNumber"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="Demo Inc."
+                      inputProps={{}}
+                    />
+                    {touched.mrNumber && errors.mrNumber && (
+                      <FormHelperText error id="helper-text-mrNumber-signup">
+                        {errors.mrNumber}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="accountNumber-signup">
+                      Account Number
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(
+                        touched.accountNumber && errors.accountNumber
+                      )}
+                      id="accountNumber-login"
+                      type="accountNumber"
+                      value={values.accountNumber}
+                      name="accountNumber"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.accountNumber && errors.accountNumber && (
+                      <FormHelperText
+                        error
+                        id="helper-text-accountNumber-signup"
+                      >
+                        {errors.accountNumber}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="reviewDoctor-signup">
+                      Recieve Doctor
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(
+                        touched.reviewDoctor && errors.reviewDoctor
+                      )}
+                      id="reviewDoctor-login"
+                      type="reviewDoctor"
+                      value={values.reviewDoctor}
+                      name="reviewDoctor"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.reviewDoctor && errors.reviewDoctor && (
+                      <FormHelperText
+                        error
+                        id="helper-text-reviewDoctor-signup"
+                      >
+                        {errors.reviewDoctor}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="insurance-signup">
+                      Insurance
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.insurance && errors.insurance)}
+                      id="insurance-login"
+                      type="insurance"
+                      value={values.insurance}
+                      name="insurance"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.insurance && errors.insurance && (
+                      <FormHelperText error id="helper-text-insurance-signup">
+                        {errors.insurance}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="neurology-signup">
+                      Neurology
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.neurology && errors.neurology)}
+                      id="neurology-login"
+                      type="neurology"
+                      value={values.neurology}
+                      name="neurology"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.neurology && errors.neurology && (
+                      <FormHelperText error id="helper-text-neurology-signup">
+                        {errors.neurology}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="pmh-signup">PMH</InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.pmh && errors.pmh)}
+                      id="pmh-login"
+                      type="pmh"
+                      value={values.pmh}
+                      name="pmh"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.pmh && errors.pmh && (
+                      <FormHelperText error id="helper-text-pmh-signup">
+                        {errors.pmh}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
                 <Grid item xs={1}>
                   <AnimateButton>
                     <Button
