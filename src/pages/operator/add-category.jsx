@@ -98,17 +98,6 @@ const MyCustomModal = ({ open, onClose, text, onConfirm }) => (
 const AddCategory = () => {
   const [token, setToken] = useState("");
 
-  // modal open close
-  const [modalOpen, setModalClose] = useState(false);
-
-  const OpenHandleModal = () => {
-    setModalClose(true);
-  };
-
-  const CloseHandleModal = () => {
-    setModalClose(false);
-  };
-
   // data arrays
   const [towersData, setTowersData] = useState([]);
 
@@ -116,9 +105,11 @@ const AddCategory = () => {
     // Get the token from local storage
     const storedData = JSON.parse(localStorage.getItem("auth"));
     if (storedData && storedData.token) {
-      console.log("Stored data in add category: ", storedData);
+      console.log("Stored data in add category: ", storedData.token);
       setToken(storedData.token);
     }
+
+    console.log("ia m token: ", token);
   }, []);
 
   // server response
@@ -153,25 +144,6 @@ const AddCategory = () => {
     console.log("Row clicked, ID:", id);
   };
 
-  const [open, setOpen] = useState(false);
-  const [selectedRecord, setSelectedRecord] = useState(null);
-
-  const handleEditClick = (record) => {
-    setSelectedRecord(record);
-    setOpen(true);
-  };
-
-  const handleDelete = async () => {
-    try {
-      // Perform delete operation here, e.g., call an API to delete the record
-      // await deleteTowerAPI(selectedRecord.id, token);
-      // console.log("Record deleted:", selectedRecord.id);
-      setOpen(false);
-    } catch (error) {
-      console.error("Error deleting record:", error);
-    }
-  };
-
   // get tower
   useEffect(() => {
     const fetchData = async () => {
@@ -185,8 +157,9 @@ const AddCategory = () => {
         console.log("I am towers error: ", error);
       }
     };
-
-    fetchData();
+    if (token) {
+      fetchData();
+    }
   }, [token]); // Add dependencies if needed
 
   // Towers Table Data
@@ -220,32 +193,6 @@ const AddCategory = () => {
       floor: 3,
     },
   ];
-
-  const myCustomeModal = ({ open, close, text }) => {
-    <>
-      {/* Modal */}
-      <Dialog fullWidth open={open} onClose={close}>
-        <DialogTitle sx={{ fontWeight: "bold", fontSize: "20px" }}>
-          Confirmation
-        </DialogTitle>
-        <Divider />
-        <DialogContent>
-          <Typography variant="label" color="initial">
-            {text}
-          </Typography>
-        </DialogContent>
-        <Divider />
-        <DialogActions sx={{ mt: 1 }}>
-          <Button variant="contained" color="primary" onClick={() => onClose()}>
-            No
-          </Button>
-          <Button variant="outlined" onClick={() => onClose()}>
-            Yes
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>;
-  };
 
   return (
     <>
@@ -413,49 +360,51 @@ const AddCategory = () => {
                     </TableHead>
                     <TableBody>
                       {towersData
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => (
-                          <TableRow
-                            hover
-                            key={row.id}
-                            sx={{ cursor: "pointer" }}
-                          >
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              sx={{ px: 3 }}
-                            >
-                              {row.id}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.name}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.createdAt}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              <Button
-                                variant="contained"
-                                color="success"
-                                sx={{ ml: 2 }}
-                                onClick={() => handleEditClick(row)}
+                        ? towersData
+                            .slice(
+                              page * rowsPerPage,
+                              page * rowsPerPage + rowsPerPage
+                            )
+                            .map((row) => (
+                              <TableRow
+                                hover
+                                key={row.id}
+                                sx={{ cursor: "pointer" }}
                               >
-                                Edit
-                              </Button>
-                              <Button
-                                variant="contained"
-                                color="error"
-                                sx={{ ml: 2 }}
-                                onClick={() => handleEditClick(row)}
-                              >
-                                Delete
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                                <TableCell
+                                  component="th"
+                                  scope="row"
+                                  sx={{ px: 3 }}
+                                >
+                                  {row.id}
+                                </TableCell>
+                                <TableCell align="right" sx={{ px: 3 }}>
+                                  {row.name}
+                                </TableCell>
+                                <TableCell align="right" sx={{ px: 3 }}>
+                                  {row.createdAt}
+                                </TableCell>
+                                <TableCell align="right" sx={{ px: 3 }}>
+                                  <Button
+                                    variant="contained"
+                                    color="success"
+                                    sx={{ ml: 2 }}
+                                    onClick={() => handleEditClick(row)}
+                                  >
+                                    Edit
+                                  </Button>
+                                  <Button
+                                    variant="contained"
+                                    color="error"
+                                    sx={{ ml: 2 }}
+                                    onClick={() => handleEditClick(row)}
+                                  >
+                                    Delete
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+                            ))
+                        : {}}
                     </TableBody>
                   </Table>
                 </TableContainer>
@@ -470,12 +419,6 @@ const AddCategory = () => {
                 />
               </Paper>
             </Box>
-            <MyCustomModal
-              open={open}
-              onClose={() => setOpen(false)}
-              text={`Are you sure you want to delete the record with ID ${selectedRecord?.id}?`}
-              onConfirm={handleDelete}
-            />
           </Box>
         </CustomTabPanel>
         {/* Floor */}
