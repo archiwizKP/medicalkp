@@ -17,6 +17,7 @@ import OperatorDashboardHome from "../pages/operator/home";
 import NotFound from "../pages/authentication/notFound";
 import config from "../config";
 import AddCategory from "../pages/operator/add-category";
+import Login from "../pages/authentication/Login";
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("../pages/dashboard")));
@@ -40,7 +41,7 @@ function CustomRoute() {
   useEffect(() => {
     // Retrieve and parse the user data from localStorage if userData is not available
     const storedUser = localStorage.getItem("auth");
-    const user = userData || (storedUser && JSON.parse(storedUser).data);
+    const user = userData || (storedUser && JSON.parse(storedUser));
     setUser(user);
     console.log("I am user in index routes page: ", user);
   }, [userData]);
@@ -79,7 +80,7 @@ function CustomRoute() {
             },
             {
               path: "login",
-              element: <AuthLogin />,
+              element: <Login />,
             },
           ],
         },
@@ -96,20 +97,15 @@ function CustomRoute() {
         {
           index: true,
           element:
-            user && user.token ? (
+            user && user.token && user.data.role === "operator" ? (
               <Navigate to="/operator/home" />
             ) : (
-              <AuthLogin />
+              <Login />
             ), // Redirect logged-in users away from login page
         },
         {
-          path: "login",
-          element:
-            user && user.token ? (
-              <Navigate to="/operator/home" />
-            ) : (
-              <AuthLogin />
-            ), // Redirect logged-in users away from login page
+          path: "/login",
+          element: <Login />,
         },
         // Remove the catch-all NotFound route here
       ],
