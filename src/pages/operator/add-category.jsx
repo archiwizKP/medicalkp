@@ -77,7 +77,7 @@ function a11yProps(index) {
   };
 }
 
-const MyCustomModal = ({ open, onClose, text, onConfirm, action }) => (
+const MyCustomModal = ({ open, onClose, text, onConfirm, action, data }) => (
   <Dialog fullWidth open={open} onClose={onClose}>
     <DialogTitle sx={{ fontWeight: "bold", fontSize: "20px" }}>
       Confirmation
@@ -96,7 +96,7 @@ const MyCustomModal = ({ open, onClose, text, onConfirm, action }) => (
         {/* edit form */}
         <Formik
           initialValues={{
-            towerName: "",
+            towerName: data.towerName,
             submit: null,
           }}
           validationSchema={Yup.object().shape({
@@ -200,6 +200,7 @@ const AddCategory = () => {
   const [selectedId, setSelectedId] = useState({
     selectId: "",
     action: "",
+    data: {},
   });
 
   useEffect(() => {
@@ -281,7 +282,7 @@ const AddCategory = () => {
     setOpen(true);
     console.log("row id: ", row.id);
     console.log("action: ", action.action);
-    setSelectedId({ selectId: row.id, action: action.action });
+    setSelectedId({ selectId: row.id, action: action.action, data: row });
   };
   const handleClose = () => {
     setOpen(false);
@@ -365,6 +366,8 @@ const AddCategory = () => {
     },
   ];
 
+  console.log("selected data: ", selectedId.data);
+
   return (
     <>
       <MyCustomModal
@@ -373,7 +376,9 @@ const AddCategory = () => {
         text="Are you sure you want to delete this record?"
         onConfirm={handleConfirm}
         action={selectedId.action}
+        data={selectedId.action === "delete" ? {} : selectedId.data}
       />
+
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
