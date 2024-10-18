@@ -36,7 +36,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { AddTowerAPI, GetTowerAPI } from "../../services/operator-api/crudAPI";
+import {
+  AddTowerAPI,
+  DeleteTowerAPI,
+  GetTowerAPI,
+} from "../../services/operator-api/crudAPI";
 
 // dialog
 import Dialog from "@mui/material/Dialog";
@@ -85,10 +89,10 @@ const MyCustomModal = ({ open, onClose, text, onConfirm }) => (
     </DialogContent>
     <Divider />
     <DialogActions sx={{ mt: 1 }}>
-      <Button variant="contained" color="primary" onClick={onClose}>
+      <Button variant="outlined" color="success" onClick={onClose}>
         No
       </Button>
-      <Button variant="outlined" onClick={onConfirm}>
+      <Button variant="contained" onClick={onConfirm}>
         Yes
       </Button>
     </DialogActions>
@@ -100,6 +104,9 @@ const AddCategory = () => {
 
   // data arrays
   const [towersData, setTowersData] = useState([]);
+
+  // Selected id
+  const [selectedId, setSelectedId] = useState("");
 
   useEffect(() => {
     // Get the token from local storage
@@ -160,7 +167,39 @@ const AddCategory = () => {
     if (token) {
       fetchData();
     }
-  }, [token]); // Add dependencies if needed
+  }, [token]);
+
+  // Modal
+  const [open, setOpen] = useState(false);
+
+  const handleDeleteClick = async (row) => {
+    setOpen(true);
+    console.log("row id: ", row.id);
+    setSelectedId(row.id);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleConfirm = async () => {
+    // Perform delete action here
+    setOpen(false);
+    // Call delete api
+    try {
+      const response = await DeleteTowerAPI(selectedId, token);
+      console.log("Delete api response", response);
+      if (response.message) {
+        // filter the items
+        const filterTowersData = towersData.filter(
+          (item) => item.id != selectedId
+        );
+        setTowersData(filterTowersData);
+      }
+    } catch (error) {
+      console.log("delte api error", error);
+    }
+  };
 
   // Towers Table Data
   const data = [
@@ -196,6 +235,12 @@ const AddCategory = () => {
 
   return (
     <>
+      <MyCustomModal
+        open={open}
+        onClose={handleClose}
+        text="Are you sure you want to delete this record?"
+        onConfirm={handleConfirm}
+      />
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -389,7 +434,6 @@ const AddCategory = () => {
                                     variant="contained"
                                     color="success"
                                     sx={{ ml: 2 }}
-                                    onClick={() => handleEditClick(row)}
                                   >
                                     Edit
                                   </Button>
@@ -397,7 +441,7 @@ const AddCategory = () => {
                                     variant="contained"
                                     color="error"
                                     sx={{ ml: 2 }}
-                                    onClick={() => handleEditClick(row)}
+                                    onClick={() => handleDeleteClick(row)}
                                   >
                                     Delete
                                   </Button>
