@@ -39,6 +39,7 @@ import Paper from "@mui/material/Paper";
 import {
   AddTowerAPI,
   DeleteTowerAPI,
+  EditTowerAPI,
   GetTowerAPI,
 } from "../../services/operator-api/crudAPI";
 
@@ -76,24 +77,114 @@ function a11yProps(index) {
   };
 }
 
-const MyCustomModal = ({ open, onClose, text, onConfirm }) => (
+const MyCustomModal = ({ open, onClose, text, onConfirm, action }) => (
   <Dialog fullWidth open={open} onClose={onClose}>
     <DialogTitle sx={{ fontWeight: "bold", fontSize: "20px" }}>
       Confirmation
     </DialogTitle>
     <Divider />
-    <DialogContent>
-      <Typography variant="body1" color="initial">
-        {text}
-      </Typography>
-    </DialogContent>
+    {action === "delete" ? (
+      <>
+        <DialogContent>
+          <Typography variant="body1" color="initial">
+            {text}
+          </Typography>
+        </DialogContent>
+      </>
+    ) : (
+      <Box sx={{ width: "95%", margin: "auto", mb: 4 }}>
+        {/* edit form */}
+        <Formik
+          initialValues={{
+            towerName: "",
+            submit: null,
+          }}
+          validationSchema={Yup.object().shape({
+            towerName: Yup.string().required("Tower is required"),
+          })}
+          onSubmit={async (values, { setStatus, resetForm }) => {
+            console.log(values);
+
+            try {
+              const response = await AddTowerAPI(values, token);
+              console.log("response in add cat page", response);
+
+              if ((response.status === 400) | (response.status === 500)) {
+                setServerResponse({
+                  authentication: false,
+                  msg: response.data.message,
+                });
+              } else {
+                setServerResponse({
+                  authentication: true,
+                  msg: response.message,
+                  res: response,
+                });
+                setStatus(true);
+                // empty the field
+                resetForm();
+                // update the data
+                fetchData();
+              }
+            } catch (err) {
+              setServerResponse({
+                authentication: false,
+                msg: "Something went wrong. Please try again.",
+              });
+            }
+          }}
+        >
+          {({
+            errors,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+            touched,
+            values,
+          }) => (
+            <form noValidate onSubmit={handleSubmit}>
+              <Grid container spacing={3}>
+                <Grid item md={3.5} xs={12}></Grid>
+
+                {/* Tower */}
+                <Grid item md={12} xs={12}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="towerName-login">Tower</InputLabel>
+                    <OutlinedInput
+                      id="towerName-login"
+                      type="text"
+                      value={values.towerName}
+                      name="towerName"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="Enter Tower"
+                      fullWidth
+                      error={Boolean(touched.towerName && errors.towerName)}
+                    />
+                    {touched.towerName && errors.towerName && (
+                      <FormHelperText error>{errors.towerName}</FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {errors.submit && (
+                  <Grid item xs={12}>
+                    <FormHelperText error>{errors.submit}</FormHelperText>
+                  </Grid>
+                )}
+              </Grid>
+            </form>
+          )}
+        </Formik>
+      </Box>
+    )}
+
     <Divider />
     <DialogActions sx={{ mt: 1 }}>
       <Button variant="outlined" color="success" onClick={onClose}>
         No
       </Button>
       <Button variant="contained" onClick={onConfirm}>
-        Yes
+        {action === "delete" ? "Yes" : "Change"}
       </Button>
     </DialogActions>
   </Dialog>
@@ -106,7 +197,10 @@ const AddCategory = () => {
   const [towersData, setTowersData] = useState([]);
 
   // Selected id
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedId, setSelectedId] = useState({
+    selectId: "",
+    action: "",
+  });
 
   useEffect(() => {
     // Get the token from local storage
@@ -151,19 +245,20 @@ const AddCategory = () => {
     console.log("Row clicked, ID:", id);
   };
 
+  const fetchData = async () => {
+    try {
+      const getTowersData = await GetTowerAPI(token);
+      console.log("I am towers data", getTowersData);
+      if (getTowersData) {
+        setTowersData(getTowersData);
+      }
+    } catch (error) {
+      console.log("I am towers error: ", error);
+    }
+  };
+
   // get tower
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const getTowersData = await GetTowerAPI(token);
-        console.log("I am towers data", getTowersData);
-        if (getTowersData) {
-          setTowersData(getTowersData);
-        }
-      } catch (error) {
-        console.log("I am towers error: ", error);
-      }
-    };
     if (token) {
       fetchData();
     }
@@ -172,32 +267,69 @@ const AddCategory = () => {
   // Modal
   const [open, setOpen] = useState(false);
 
-  const handleDeleteClick = async (row) => {
+  // delete handle
+  const handleDeleteClick = async (row, action) => {
     setOpen(true);
     console.log("row id: ", row.id);
-    setSelectedId(row.id);
+    console.log("action: ", action.action);
+    setSelectedId({ selectId: row.id, action: action.action });
   };
 
+  // edit handle
+
+  const handleEditClick = async (row, action) => {
+    setOpen(true);
+    console.log("row id: ", row.id);
+    console.log("action: ", action.action);
+    setSelectedId({ selectId: row.id, action: action.action });
+  };
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleConfirm = async () => {
-    // Perform delete action here
-    setOpen(false);
-    // Call delete api
+  // delete api function
+  const deleteTower = async () => {
     try {
-      const response = await DeleteTowerAPI(selectedId, token);
+      const response = await DeleteTowerAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
         // filter the items
         const filterTowersData = towersData.filter(
-          (item) => item.id != selectedId
+          (item) => item.id != selectedId.selectId
         );
         setTowersData(filterTowersData);
       }
     } catch (error) {
       console.log("delte api error", error);
+    }
+  };
+
+  // edit api function
+  const editTower = async () => {
+    try {
+      const response = await EditTowerAPI(selectedId.selectId, token);
+      console.log("Delete api response", response);
+      if (response.message) {
+        // filter the items
+        const filterTowersData = towersData.filter(
+          (item) => item.id != selectedId.selectId
+        );
+        setTowersData(filterTowersData);
+      }
+    } catch (error) {
+      console.log("delte api error", error);
+    }
+  };
+
+  const handleConfirm = async () => {
+    // Perform delete action here
+    setOpen(false);
+    if (selectedId.selectId && selectedId.action === "delete") {
+      // Call delete api
+      deleteTower();
+    } else if (selectedId.selectId && selectedId.action === "edit") {
+      // call the edit tower function
+      editTower();
     }
   };
 
@@ -240,6 +372,7 @@ const AddCategory = () => {
         onClose={handleClose}
         text="Are you sure you want to delete this record?"
         onConfirm={handleConfirm}
+        action={selectedId.action}
       />
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -289,6 +422,8 @@ const AddCategory = () => {
                     setStatus(true);
                     // empty the field
                     resetForm();
+                    // update the data
+                    fetchData();
                   }
                 } catch (err) {
                   setServerResponse({
@@ -434,6 +569,11 @@ const AddCategory = () => {
                                     variant="contained"
                                     color="success"
                                     sx={{ ml: 2 }}
+                                    onClick={() =>
+                                      handleEditClick(row, {
+                                        action: "edit",
+                                      })
+                                    }
                                   >
                                     Edit
                                   </Button>
@@ -441,7 +581,11 @@ const AddCategory = () => {
                                     variant="contained"
                                     color="error"
                                     sx={{ ml: 2 }}
-                                    onClick={() => handleDeleteClick(row)}
+                                    onClick={() =>
+                                      handleDeleteClick(row, {
+                                        action: "delete",
+                                      })
+                                    }
                                   >
                                     Delete
                                   </Button>
