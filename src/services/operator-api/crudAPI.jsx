@@ -40,7 +40,18 @@ export const DeleteTowerAPI = async (id, token) => {
     return error.response;
   }
 };
-
+// Edit Tower API
+export const EditTowerAPI = async (id, token) => {
+  try {
+    const response = await axios.put(`${baseURL}/towers/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("response: ", response);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
 // add record in Api
 export const AddRecordsAPI = async (form) => {
   try {
