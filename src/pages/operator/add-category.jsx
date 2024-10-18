@@ -6,6 +6,7 @@ import {
   Alert,
   Box,
   Button,
+  Divider,
   FormControl,
   FormHelperText,
   Grid,
@@ -23,10 +24,6 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 
 // assets
-
-{
-  /* Tabs */
-}
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -39,9 +36,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { AddTowerAPI } from "../../services/operator-api/addRecordAPI";
-import CustomAlert from "../../components/alert";
+import { AddTowerAPI, GetTowerAPI } from "../../services/operator-api/crudAPI";
 
+// dialog
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -71,13 +72,63 @@ function a11yProps(index) {
   };
 }
 
+const MyCustomModal = ({ open, onClose, text, onConfirm }) => (
+  <Dialog fullWidth open={open} onClose={onClose}>
+    <DialogTitle sx={{ fontWeight: "bold", fontSize: "20px" }}>
+      Confirmation
+    </DialogTitle>
+    <Divider />
+    <DialogContent>
+      <Typography variant="body1" color="initial">
+        {text}
+      </Typography>
+    </DialogContent>
+    <Divider />
+    <DialogActions sx={{ mt: 1 }}>
+      <Button variant="contained" color="primary" onClick={onClose}>
+        No
+      </Button>
+      <Button variant="outlined" onClick={onConfirm}>
+        Yes
+      </Button>
+    </DialogActions>
+  </Dialog>
+);
+
 const AddCategory = () => {
+  const [token, setToken] = useState("");
+
+  // modal open close
+  const [modalOpen, setModalClose] = useState(false);
+
+  const OpenHandleModal = () => {
+    setModalClose(true);
+  };
+
+  const CloseHandleModal = () => {
+    setModalClose(false);
+  };
+
+  // data arrays
+  const [towersData, setTowersData] = useState([]);
+
+  useEffect(() => {
+    // Get the token from local storage
+    const storedData = JSON.parse(localStorage.getItem("auth"));
+    if (storedData && storedData.token) {
+      console.log("Stored data in add category: ", storedData);
+      setToken(storedData.token);
+    }
+  }, []);
+
   // server response
   const [serverResponse, setServerResponse] = useState({
     msg: "",
     res: "",
     authentication: false,
   });
+
+  console.log("I am server response: ", serverResponse);
 
   // TABLE STATES
   const [value, setValue] = React.useState(0);
@@ -102,6 +153,42 @@ const AddCategory = () => {
     console.log("Row clicked, ID:", id);
   };
 
+  const [open, setOpen] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState(null);
+
+  const handleEditClick = (record) => {
+    setSelectedRecord(record);
+    setOpen(true);
+  };
+
+  const handleDelete = async () => {
+    try {
+      // Perform delete operation here, e.g., call an API to delete the record
+      // await deleteTowerAPI(selectedRecord.id, token);
+      // console.log("Record deleted:", selectedRecord.id);
+      setOpen(false);
+    } catch (error) {
+      console.error("Error deleting record:", error);
+    }
+  };
+
+  // get tower
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const getTowersData = await GetTowerAPI(token);
+        console.log("I am towers data", getTowersData);
+        if (getTowersData) {
+          setTowersData(getTowersData);
+        }
+      } catch (error) {
+        console.log("I am towers error: ", error);
+      }
+    };
+
+    fetchData();
+  }, [token]); // Add dependencies if needed
+
   // Towers Table Data
   const data = [
     {
@@ -118,6 +205,48 @@ const AddCategory = () => {
     },
   ];
 
+  // Floor Data
+  const floorData = [
+    {
+      id: 1,
+      floor: 1,
+    },
+    {
+      id: 2,
+      floor: 2,
+    },
+    {
+      id: 3,
+      floor: 3,
+    },
+  ];
+
+  const myCustomeModal = ({ open, close, text }) => {
+    <>
+      {/* Modal */}
+      <Dialog fullWidth open={open} onClose={close}>
+        <DialogTitle sx={{ fontWeight: "bold", fontSize: "20px" }}>
+          Confirmation
+        </DialogTitle>
+        <Divider />
+        <DialogContent>
+          <Typography variant="label" color="initial">
+            {text}
+          </Typography>
+        </DialogContent>
+        <Divider />
+        <DialogActions sx={{ mt: 1 }}>
+          <Button variant="contained" color="primary" onClick={() => onClose()}>
+            No
+          </Button>
+          <Button variant="outlined" onClick={() => onClose()}>
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>;
+  };
+
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -128,9 +257,9 @@ const AddCategory = () => {
             aria-label="basic tabs example"
           >
             <Tab label="Tower" {...a11yProps(0)} />
-            <Tab label="Bed" {...a11yProps(1)} />
-            <Tab label="Floor" {...a11yProps(2)} />
-            <Tab label="Chamber" {...a11yProps(3)} />
+            <Tab label="Floor" {...a11yProps(1)} />
+            <Tab label="Chamber" {...a11yProps(2)} />
+            <Tab label="Bed" {...a11yProps(3)} />
           </Tabs>
         </Box>
 
@@ -141,11 +270,226 @@ const AddCategory = () => {
             {/* // ============================|| Add Patient ||============================ // */}
             <Formik
               initialValues={{
+                towerName: "",
+                submit: null,
+              }}
+              validationSchema={Yup.object().shape({
+                towerName: Yup.string().required("Tower is required"),
+              })}
+              onSubmit={async (values, { setStatus, resetForm }) => {
+                console.log(values);
+
+                try {
+                  const response = await AddTowerAPI(values, token);
+                  console.log("response in add cat page", response);
+
+                  if ((response.status === 400) | (response.status === 500)) {
+                    setServerResponse({
+                      authentication: false,
+                      msg: response.data.message,
+                    });
+                  } else {
+                    setServerResponse({
+                      authentication: true,
+                      msg: response.message,
+                      res: response,
+                    });
+                    setStatus(true);
+                    // empty the field
+                    resetForm();
+                  }
+                } catch (err) {
+                  setServerResponse({
+                    authentication: false,
+                    msg: "Something went wrong. Please try again.",
+                  });
+                }
+              }}
+            >
+              {({
+                errors,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+                isSubmitting,
+                touched,
+                values,
+              }) => (
+                <form noValidate onSubmit={handleSubmit}>
+                  <Grid container spacing={3}>
+                    <Grid item md={3.5} xs={12}>
+                      {/* Display the server response message */}
+                      {serverResponse.msg && (
+                        <Alert
+                          variant="filled"
+                          severity={
+                            serverResponse.authentication ? "success" : "error"
+                          }
+                          onClose={() => {
+                            setServerResponse({ ...serverResponse, msg: "" });
+                          }}
+                        >
+                          {serverResponse.msg}
+                        </Alert>
+                      )}
+                    </Grid>
+
+                    {/* Tower */}
+                    <Grid item md={12} xs={12}>
+                      <Stack spacing={1}>
+                        <InputLabel htmlFor="towerName-login">Tower</InputLabel>
+                        <OutlinedInput
+                          id="towerName-login"
+                          type="text"
+                          value={values.towerName}
+                          name="towerName"
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          placeholder="Enter Tower"
+                          fullWidth
+                          error={Boolean(touched.towerName && errors.towerName)}
+                        />
+                        {touched.towerName && errors.towerName && (
+                          <FormHelperText error>
+                            {errors.towerName}
+                          </FormHelperText>
+                        )}
+                      </Stack>
+                    </Grid>
+                    {errors.submit && (
+                      <Grid item xs={12}>
+                        <FormHelperText error>{errors.submit}</FormHelperText>
+                      </Grid>
+                    )}
+                    <Grid item md={1} xs={12}>
+                      <Button
+                        disableElevation
+                        disabled={isSubmitting}
+                        fullWidth
+                        size="large"
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                      >
+                        Add
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </form>
+              )}
+            </Formik>
+          </Box>
+          {/* Table */}
+          <Box sx={{ width: "100%", mt: 15 }}>
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{ mb: 3 }}
+              gutterBottom
+            >
+              All Towers
+            </Typography>
+            <Box sx={{ width: "100%" }}>
+              <Paper sx={{ width: "100%", mb: 2 }}>
+                <TableContainer>
+                  <Table
+                    sx={{ minWidth: 750 }}
+                    aria-labelledby="tableTitle"
+                    size="medium"
+                  >
+                    <TableHead>
+                      <TableRow>
+                        <TableCell sx={{ px: 3 }}>ID</TableCell>
+                        <TableCell align="right" sx={{ px: 3 }}>
+                          Tower
+                        </TableCell>
+                        <TableCell align="right" sx={{ px: 3 }}>
+                          Created At
+                        </TableCell>
+                        <TableCell align="right" sx={{ px: 3 }}>
+                          Action
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {towersData
+                        .slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        )
+                        .map((row) => (
+                          <TableRow
+                            hover
+                            key={row.id}
+                            sx={{ cursor: "pointer" }}
+                          >
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              sx={{ px: 3 }}
+                            >
+                              {row.id}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.name}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.createdAt}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              <Button
+                                variant="contained"
+                                color="success"
+                                sx={{ ml: 2 }}
+                                onClick={() => handleEditClick(row)}
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                variant="contained"
+                                color="error"
+                                sx={{ ml: 2 }}
+                                onClick={() => handleEditClick(row)}
+                              >
+                                Delete
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25]}
+                  component="div"
+                  count={towersData.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+              </Paper>
+            </Box>
+            <MyCustomModal
+              open={open}
+              onClose={() => setOpen(false)}
+              text={`Are you sure you want to delete the record with ID ${selectedRecord?.id}?`}
+              onConfirm={handleDelete}
+            />
+          </Box>
+        </CustomTabPanel>
+        {/* Floor */}
+        <CustomTabPanel value={value} index={1}>
+          {/* Floor Add Component */}
+          <Box sx={{ width: "100%", mt: 5 }}>
+            {/* // ============================|| Floor ||============================ // */}
+            <Formik
+              initialValues={{
                 tower: "",
                 submit: null,
               }}
               validationSchema={Yup.object().shape({
-                tower: Yup.string().required("Tower is required"),
+                floor: Yup.string().required("Floor is required"),
               })}
               onSubmit={async (
                 values,
@@ -202,23 +546,23 @@ const AddCategory = () => {
                       )}
                     </Grid>
 
-                    {/* Tower */}
+                    {/* floor */}
                     <Grid item md={12} xs={12}>
                       <Stack spacing={1}>
-                        <InputLabel htmlFor="tower-login">Tower</InputLabel>
+                        <InputLabel htmlFor="floor-login">Floor</InputLabel>
                         <OutlinedInput
-                          id="tower-login"
-                          type="tower"
-                          value={values.tower}
-                          name="tower"
+                          id="floor-login"
+                          type="floor"
+                          value={values.floor}
+                          name="floor"
                           onBlur={handleBlur}
                           onChange={handleChange}
-                          placeholder="Enter Tower"
+                          placeholder="Enter floor"
                           fullWidth
-                          error={Boolean(touched.tower && errors.tower)}
+                          error={Boolean(touched.floor && errors.floor)}
                         />
-                        {touched.tower && errors.tower && (
-                          <FormHelperText error>{errors.tower}</FormHelperText>
+                        {touched.floor && errors.floor && (
+                          <FormHelperText error>{errors.floor}</FormHelperText>
                         )}
                       </Stack>
                     </Grid>
@@ -253,7 +597,7 @@ const AddCategory = () => {
               sx={{ mb: 3 }}
               gutterBottom
             >
-              All Towers
+              All Floors
             </Typography>
             <Box sx={{ width: "100%" }}>
               <Paper sx={{ width: "100%", mb: 2 }}>
@@ -268,7 +612,7 @@ const AddCategory = () => {
                         <TableCell sx={{ px: 3 }}>ID</TableCell>{" "}
                         {/* Add padding */}
                         <TableCell align="right" sx={{ px: 3 }}>
-                          Tower
+                          Floor
                         </TableCell>{" "}
                         {/* Add padding */}
                         <TableCell align="right" sx={{ px: 3 }}>
@@ -278,7 +622,7 @@ const AddCategory = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {data
+                      {floorData
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -298,11 +642,22 @@ const AddCategory = () => {
                               {row.id}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
-                              {row.tower}
+                              {row.floor}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
-                              <Button variant="contained" color="primary">
-                                Action
+                              <Button
+                                variant="contained"
+                                color="success"
+                                sx={{ ml: 2 }}
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                variant="contained"
+                                color="error"
+                                sx={{ ml: 2 }}
+                              >
+                                Delete
                               </Button>
                             </TableCell>
                           </TableRow>
@@ -323,16 +678,12 @@ const AddCategory = () => {
             </Box>
           </Box>
         </CustomTabPanel>
-        {/* Floor */}
-        <CustomTabPanel value={value} index={2}>
-          Floor
-        </CustomTabPanel>
         {/* Chamber */}
-        <CustomTabPanel value={value} index={3}>
+        <CustomTabPanel value={value} index={2}>
           Chamber
         </CustomTabPanel>
         {/* Bed */}
-        <CustomTabPanel value={value} index={1}>
+        <CustomTabPanel value={value} index={3}>
           Bed
         </CustomTabPanel>
       </Box>
