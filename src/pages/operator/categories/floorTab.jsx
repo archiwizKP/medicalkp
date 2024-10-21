@@ -6,14 +6,13 @@ import {
   Alert,
   Box,
   Button,
-  Divider,
   FormControl,
   FormHelperText,
   Grid,
-  IconButton,
-  InputAdornment,
   InputLabel,
+  MenuItem,
   OutlinedInput,
+  Select,
   Stack,
   TableHead,
   Typography,
@@ -33,10 +32,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 import FloorModal from "../../../components/modal/floorModal";
+import { GetTowerAPI } from "../../../services/operator-api/towersCrudAPI";
+import { AddFloorAPI } from "../../../services/operator-api/floorsCrudApi";
 
 const FloorTab = () => {
   const [token, setToken] = useState("");
   const [floorsData, setFloorsData] = useState([]);
+  const [towersData, setTowersData] = useState([]);
   const [selectedId, setSelectedId] = useState({
     selectId: "",
     action: "",
@@ -59,21 +61,22 @@ const FloorTab = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (token) {
-      fetchData();
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     fetchData();
+  //   }
+  // }, [token]);
 
-  const fetchData = async () => {
+  // fetch the towers
+  const fetchTowers = async () => {
     try {
-      const getfloorsData = await GetFloorAPI(token);
-      console.log("I am Floors data", getfloorsData);
-      if (getfloorsData) {
-        setFloorsData(getfloorsData);
+      const response = await GetTowerAPI(token);
+      console.log(response);
+      if (response) {
+        setTowersData(response);
       }
     } catch (error) {
-      console.log("I am Floors error: ", error);
+      console.log("Error: ", error);
     }
   };
 
@@ -155,7 +158,15 @@ const FloorTab = () => {
     fetchData();
   };
 
+  // onLoad Populate the setTowers state
+  useEffect(() => {
+    if (token) {
+      fetchTowers();
+    }
+  }, [token]);
+
   console.log("selected data: ", selectedId.data);
+  console.log("Towers data: ", towersData);
   return (
     <>
       {/* Floor Modal */}
@@ -175,41 +186,44 @@ const FloorTab = () => {
         <Formik
           initialValues={{
             floorName: "",
+
             submit: null,
           }}
           validationSchema={Yup.object().shape({
-            floorName: Yup.string().required("Floor is required"),
+            floorName: Yup.string()
+              .matches(/^\d+$/, "Please enter only numbers")
+              .required("Floor is required"),
           })}
           onSubmit={async (values, { setStatus, resetForm }) => {
             console.log(values);
 
-            // try {
-            //   const response = await AddFloorAPI(values, token);
-            //   console.log("response in add cat page", response);
+            try {
+              const response = await AddFloorAPI(values, token);
+              console.log("response in add cat page", response);
 
-            //   if ((response.status === 400) | (response.status === 500)) {
-            //     setServerResponse({
-            //       authentication: false,
-            //       msg: response.data.message,
-            //     });
-            //   } else {
-            //     setServerResponse({
-            //       authentication: true,
-            //       msg: response.message,
-            //       res: response,
-            //     });
-            //     setStatus(true);
-            //     // empty the field
-            //     resetForm();
-            //     // update the data
-            //     fetchData();
-            //   }
-            // } catch (err) {
-            //   setServerResponse({
-            //     authentication: false,
-            //     msg: "Something went wrong. Please try again.",
-            //   });
-            // }
+              if ((response.status === 400) | (response.status === 500)) {
+                setServerResponse({
+                  authentication: false,
+                  msg: response.data.message,
+                });
+              } else {
+                setServerResponse({
+                  authentication: true,
+                  msg: response.message,
+                  res: response,
+                });
+                setStatus(true);
+                // empty the field
+                resetForm();
+                // update the data
+                fetchData();
+              }
+            } catch (err) {
+              setServerResponse({
+                authentication: false,
+                msg: "Something went wrong. Please try again.",
+              });
+            }
           }}
         >
           {({
@@ -223,7 +237,7 @@ const FloorTab = () => {
           }) => (
             <form noValidate onSubmit={handleSubmit}>
               <Grid container spacing={3}>
-                <Grid item md={3.5} xs={12}>
+                <Grid item md={3.5} xs={12} sx={{ mb: 2 }}>
                   {/* Display the server response message */}
                   {serverResponse.msg ? (
                     <Alert
@@ -242,6 +256,41 @@ const FloorTab = () => {
                   )}
                 </Grid>
 
+                {/* Tower */}
+                <Grid item md={12} xs={12}>
+                  <FormControl
+                    fullWidth
+                    error={Boolean(touched.tower && errors.tower)}
+                  >
+                    <InputLabel id="tower-select-label">
+                      Select Tower
+                    </InputLabel>
+                    <Select
+                      labelId="tower-select-label"
+                      id="tower-login"
+                      value={values.tower}
+                      name="tower"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      label="Tower"
+                    >
+                      {towersData.map((item) => (
+                        <MenuItem value={item.id} key={item.id}>
+                          {item.name}
+                        </MenuItem>
+                      ))}
+                      {/* Add more MenuItem components as needed */}
+                    </Select>
+                    {touched.tower && errors.tower && (
+                      <FormHelperText>{errors.tower}</FormHelperText>
+                    )}
+                  </FormControl>
+                </Grid>
+                {errors.submit && (
+                  <Grid item xs={12}>
+                    <FormHelperText error>{errors.submit}</FormHelperText>
+                  </Grid>
+                )}
                 {/* Floor */}
                 <Grid item md={12} xs={12}>
                   <Stack spacing={1}>
@@ -277,7 +326,7 @@ const FloorTab = () => {
                     variant="contained"
                     color="primary"
                   >
-                    Add
+                    {isSubmitting ? "Adding" : "Add"}
                   </Button>
                 </Grid>
               </Grid>
