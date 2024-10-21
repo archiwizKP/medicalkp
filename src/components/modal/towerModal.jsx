@@ -16,7 +16,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { EditTowerAPI } from "../../services/operator-api/crudAPI";
-const MyCustomModal = ({
+const TowerModal = ({
   open,
   onClose,
   text,
@@ -136,4 +136,4 @@ const MyCustomModal = ({
     </Formik>
   </Dialog>
 );
-export default MyCustomModal;
+export default TowerModal;
