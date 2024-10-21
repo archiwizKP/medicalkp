@@ -24,7 +24,6 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 
 // assets
-import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
@@ -44,36 +43,8 @@ import {
 } from "../../services/operator-api/crudAPI";
 
 // dialog
-
 import MyCustomModal from "../../components/modal/crudModal";
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
-
-CustomTabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
+import { a11yProps, CustomTabPanel } from "../../components/tab";
 
 const AddCategory = () => {
   const [token, setToken] = useState("");
@@ -119,6 +90,8 @@ const AddCategory = () => {
     }
   };
 
+  // Next Page Code
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -136,6 +109,7 @@ const AddCategory = () => {
     console.log("Row clicked, ID:", id);
   };
 
+  // Delete Click
   const handleDeleteClick = async (row, action) => {
     setOpen(true);
     console.log("row id: ", row.id);
@@ -143,6 +117,7 @@ const AddCategory = () => {
     setSelectedId({ selectId: row.id, action: action.action });
   };
 
+  // Edit Click
   const handleEditClick = async (row, action) => {
     setOpen(true);
     console.log("row id: ", row.id);
@@ -150,10 +125,12 @@ const AddCategory = () => {
     setSelectedId({ selectId: row.id, action: action.action, data: row });
   };
 
+  // Close the Modal
   const handleClose = () => {
     setOpen(false);
   };
 
+  // Delete Tower
   const deleteTower = async () => {
     try {
       const response = await DeleteTowerAPI(selectedId.selectId, token);
@@ -169,6 +146,7 @@ const AddCategory = () => {
     }
   };
 
+  // Edit Tower
   const editTower = async () => {
     try {
       const response = await EditTowerAPI(selectedId.selectId, token);
@@ -184,6 +162,7 @@ const AddCategory = () => {
     }
   };
 
+  // Handle Confirm
   const handleConfirm = async () => {
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
