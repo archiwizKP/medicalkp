@@ -77,7 +77,7 @@ const Profile = () => {
     // empty the state
     dispatch(LogoutAction());
     // navigate
-    navigate("/login");
+    navigate("/");
   };
 
   const anchorRef = useRef(null);

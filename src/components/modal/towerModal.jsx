@@ -45,6 +45,7 @@ const TowerModal = ({
 
         try {
           const response = await EditTowerAPI(token, values);
+
           console.log("response in add cat page", response);
 
           if (response.status === 400 || response.status === 500) {
