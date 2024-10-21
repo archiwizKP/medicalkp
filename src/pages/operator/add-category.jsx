@@ -42,7 +42,7 @@ import {
   DeleteTowerAPI,
   EditTowerAPI,
   GetTowerAPI,
-} from "../../services/operator-api/crudAPI";
+} from "../../services/operator-api/towersCrudAPI";
 
 // dialog
 import { a11yProps, CustomTabPanel } from "../../components/tab";
