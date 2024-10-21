@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { EditTowerAPI } from "../../services/operator-api/crudAPI";
+import { EditTowerAPI } from "../../services/operator-api/towersCrudAPI";
 const TowerModal = ({
   open,
   onClose,

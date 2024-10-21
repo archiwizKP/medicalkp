@@ -34,8 +34,6 @@ import Paper from "@mui/material/Paper";
 
 import FloorModal from "../../../components/modal/floorModal";
 
-// dialog
-
 const FloorTab = () => {
   const [token, setToken] = useState("");
   const [floorsData, setFloorsData] = useState([]);
@@ -50,7 +48,6 @@ const FloorTab = () => {
     authentication: false,
   });
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(0);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
