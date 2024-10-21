@@ -36,6 +36,7 @@ import {
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LogoutAction } from "../../../../../store/reducers/actions";
+import LogoutModal from "../../../../../components/modal/logoutModal";
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -71,13 +72,11 @@ const Profile = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleLogout = () => {
-    // logout
-    localStorage.removeItem("auth");
-    // empty the state
-    dispatch(LogoutAction());
-    // navigate
-    navigate("/");
+
+  // modal state
+  const [modal, setModal] = useState(false);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   const anchorRef = useRef(null);
@@ -95,11 +94,24 @@ const Profile = () => {
 
   const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const iconBackColorOpen = "grey.300";
+
+  // Close the Modal
+  const handleCloseModal = () => {
+    setModal(false);
   };
 
-  const iconBackColorOpen = "grey.300";
+  const handleLogout = () => {
+    setModal(true);
+  };
+
+  const handleConfirm = () => {
+    // logout
+    localStorage.removeItem("auth");
+    // empty the state
+    dispatch(LogoutAction());
+    navigate("/");
+  };
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>
@@ -259,6 +271,13 @@ const Profile = () => {
           </Transitions>
         )}
       </Popper>
+      {/* Modal */}
+      <LogoutModal
+        open={modal}
+        onClose={handleCloseModal}
+        text={"Are you sure you want to logout ?"}
+        onConfirm={handleConfirm}
+      />
     </Box>
   );
 };
