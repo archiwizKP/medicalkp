@@ -30,14 +30,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
-import FloorModal from "../../../components/modal/floorModal";
 import { GetTowerAPI } from "../../../services/operator-api/towersCrudAPI";
-import { AddFloorAPI } from "../../../services/operator-api/floorsCrudApi";
+import {
+  AddLevelAPI,
+  DeleteLevelAPI,
+  EditLevelAPI,
+  GetLevelAPI,
+} from "../../../services/operator-api/levelCrudApi";
+import LevelModal from "../../../components/modal/levelModal";
 
-const FloorTab = () => {
+const LevelTab = () => {
   const [token, setToken] = useState("");
-  const [floorsData, setFloorsData] = useState([]);
+  const [levelsData, setLevelsData] = useState([]);
   const [towersData, setTowersData] = useState([]);
   const [selectedId, setSelectedId] = useState({
     selectId: "",
@@ -61,12 +65,6 @@ const FloorTab = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     fetchData();
-  //   }
-  // }, [token]);
-
   // fetch the towers
   const fetchTowers = async () => {
     try {
@@ -74,6 +72,19 @@ const FloorTab = () => {
       console.log(response);
       if (response) {
         setTowersData(response);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
+  //  fetch levels
+  const fetchLevels = async () => {
+    try {
+      const response = await GetLevelAPI(token);
+      console.log(response);
+      if (response) {
+        setLevelsData(response);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -111,66 +122,71 @@ const FloorTab = () => {
     setOpen(false);
   };
 
-  // Delete Floor
-  const deleteFloor = async () => {
+  //   Delete level
+  const deleteLevel = async () => {
     try {
-      const response = await DeleteFloorAPI(selectedId.selectId, token);
+      const response = await DeleteLevelAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
-        const filterfloorsData = floorsData.filter(
+        const filterlevelsData = levelsData.filter(
           (item) => item.id !== selectedId.selectId
         );
-        setFloorsData(filterfloorsData);
+        setLevelsData(filterlevelsData);
       }
     } catch (error) {
       console.log("delete api error", error);
     }
   };
 
-  // Edit Floor
-  const editFloor = async () => {
+  //   Edit level
+  const editLevel = async () => {
     try {
-      const response = await EditFloorAPI(selectedId.selectId, token);
+      const response = await EditLevelAPI(selectedId.selectId, token);
       console.log("Edit api response", response);
       if (response.message) {
-        const updatedfloorsData = floorsData.map((item) =>
+        const updatedlevelsData = levelsData.map((item) =>
           item.id === selectedId.selectId ? { ...item, ...response.data } : item
         );
-        setFloorsData(updatedfloorsData);
+        setLevelsData(updatedlevelsData);
       }
     } catch (error) {
       console.log("edit api error", error);
     }
   };
 
-  // Handle Confirm
+  //   Handle Confirm
   const handleConfirm = async () => {
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
-      deleteFloor();
+      deleteLevel();
     } else if (selectedId.selectId && selectedId.action === "edit") {
-      editFloor();
+      editLevel();
     }
   };
 
   const handleServerResponse = () => {
     setOpen(false);
-    fetchData();
+    fetchLevels();
   };
 
   // onLoad Populate the setTowers state
   useEffect(() => {
     if (token) {
       fetchTowers();
+      fetchLevels();
     }
   }, [token]);
 
   console.log("selected data: ", selectedId.data);
   console.log("Towers data: ", towersData);
+  console.log("Levels Data: ", levelsData);
+
+  console.log("i am server response; ", serverResponse);
+
   return (
     <>
-      {/* Floor Modal */}
-      <FloorModal
+      {/* level Modal */}
+      <LevelModal
         open={open}
         onClose={handleClose}
         text="Are you sure you want to delete this record?"
@@ -180,43 +196,48 @@ const FloorTab = () => {
         token={token}
         handleServerResponse={handleServerResponse} // Pass the callback
       />
-      {/* Floor Add Component */}
+      {/* level Add Component */}
       <Box sx={{ width: "100%", mt: 5 }}>
         {/* // ============================|| Add Patient ||============================ // */}
         <Formik
           initialValues={{
-            floorName: "",
-
+            name: "",
+            towerId: towersData.id,
             submit: null,
           }}
           validationSchema={Yup.object().shape({
-            floorName: Yup.string()
+            name: Yup.string()
               .matches(/^\d+$/, "Please enter only numbers")
-              .required("Floor is required"),
+              .required("Level is required"),
+            towerId: Yup.string().required("Please Select a tower"),
           })}
           onSubmit={async (values, { setStatus, resetForm }) => {
             console.log(values);
 
             try {
-              const response = await AddFloorAPI(values, token);
-              console.log("response in add cat page", response);
+              const response = await AddLevelAPI(values, token);
+              console.log("i am response in add level tab: ", response);
 
-              if ((response.status === 400) | (response.status === 500)) {
+              if (response.status === 400 || response.status === 500) {
                 setServerResponse({
                   authentication: false,
-                  msg: response.data.message,
+                  msg: response.statusText,
+                  res: response.data,
+                });
+              } else if (response.status === 409) {
+                setServerResponse({
+                  authentication: false,
+                  msg: response.data.error,
+                  res: response.data,
                 });
               } else {
                 setServerResponse({
                   authentication: true,
-                  msg: response.message,
-                  res: response,
+                  msg: response.statusText,
+                  res: response.data,
                 });
                 setStatus(true);
-                // empty the field
-                resetForm();
-                // update the data
-                fetchData();
+                fetchLevels();
               }
             } catch (err) {
               setServerResponse({
@@ -239,7 +260,7 @@ const FloorTab = () => {
               <Grid container spacing={3}>
                 <Grid item md={3.5} xs={12} sx={{ mb: 2 }}>
                   {/* Display the server response message */}
-                  {serverResponse.msg ? (
+                  {serverResponse.msg && (
                     <Alert
                       variant="filled"
                       severity={
@@ -251,8 +272,6 @@ const FloorTab = () => {
                     >
                       {serverResponse.msg}
                     </Alert>
-                  ) : (
-                    <></>
                   )}
                 </Grid>
 
@@ -260,16 +279,16 @@ const FloorTab = () => {
                 <Grid item md={12} xs={12}>
                   <FormControl
                     fullWidth
-                    error={Boolean(touched.tower && errors.tower)}
+                    error={Boolean(touched.towerId && errors.towerId)}
                   >
-                    <InputLabel id="tower-select-label">
+                    <InputLabel id="towerId-select-label">
                       Select Tower
                     </InputLabel>
                     <Select
-                      labelId="tower-select-label"
-                      id="tower-login"
-                      value={values.tower}
-                      name="tower"
+                      labelId="towerId-select-label"
+                      id="towerId"
+                      value={values.towerId}
+                      name="towerId"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       label="Tower"
@@ -281,8 +300,8 @@ const FloorTab = () => {
                       ))}
                       {/* Add more MenuItem components as needed */}
                     </Select>
-                    {touched.tower && errors.tower && (
-                      <FormHelperText>{errors.tower}</FormHelperText>
+                    {touched.towerId && errors.towerId && (
+                      <FormHelperText error>{errors.towerId}</FormHelperText>
                     )}
                   </FormControl>
                 </Grid>
@@ -291,23 +310,23 @@ const FloorTab = () => {
                     <FormHelperText error>{errors.submit}</FormHelperText>
                   </Grid>
                 )}
-                {/* Floor */}
+                {/* level */}
                 <Grid item md={12} xs={12}>
                   <Stack spacing={1}>
-                    <InputLabel htmlFor="floorName-login">Floor</InputLabel>
+                    <InputLabel htmlFor="name-login">Level</InputLabel>
                     <OutlinedInput
-                      id="floorName-login"
+                      id="name-login"
                       type="text"
-                      value={values.floorName}
-                      name="floorName"
+                      value={values.name}
+                      name="name"
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      placeholder="Enter Floor"
+                      placeholder="Enter level"
                       fullWidth
-                      error={Boolean(touched.floorName && errors.floorName)}
+                      error={Boolean(touched.name && errors.name)}
                     />
-                    {touched.floorName && errors.floorName && (
-                      <FormHelperText error>{errors.floorName}</FormHelperText>
+                    {touched.name && errors.name && (
+                      <FormHelperText error>{errors.name}</FormHelperText>
                     )}
                   </Stack>
                 </Grid>
@@ -337,7 +356,7 @@ const FloorTab = () => {
       {/* Table */}
       <Box sx={{ width: "100%", mt: 15 }}>
         <Typography variant="h5" component="div" sx={{ mb: 3 }} gutterBottom>
-          All Floors
+          All levels
         </Typography>
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
@@ -351,7 +370,10 @@ const FloorTab = () => {
                   <TableRow>
                     <TableCell sx={{ px: 3 }}>ID</TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
-                      Floor
+                      Tower
+                    </TableCell>
+                    <TableCell align="right" sx={{ px: 3 }}>
+                      Level
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
                       Created At
@@ -362,8 +384,8 @@ const FloorTab = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {floorsData
-                    ? floorsData
+                  {levelsData
+                    ? levelsData
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -380,6 +402,9 @@ const FloorTab = () => {
                               sx={{ px: 3 }}
                             >
                               {row.id}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.towerId}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
                               {row.name}
@@ -422,7 +447,7 @@ const FloorTab = () => {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={floorsData.length}
+              count={levelsData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
@@ -435,4 +460,4 @@ const FloorTab = () => {
   );
 };
 
-export default FloorTab;
+export default LevelTab;

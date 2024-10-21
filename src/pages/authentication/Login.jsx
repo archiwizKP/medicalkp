@@ -171,9 +171,9 @@ const Login = () => {
                             );
                             // send the users to its appropriate routes
                             if (response.user.role === "operator") {
-                              navigate("/operator");
+                              navigate("/operator/home");
                             } else if (response.user.role === "doctor") {
-                              navigate("/dashboard/default");
+                              navigate("/doctor/home");
                             }
                           }
                         } catch (err) {
@@ -277,7 +277,7 @@ const Login = () => {
                                 variant="contained"
                                 color="primary"
                               >
-                                Login
+                                {isSubmitting ? "Authenticating" : "Login"}
                               </Button>
                             </Grid>
                           </Grid>

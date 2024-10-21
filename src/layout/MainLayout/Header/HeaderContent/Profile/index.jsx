@@ -71,7 +71,7 @@ const Profile = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleLogout = async () => {
+  const handleLogout = () => {
     // logout
     localStorage.removeItem("auth");
     // empty the state

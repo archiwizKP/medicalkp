@@ -29,25 +29,10 @@ import { Formik } from "formik";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-// tables
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import {
-  AddTowerAPI,
-  DeleteTowerAPI,
-  EditTowerAPI,
-  GetTowerAPI,
-} from "../../services/operator-api/towersCrudAPI";
-
 // dialog
 import { a11yProps, CustomTabPanel } from "../../components/tab";
 import TowerTab from "./categories/towerTab";
-import FloorTab from "./categories/floorTab";
+import LevelTab from "./categories/levelTab";
 
 const AddCategory = () => {
   const [value, setValue] = useState(0);
@@ -76,9 +61,9 @@ const AddCategory = () => {
         <CustomTabPanel value={value} index={0}>
           <TowerTab />
         </CustomTabPanel>
-        {/* Floor */}
+        {/* Level */}
         <CustomTabPanel value={value} index={1}>
-          <FloorTab />
+          <LevelTab />
         </CustomTabPanel>
         {/* Chamber */}
         <CustomTabPanel value={value} index={2}>
