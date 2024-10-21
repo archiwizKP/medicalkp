@@ -18,6 +18,8 @@ import NotFound from "../pages/authentication/notFound";
 import config from "../config";
 import AddCategory from "../pages/operator/add-category";
 import Login from "../pages/authentication/Login";
+import Loader from "../components/Loader";
+import { Box } from "@mui/material";
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("../pages/dashboard")));
@@ -34,27 +36,24 @@ const AuthRegister = Loadable(
 );
 
 function CustomRoute() {
-  const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.user);
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Retrieve and parse the user data from localStorage if userData is not available
     const storedUser = localStorage.getItem("auth");
     const user = userData || (storedUser && JSON.parse(storedUser));
     setUser(user);
+    setLoading(false);
     console.log("I am user in index routes page: ", user);
   }, [userData]);
 
-  const routes = useRoutes([
+  const DoctorRoutes = useRoutes([
     {
       path: "/",
       element: <MainLayout />,
       children: [
-        {
-          path: "/",
-          element: <Navigate to="/login" />, // Default path redirects to login
-        },
         {
           path: "color",
           element: <Color />,
@@ -68,11 +67,31 @@ function CustomRoute() {
           element: <AuthRegister />,
         },
         {
-          path: "dashboard",
+          path: "doctor",
           children: [
             {
-              path: "default",
+              path: "home",
               element: <DashboardDefault />,
+            },
+            {
+              path: "stroke",
+              element: <Stroke />,
+            },
+            {
+              path: "nihhss",
+              element: <NIHHSS />,
+            },
+            {
+              path: "strokeTrail",
+              element: <StrokeTrail />,
+            },
+            {
+              path: "priorities",
+              element: <Priorities />,
+            },
+            {
+              path: "communication",
+              element: <Communication />,
             },
             {
               path: "register",
@@ -84,8 +103,11 @@ function CustomRoute() {
             },
           ],
         },
-        // Remove the catch-all NotFound route here
       ],
+    },
+    {
+      path: "*",
+      element: <NotFound />, // Catch-all route for undefined paths
     },
   ]);
 
@@ -96,18 +118,12 @@ function CustomRoute() {
       children: [
         {
           index: true,
-          element:
-            user && user.token && user.data.role === "operator" ? (
-              <Navigate to="/operator/home" />
-            ) : (
-              <Login />
-            ), // Redirect logged-in users away from login page
-        },
-        {
-          path: "/login",
           element: <Login />,
         },
-        // Remove the catch-all NotFound route here
+        {
+          path: "login",
+          element: <Login />,
+        },
       ],
     },
     {
@@ -126,6 +142,7 @@ function CustomRoute() {
           element: <Outlet />, // Use Outlet to render nested routes
           children: [
             {
+              index: true,
               path: "home",
               element: <OperatorDashboardHome />,
             },
@@ -137,17 +154,30 @@ function CustomRoute() {
               path: "add-category",
               element: <AddCategory />,
             },
-            // Remove the catch-all NotFound route here
           ],
         },
       ],
     },
+    {
+      path: "*",
+      element: <NotFound />, // Catch-all route for undefined paths
+    },
   ]);
+
+  if (loading) {
+    return (
+      <Box>
+        <Loader />;
+      </Box>
+    );
+  }
 
   return (
     <>
       {user && user.token && user.data.role === "operator" ? (
         <>{OperatorRoutes}</>
+      ) : user && user.token && user.data.role === "doctor" ? (
+        <>{DoctorRoutes}</>
       ) : (
         <>{DefaultRoutes}</>
       )}
