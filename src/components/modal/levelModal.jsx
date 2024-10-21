@@ -90,8 +90,6 @@ const LevelModal = ({
                 ? responseData.response
                 : response;
 
-            console.log("minified response: ", response);
-
             if (response.status === 400 || response.status === 500) {
               setModalServerResponse({
                 authentication: false,
