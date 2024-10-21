@@ -44,10 +44,8 @@ import {
 } from "../../services/operator-api/crudAPI";
 
 // dialog
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
+
+import MyCustomModal from "../../components/modal/crudModal";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -77,161 +75,53 @@ function a11yProps(index) {
   };
 }
 
-const MyCustomModal = ({ open, onClose, text, onConfirm, action, data }) => (
-  <Dialog fullWidth open={open} onClose={onClose}>
-    <DialogTitle sx={{ fontWeight: "bold", fontSize: "20px" }}>
-      Confirmation
-    </DialogTitle>
-    <Divider />
-    {action === "delete" ? (
-      <>
-        <DialogContent>
-          <Typography variant="body1" color="initial">
-            {text}
-          </Typography>
-        </DialogContent>
-      </>
-    ) : (
-      <Box sx={{ width: "95%", margin: "auto", mb: 4 }}>
-        {/* edit form */}
-        <Formik
-          initialValues={{
-            towerName: data.towerName,
-            submit: null,
-          }}
-          validationSchema={Yup.object().shape({
-            towerName: Yup.string().required("Tower is required"),
-          })}
-          onSubmit={async (values, { setStatus, resetForm }) => {
-            console.log(values);
-
-            try {
-              const response = await AddTowerAPI(values, token);
-              console.log("response in add cat page", response);
-
-              if ((response.status === 400) | (response.status === 500)) {
-                setServerResponse({
-                  authentication: false,
-                  msg: response.data.message,
-                });
-              } else {
-                setServerResponse({
-                  authentication: true,
-                  msg: response.message,
-                  res: response,
-                });
-                setStatus(true);
-                // empty the field
-                resetForm();
-                // update the data
-                fetchData();
-              }
-            } catch (err) {
-              setServerResponse({
-                authentication: false,
-                msg: "Something went wrong. Please try again.",
-              });
-            }
-          }}
-        >
-          {({
-            errors,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-            touched,
-            values,
-          }) => (
-            <form noValidate onSubmit={handleSubmit}>
-              <Grid container spacing={3}>
-                <Grid item md={3.5} xs={12}></Grid>
-
-                {/* Tower */}
-                <Grid item md={12} xs={12}>
-                  <Stack spacing={1}>
-                    <InputLabel htmlFor="towerName-login">Tower</InputLabel>
-                    <OutlinedInput
-                      id="towerName-login"
-                      type="text"
-                      value={values.towerName}
-                      name="towerName"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      placeholder="Enter Tower"
-                      fullWidth
-                      error={Boolean(touched.towerName && errors.towerName)}
-                    />
-                    {touched.towerName && errors.towerName && (
-                      <FormHelperText error>{errors.towerName}</FormHelperText>
-                    )}
-                  </Stack>
-                </Grid>
-                {errors.submit && (
-                  <Grid item xs={12}>
-                    <FormHelperText error>{errors.submit}</FormHelperText>
-                  </Grid>
-                )}
-              </Grid>
-            </form>
-          )}
-        </Formik>
-      </Box>
-    )}
-
-    <Divider />
-    <DialogActions sx={{ mt: 1 }}>
-      <Button variant="outlined" color="success" onClick={onClose}>
-        No
-      </Button>
-      <Button variant="contained" onClick={onConfirm}>
-        {action === "delete" ? "Yes" : "Change"}
-      </Button>
-    </DialogActions>
-  </Dialog>
-);
-
 const AddCategory = () => {
   const [token, setToken] = useState("");
-
-  // data arrays
   const [towersData, setTowersData] = useState([]);
-
-  // Selected id
   const [selectedId, setSelectedId] = useState({
     selectId: "",
     action: "",
     data: {},
   });
-
-  useEffect(() => {
-    // Get the token from local storage
-    const storedData = JSON.parse(localStorage.getItem("auth"));
-    if (storedData && storedData.token) {
-      console.log("Stored data in add category: ", storedData.token);
-      setToken(storedData.token);
-    }
-
-    console.log("ia m token: ", token);
-  }, []);
-
-  // server response
   const [serverResponse, setServerResponse] = useState({
     msg: "",
     res: "",
     authentication: false,
   });
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(0);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  console.log("I am server response: ", serverResponse);
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("auth"));
+    if (storedData && storedData.token) {
+      console.log("Stored data in add category: ", storedData.token);
+      setToken(storedData.token);
+    }
+  }, []);
 
-  // TABLE STATES
-  const [value, setValue] = React.useState(0);
+  useEffect(() => {
+    if (token) {
+      fetchData();
+    }
+  }, [token]);
+
+  const fetchData = async () => {
+    try {
+      const getTowersData = await GetTowerAPI(token);
+      console.log("I am towers data", getTowersData);
+      if (getTowersData) {
+        setTowersData(getTowersData);
+      }
+    } catch (error) {
+      console.log("I am towers error: ", error);
+    }
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -246,29 +136,6 @@ const AddCategory = () => {
     console.log("Row clicked, ID:", id);
   };
 
-  const fetchData = async () => {
-    try {
-      const getTowersData = await GetTowerAPI(token);
-      console.log("I am towers data", getTowersData);
-      if (getTowersData) {
-        setTowersData(getTowersData);
-      }
-    } catch (error) {
-      console.log("I am towers error: ", error);
-    }
-  };
-
-  // get tower
-  useEffect(() => {
-    if (token) {
-      fetchData();
-    }
-  }, [token]);
-
-  // Modal
-  const [open, setOpen] = useState(false);
-
-  // delete handle
   const handleDeleteClick = async (row, action) => {
     setOpen(true);
     console.log("row id: ", row.id);
@@ -276,93 +143,72 @@ const AddCategory = () => {
     setSelectedId({ selectId: row.id, action: action.action });
   };
 
-  // edit handle
-
   const handleEditClick = async (row, action) => {
     setOpen(true);
     console.log("row id: ", row.id);
     console.log("action: ", action.action);
     setSelectedId({ selectId: row.id, action: action.action, data: row });
   };
+
   const handleClose = () => {
     setOpen(false);
   };
 
-  // delete api function
   const deleteTower = async () => {
     try {
       const response = await DeleteTowerAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
-        // filter the items
         const filterTowersData = towersData.filter(
-          (item) => item.id != selectedId.selectId
+          (item) => item.id !== selectedId.selectId
         );
         setTowersData(filterTowersData);
       }
     } catch (error) {
-      console.log("delte api error", error);
+      console.log("delete api error", error);
     }
   };
 
-  // edit api function
   const editTower = async () => {
     try {
       const response = await EditTowerAPI(selectedId.selectId, token);
-      console.log("Delete api response", response);
+      console.log("Edit api response", response);
       if (response.message) {
-        // filter the items
-        const filterTowersData = towersData.filter(
-          (item) => item.id != selectedId.selectId
+        const updatedTowersData = towersData.map((item) =>
+          item.id === selectedId.selectId ? { ...item, ...response.data } : item
         );
-        setTowersData(filterTowersData);
+        setTowersData(updatedTowersData);
       }
     } catch (error) {
-      console.log("delte api error", error);
+      console.log("edit api error", error);
     }
   };
 
   const handleConfirm = async () => {
-    // Perform delete action here
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
-      // Call delete api
       deleteTower();
     } else if (selectedId.selectId && selectedId.action === "edit") {
-      // call the edit tower function
       editTower();
     }
   };
 
-  // Towers Table Data
+  const handleServerResponse = () => {
+    setOpen(false);
+    fetchData();
+  };
+
   const data = [
     {
       id: 1,
-      tower: "A",
-    },
-    {
-      id: 2,
-      tower: "B",
-    },
-    {
-      id: 3,
-      tower: "C",
+      floor: 2,
     },
   ];
 
-  // Floor Data
   const floorData = [
     {
       id: 1,
-      floor: 1,
-    },
-    {
-      id: 2,
       floor: 2,
-    },
-    {
-      id: 3,
-      floor: 3,
     },
   ];
 
@@ -377,6 +223,8 @@ const AddCategory = () => {
         onConfirm={handleConfirm}
         action={selectedId.action}
         data={selectedId.action === "delete" ? {} : selectedId.data}
+        token={token}
+        handleServerResponse={handleServerResponse} // Pass the callback
       />
 
       <Box sx={{ width: "100%" }}>
@@ -451,7 +299,7 @@ const AddCategory = () => {
                   <Grid container spacing={3}>
                     <Grid item md={3.5} xs={12}>
                       {/* Display the server response message */}
-                      {serverResponse.msg && (
+                      {serverResponse.msg ? (
                         <Alert
                           variant="filled"
                           severity={
@@ -463,6 +311,8 @@ const AddCategory = () => {
                         >
                           {serverResponse.msg}
                         </Alert>
+                      ) : (
+                        <></>
                       )}
                     </Grid>
 

@@ -41,9 +41,9 @@ export const DeleteTowerAPI = async (id, token) => {
   }
 };
 // Edit Tower API
-export const EditTowerAPI = async (id, token) => {
+export const EditTowerAPI = async (token, form) => {
   try {
-    const response = await axios.put(`${baseURL}/towers/${id}`, {
+    const response = await axios.put(`${baseURL}/towers/${form.id}`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
