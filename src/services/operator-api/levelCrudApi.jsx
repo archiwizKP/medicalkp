@@ -47,8 +47,8 @@ export const EditLevelAPI = async (token, form) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
-    return response;
+    return response.data;
   } catch (error) {
-    return error;
+    return error.response;
   }
 };
