@@ -1,12 +1,15 @@
 // assets
-import { DashboardOutlined, UserOutlined } from "@ant-design/icons";
-import { Person2Outlined } from "@mui/icons-material";
-import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
+import {
+  DashboardOutlined,
+  UserAddOutlined,
+  PlusCircleOutlined,
+} from "@ant-design/icons";
+
 // icons
 const icons = {
   DashboardOutlined,
-  UserOutlined,
-  WidgetsOutlinedIcon,
+  UserAddOutlined,
+  PlusCircleOutlined,
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -21,7 +24,7 @@ const OperatorMenu = {
       title: "Dashboard",
       type: "item",
       url: "/operator/home",
-      icon: icons.WidgetsOutlinedIcon,
+      icon: icons.DashboardOutlined,
       breadcrumbs: true,
     },
     {
@@ -29,7 +32,7 @@ const OperatorMenu = {
       title: "Add Patient",
       type: "item",
       url: "/operator/add-patient",
-      icon: icons.UserOutlined,
+      icon: icons.UserAddOutlined,
       breadcrumbs: true,
     },
     {
@@ -37,7 +40,7 @@ const OperatorMenu = {
       title: "Add Category",
       type: "item",
       url: "/operator/add-category",
-      icon: icons.UserOutlined,
+      icon: icons.PlusCircleOutlined,
       breadcrumbs: true,
     },
   ],
