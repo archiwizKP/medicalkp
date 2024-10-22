@@ -34,6 +34,7 @@ import AuthFooter from "../../components/cards/AuthFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginAction } from "../../store/reducers/actions";
 import { SignInAPI } from "../../services/operator-api/authenticationAPI";
+import Loader from "../../components/Loader";
 
 // ================================|| LOGIN ||================================ //
 
@@ -277,8 +278,9 @@ const Login = () => {
                                 variant="contained"
                                 color="primary"
                               >
-                                {isSubmitting ? "Authenticating" : "Login"}
+                                {isSubmitting ? "Authenticating..." : "Login"}
                               </Button>
+                              {isSubmitting ? <Loader /> : <></>}
                             </Grid>
                           </Grid>
                         </form>
