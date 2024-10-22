@@ -28,6 +28,18 @@ export const GetLevelAPI = async (token) => {
     return error.response;
   }
 };
+// Get Levels by Id API
+export const GetLevelsByTowerId = async (token, id) => {
+  try {
+    const response = await axios.get(`${baseURL}/levels/tower/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("response: ", response);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
 // Delete levels API
 export const DeleteLevelAPI = async (id, token) => {
   try {

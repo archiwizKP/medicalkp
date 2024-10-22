@@ -110,6 +110,7 @@ const Profile = () => {
     localStorage.removeItem("auth");
     // empty the state
     dispatch(LogoutAction());
+    setOpen(false);
     navigate("/");
   };
 

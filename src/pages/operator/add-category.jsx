@@ -33,6 +33,8 @@ import Tab from "@mui/material/Tab";
 import { a11yProps, CustomTabPanel } from "../../components/tab";
 import TowerTab from "./categories/towerTab";
 import LevelTab from "./categories/levelTab";
+import ChamberTab from "./categories/chamberTab";
+import BedTab from "./categories/bedTab";
 
 const AddCategory = () => {
   const [value, setValue] = useState(0);
@@ -67,11 +69,11 @@ const AddCategory = () => {
         </CustomTabPanel>
         {/* Chamber */}
         <CustomTabPanel value={value} index={2}>
-          Chamber
+          <ChamberTab />
         </CustomTabPanel>
         {/* Bed */}
         <CustomTabPanel value={value} index={3}>
-          Bed
+          <BedTab />
         </CustomTabPanel>
       </Box>
     </>
