@@ -55,7 +55,6 @@ const Login = () => {
 
   console.log("i am userState: ", userState);
 
-  const [checked, setChecked] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => {
@@ -133,10 +132,7 @@ const Login = () => {
                           .max(255)
                           .required("Password is required"),
                       })}
-                      onSubmit={async (
-                        values,
-                        { setErrors, setStatus, setSubmitting }
-                      ) => {
+                      onSubmit={async (values, { setStatus }) => {
                         try {
                           const response = await SignInAPI(values);
                           if (
