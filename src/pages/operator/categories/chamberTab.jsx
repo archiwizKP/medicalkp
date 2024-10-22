@@ -39,11 +39,16 @@ import {
   GetLevelsByTowerId,
 } from "../../../services/operator-api/levelCrudApi";
 import LevelModal from "../../../components/modal/levelModal";
+import {
+  AddChamberAPI,
+  GetChamberAPI,
+} from "../../../services/operator-api/chambersCrudApi";
 
 const ChamberTab = () => {
   const [token, setToken] = useState("");
   const [levelsData, setLevelsData] = useState([]);
   const [towersData, setTowersData] = useState([]);
+  const [chambersData, setChambersData] = useState([]);
   const [selectedId, setSelectedId] = useState({
     selectId: "",
     action: "",
@@ -80,18 +85,32 @@ const ChamberTab = () => {
     }
   };
 
+  // fetch chambers
+  const fetchChambers = async () => {
+    try {
+      const response = await GetChamberAPI(token);
+      console.log("i am chambers response: ", response);
+      if (response && response.data) {
+        setChambersData(response.data ? response.data : []);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+      setChambersData([]); // Handle error cases by setting to empty array
+    }
+  };
+
   //  fetch levels
-  //   const fetchLevelsByTowerId = async () => {
-  //     try {
-  //       const response = await GetLevelsByTowerId(token, selectId);
-  //       console.log(response);
-  //       if (response) {
-  //         setLevelsData(response);
-  //       }
-  //     } catch (error) {
-  //       console.log("Error: ", error);
-  //     }
-  //   };
+  const fetchLevelsByTowerId = async () => {
+    try {
+      const response = await GetLevelsByTowerId(token, selectId);
+      console.log("ia m fetch lvels by towerid: ", response);
+      if (response) {
+        setLevelsData(response);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
 
   // Next Page Code
   const handleChangePage = (event, newPage) => {
@@ -175,19 +194,21 @@ const ChamberTab = () => {
   useEffect(() => {
     if (token) {
       fetchTowers();
-      //   fetchLevelsByTowerId();
+      fetchChambers();
     }
   }, [token]);
 
   useEffect(() => {
     if (selectId) {
       console.log("i am select id", selectId);
+      fetchLevelsByTowerId();
     }
   }, [selectId]);
 
   console.log("selected data: ", selectedId.data);
   console.log("Towers data: ", towersData);
   console.log("Levels Data: ", levelsData);
+  console.log("Chambers Data: ", chambersData);
 
   console.log("i am server response; ", serverResponse);
 
@@ -219,42 +240,44 @@ const ChamberTab = () => {
             towerId: Yup.string().required("Please Select a tower"),
             levelId: Yup.string().required("Please Select a level"),
           })}
-          onSubmit={async (values) => {
+          onSubmit={async (values, { resetForm, setFieldValue, setStatus }) => {
             console.log(values);
             setSelectId(values.towerId);
-            // try {
-            //   const response = await AddLevelAPI(values, token);
-            //   console.log("i am response in add level tab: ", response);
+            try {
+              const response = await AddChamberAPI(values, token);
+              console.log("API response: ", response);
 
-            //   if (response.status === 400 || response.status === 500) {
-            //     setServerResponse({
-            //       authentication: false,
-            //       msg: response.statusText,
-            //       res: response.data,
-            //     });
-            //   } else if (response.status === 409) {
-            //     setServerResponse({
-            //       authentication: false,
-            //       msg: response.data.error,
-            //       res: response.data,
-            //     });
-            //   } else {
-            //     setServerResponse({
-            //       authentication: true,
-            //       msg: response.statusText,
-            //       res: response.data,
-            //     });
-            //     setStatus(true);
-            //     resetForm();
-            //     fetchLevels();
-            //     setFieldValue({ towerId: "" });
-            //   }
-            // } catch (err) {
-            //   setServerResponse({
-            //     authentication: false,
-            //     msg: "Something went wrong. Please try again.",
-            //   });
-            // }
+              // Check if response contains data and message
+              if (
+                response.data &&
+                response.data.message &&
+                response.data.success
+              ) {
+                setServerResponse({
+                  authentication: true,
+                  msg: response.data.message, // Use the message from the response
+                  res: response.data,
+                });
+
+                // Perform success actions, like resetting form
+                setStatus(true);
+                resetForm();
+                setFieldValue("towerId", ""); // Reset towerId
+                setFieldValue("levelId", ""); // Reset levelId
+              } else {
+                setServerResponse({
+                  authentication: false,
+                  msg: response.data.message || "Something went wrong.", // Use message from response or fallback
+                });
+              }
+            } catch (err) {
+              setServerResponse({
+                authentication: false,
+                msg: err.response
+                  ? err.response.data.message
+                  : "Something went wrong. Please try again.",
+              });
+            }
           }}
         >
           {({
@@ -409,7 +432,7 @@ const ChamberTab = () => {
       {/* Table */}
       <Box sx={{ width: "100%", mt: 15 }}>
         <Typography variant="h5" component="div" sx={{ mb: 3 }} gutterBottom>
-          All Chamber
+          All Chambers
         </Typography>
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
@@ -429,6 +452,9 @@ const ChamberTab = () => {
                       Level
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
+                      Chamber
+                    </TableCell>
+                    <TableCell align="right" sx={{ px: 3 }}>
                       Created At
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
@@ -437,61 +463,73 @@ const ChamberTab = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {levelsData &&
-                    levelsData
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                      .map((row) => (
-                        <TableRow hover key={row.id} sx={{ cursor: "pointer" }}>
-                          <TableCell component="th" scope="row" sx={{ px: 3 }}>
-                            {row.id}
-                          </TableCell>
-                          <TableCell align="right" sx={{ px: 3 }}>
-                            {row.towerId}
-                          </TableCell>
-                          <TableCell align="right" sx={{ px: 3 }}>
-                            {row.name}
-                          </TableCell>
-                          <TableCell align="right" sx={{ px: 3 }}>
-                            {row.createdAt}
-                          </TableCell>
-                          <TableCell align="right" sx={{ px: 3 }}>
-                            <Button
-                              variant="contained"
-                              color="success"
-                              sx={{ ml: 2 }}
-                              onClick={() =>
-                                handleEditClick(row, {
-                                  action: "edit",
-                                })
-                              }
+                  {chambersData
+                    ? chambersData
+                        .slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        )
+                        .map((row) => (
+                          <TableRow
+                            hover
+                            key={row.id}
+                            sx={{ cursor: "pointer" }}
+                          >
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              sx={{ px: 3 }}
                             >
-                              Edit
-                            </Button>
-                            <Button
-                              variant="contained"
-                              color="error"
-                              sx={{ ml: 2 }}
-                              onClick={() =>
-                                handleDeleteClick(row, {
-                                  action: "delete",
-                                })
-                              }
-                            >
-                              Delete
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                              {row.id}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.tower.name}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.level.name}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.name}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.createdAt}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              <Button
+                                variant="contained"
+                                color="success"
+                                sx={{ ml: 2 }}
+                                onClick={() =>
+                                  handleEditClick(row, {
+                                    action: "edit",
+                                  })
+                                }
+                              >
+                                Edit
+                              </Button>
+                              <Button
+                                variant="contained"
+                                color="error"
+                                sx={{ ml: 2 }}
+                                onClick={() =>
+                                  handleDeleteClick(row, {
+                                    action: "delete",
+                                  })
+                                }
+                              >
+                                Delete
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))
+                    : {}}
                 </TableBody>
               </Table>
             </TableContainer>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={levelsData.length}
+              count={chambersData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}

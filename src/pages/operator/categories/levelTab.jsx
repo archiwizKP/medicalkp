@@ -407,7 +407,7 @@ const LevelTab = () => {
                               {row.id}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
-                              {row.towerId}
+                              {row.tower.name}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
                               {row.name}

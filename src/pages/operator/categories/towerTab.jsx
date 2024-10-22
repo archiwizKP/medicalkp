@@ -46,6 +46,7 @@ import {
 
 // dialog
 import TowerModal from "../../../components/modal/towerModal";
+import Loader from "../../../components/Loader";
 
 const TowerTab = () => {
   const [token, setToken] = useState("");
@@ -350,60 +351,54 @@ const TowerTab = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {towersData
-                    ? towersData
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => (
-                          <TableRow
-                            hover
-                            key={row.id}
-                            sx={{ cursor: "pointer" }}
-                          >
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              sx={{ px: 3 }}
+                  {towersData ? (
+                    towersData
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((row) => (
+                        <TableRow hover key={row.id} sx={{ cursor: "pointer" }}>
+                          <TableCell component="th" scope="row" sx={{ px: 3 }}>
+                            {row.id}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.name}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.createdAt}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            <Button
+                              variant="contained"
+                              color="success"
+                              sx={{ ml: 2 }}
+                              onClick={() =>
+                                handleEditClick(row, {
+                                  action: "edit",
+                                })
+                              }
                             >
-                              {row.id}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.name}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.createdAt}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              <Button
-                                variant="contained"
-                                color="success"
-                                sx={{ ml: 2 }}
-                                onClick={() =>
-                                  handleEditClick(row, {
-                                    action: "edit",
-                                  })
-                                }
-                              >
-                                Edit
-                              </Button>
-                              <Button
-                                variant="contained"
-                                color="error"
-                                sx={{ ml: 2 }}
-                                onClick={() =>
-                                  handleDeleteClick(row, {
-                                    action: "delete",
-                                  })
-                                }
-                              >
-                                Delete
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                    : {}}
+                              Edit
+                            </Button>
+                            <Button
+                              variant="contained"
+                              color="error"
+                              sx={{ ml: 2 }}
+                              onClick={() =>
+                                handleDeleteClick(row, {
+                                  action: "delete",
+                                })
+                              }
+                            >
+                              Delete
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                  ) : (
+                    <></>
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>

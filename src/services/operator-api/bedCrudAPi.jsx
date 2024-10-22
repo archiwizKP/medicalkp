@@ -3,10 +3,10 @@ import axios from "axios";
 // Base URl
 const baseURL = import.meta.env.VITE_API_URL;
 
-// Add level API
-export const AddLevelAPI = async (form, token) => {
+// Add bed API
+export const AddBedAPI = async (form, token) => {
   try {
-    const response = await axios.post(`${baseURL}/levels/create-level`, form, {
+    const response = await axios.post(`${baseURL}/beds/create-bed`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -16,10 +16,10 @@ export const AddLevelAPI = async (form, token) => {
   }
 };
 
-// Get levels API
-export const GetLevelAPI = async (token) => {
+// Get beds API
+export const GetBedAPI = async (token) => {
   try {
-    const response = await axios.get(`${baseURL}/levels`, {
+    const response = await axios.get(`${baseURL}/beds`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -28,10 +28,10 @@ export const GetLevelAPI = async (token) => {
     return error.response;
   }
 };
-// Get Levels by Id API
-export const GetLevelsByTowerId = async (token, id) => {
+// Get beds by Id API
+export const GetBedsByLevelId = async (token, id) => {
   try {
-    const response = await axios.get(`${baseURL}/levels/tower/${id}`, {
+    const response = await axios.get(`${baseURL}/beds/level/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -40,10 +40,10 @@ export const GetLevelsByTowerId = async (token, id) => {
     return error.response;
   }
 };
-// Delete levels API
-export const DeleteLevelAPI = async (id, token) => {
+// Delete beds API
+export const DeletebedAPI = async (id, token) => {
   try {
-    const response = await axios.delete(`${baseURL}/levels/${id}`, {
+    const response = await axios.delete(`${baseURL}/beds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -52,10 +52,10 @@ export const DeleteLevelAPI = async (id, token) => {
     return error.response;
   }
 };
-// Edit level API
-export const EditLevelAPI = async (token, form) => {
+// Edit bed API
+export const EditbedAPI = async (token, form) => {
   try {
-    const response = await axios.put(`${baseURL}/levels/${form.id}`, form, {
+    const response = await axios.put(`${baseURL}/beds/${form.id}`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
