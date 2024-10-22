@@ -6,7 +6,7 @@ const baseURL = import.meta.env.VITE_API_URL;
 // Add level API
 export const AddLevelAPI = async (form, token) => {
   try {
-    const response = await axios.post(`${baseURL}/levels/create-level`, form, {
+    const response = await axios.post(`${baseURL}/levels/createLevel`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);

@@ -211,7 +211,7 @@ const LevelTab = () => {
               .required("Level is required"),
             towerId: Yup.string().required("Please Select a tower"),
           })}
-          onSubmit={async (values, { setStatus, resetForm }) => {
+          onSubmit={async (values, { setStatus, resetForm, setFieldValue }) => {
             console.log(values);
 
             try {
@@ -237,7 +237,9 @@ const LevelTab = () => {
                   res: response.data,
                 });
                 setStatus(true);
+                resetForm();
                 fetchLevels();
+                setFieldValue({ towerId: "" });
               }
             } catch (err) {
               setServerResponse({
@@ -293,6 +295,7 @@ const LevelTab = () => {
                       onChange={handleChange}
                       label="Tower"
                     >
+                      <MenuItem>Select</MenuItem>
                       {towersData.map((item) => (
                         <MenuItem value={item.id} key={item.id}>
                           {item.name}
