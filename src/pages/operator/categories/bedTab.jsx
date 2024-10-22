@@ -37,18 +37,25 @@ import {
   GetLevelsByTowerId,
 } from "../../../services/operator-api/levelCrudApi";
 import LevelModal from "../../../components/modal/levelModal";
+import { GetChambersByLevelId } from "../../../services/operator-api/chambersCrudApi";
+import {
+  AddBedAPI,
+  GetBedAPI,
+} from "../../../services/operator-api/bedCrudAPi";
 
 const BedTab = () => {
   const [token, setToken] = useState("");
   const [levelsData, setLevelsData] = useState([]);
   const [towersData, setTowersData] = useState([]);
   const [chambersData, setChambersData] = useState([]);
+  const [bedsData, setBedsData] = useState([]);
   const [selectedId, setSelectedId] = useState({
     selectId: "",
     action: "",
     data: {},
   });
   const [selectId, setSelectId] = useState(0);
+  const [chamberId, setChamberId] = useState(0);
   const [serverResponse, setServerResponse] = useState({
     msg: "",
     res: "",
@@ -79,11 +86,24 @@ const BedTab = () => {
     }
   };
 
+  // fetch beds
+  const fetchBeds = async () => {
+    try {
+      const response = await GetBedAPI(token);
+      console.log(response);
+      if (response) {
+        setBedsData(response);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
   //  fetch levels
   const fetchLevelsByTowerId = async () => {
     try {
       const response = await GetLevelsByTowerId(token, selectId);
-      console.log(response);
+      console.log("ia m fetch lvels by towerid: ", response);
       if (response) {
         setLevelsData(response);
       }
@@ -92,13 +112,13 @@ const BedTab = () => {
     }
   };
 
-  //  fetch chambers
-  const fetchChamberByTowerId = async () => {
+  // fetch chambers
+  const fetchChambersByLevelId = async () => {
     try {
-      const response = await GetChamberByTowerId(token, selectId);
-      console.log(response);
-      if (response) {
-        setChambersData(response);
+      const response = await GetChambersByLevelId(token, chamberId);
+      console.log("ia m fetch chambers by levelId: ", response);
+      if (response && response.data) {
+        setChambersData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -180,29 +200,36 @@ const BedTab = () => {
 
   const handleServerResponse = () => {
     setOpen(false);
-    fetchLevelsByTowerId();
-    fetchChamberByTowerId();
+    // fetchLevelsByTowerId();
   };
 
   // onLoad Populate the setTowers state
   useEffect(() => {
     if (token) {
       fetchTowers();
-      fetchLevelsByTowerId();
-      fetchChamberByTowerId();
+      fetchBeds();
     }
   }, [token]);
 
   useEffect(() => {
     if (selectId) {
       console.log("i am select id", selectId);
+      fetchLevelsByTowerId();
     }
   }, [selectId]);
+
+  useEffect(() => {
+    if (chamberId) {
+      fetchChambersByLevelId();
+      console.log("i am chamber id", chamberId);
+    }
+  }, [chamberId]);
 
   console.log("selected data: ", selectedId.data);
   console.log("Towers data: ", towersData);
   console.log("Levels Data: ", levelsData);
   console.log("Chambers Data: ", chambersData);
+
   console.log("i am server response; ", serverResponse);
 
   return (
@@ -223,54 +250,52 @@ const BedTab = () => {
         {/* // ============================|| Add Patient ||============================ // */}
         <Formik
           initialValues={{
-            name: "",
+            bedNo: "",
             towerId: towersData.length > 0 ? towersData[0].id : "", // Ensure towerId is initialized
             levelId: levelsData.length > 0 ? levelsData[0].id : "",
             chamberId: chambersData.length > 0 ? chambersData[0].id : "",
             submit: null,
           }}
           validationSchema={Yup.object().shape({
-            name: Yup.string().required("Chamber is required"),
+            bedNo: Yup.string().required("Chamber is required"),
             towerId: Yup.string().required("Please Select a tower"),
             levelId: Yup.string().required("Please Select a level"),
-            chamberId: Yup.string().required("Please Select a Chamber"),
+            chamberId: Yup.string().required("Please Select a level"),
           })}
-          onSubmit={async (values) => {
+          onSubmit={async (values, { resetForm, setFieldValue, setStatus }) => {
             console.log(values);
-            setSelectId(values.towerId);
-            // try {
-            //   const response = await AddLevelAPI(values, token);
-            //   console.log("i am response in add level tab: ", response);
+            try {
+              const response = await AddBedAPI(values, token);
+              console.log("API response: ", response);
 
-            //   if (response.status === 400 || response.status === 500) {
-            //     setServerResponse({
-            //       authentication: false,
-            //       msg: response.statusText,
-            //       res: response.data,
-            //     });
-            //   } else if (response.status === 409) {
-            //     setServerResponse({
-            //       authentication: false,
-            //       msg: response.data.error,
-            //       res: response.data,
-            //     });
-            //   } else {
-            //     setServerResponse({
-            //       authentication: true,
-            //       msg: response.statusText,
-            //       res: response.data,
-            //     });
-            //     setStatus(true);
-            //     resetForm();
-            //     fetchLevels();
-            //     setFieldValue({ towerId: "" });
-            //   }
-            // } catch (err) {
-            //   setServerResponse({
-            //     authentication: false,
-            //     msg: "Something went wrong. Please try again.",
-            //   });
-            // }
+              // Check if response contains data and message
+              if (response.data && response.data.success) {
+                setServerResponse({
+                  authentication: true,
+                  msg: response.statusText, // Use the message from the response
+                  res: response.data.data,
+                });
+
+                // Perform success actions, like resetting form
+                setStatus(true);
+                resetForm();
+                setFieldValue("towerId", ""); // Reset towerId
+                setFieldValue("levelId", ""); // Reset levelId
+                setFieldValue("chamberId", ""); // reset chamber id
+              } else {
+                setServerResponse({
+                  authentication: false,
+                  msg: response.data.message || "Something went wrong.", // Use message from response or fallback
+                });
+              }
+            } catch (err) {
+              setServerResponse({
+                authentication: false,
+                msg: err.response
+                  ? err.response.data.message
+                  : "Something went wrong. Please try again.",
+              });
+            }
           }}
         >
           {({
@@ -357,15 +382,17 @@ const BedTab = () => {
                       onBlur={handleBlur}
                       onChange={(e) => {
                         handleChange(e);
+                        setChamberId(e.target.value);
                       }}
-                      label="Tower"
+                      label="Level"
                     >
                       <MenuItem>Select</MenuItem>
-                      {/* {levelsData.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>
-                          {item.name}
-                        </MenuItem>
-                      ))} */}
+                      {levelsData &&
+                        levelsData.map((item) => (
+                          <MenuItem value={item.id} key={item.id}>
+                            {item.name}
+                          </MenuItem>
+                        ))}
                       {/* Add more MenuItem components as needed */}
                     </Select>
                     {touched.levelId && errors.levelId && (
@@ -385,7 +412,7 @@ const BedTab = () => {
                     error={Boolean(touched.chamberId && errors.chamberId)}
                   >
                     <InputLabel id="chamberId-select-label">
-                      Select Chambers
+                      Select Chamber
                     </InputLabel>
                     <Select
                       labelId="chamberId-select-label"
@@ -396,18 +423,19 @@ const BedTab = () => {
                       onChange={(e) => {
                         handleChange(e);
                       }}
-                      label="Tower"
+                      label="Chamber"
                     >
                       <MenuItem>Select</MenuItem>
-                      {/* {levelsData.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>
-                          {item.name}
-                        </MenuItem>
-                      ))} */}
+                      {chambersData &&
+                        chambersData.map((item) => (
+                          <MenuItem value={item.id} key={item.id}>
+                            {item.name}
+                          </MenuItem>
+                        ))}
                       {/* Add more MenuItem components as needed */}
                     </Select>
-                    {touched.levelId && errors.levelId && (
-                      <FormHelperText error>{errors.levelId}</FormHelperText>
+                    {touched.chamberId && errors.chamberId && (
+                      <FormHelperText error>{errors.chamberId}</FormHelperText>
                     )}
                   </FormControl>
                 </Grid>
@@ -423,16 +451,16 @@ const BedTab = () => {
                     <OutlinedInput
                       id="name-login"
                       type="text"
-                      value={values.name}
-                      name="name"
+                      value={values.bedNo}
+                      name="bedNo"
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      placeholder="Enter chamber"
+                      placeholder="Enter bed"
                       fullWidth
-                      error={Boolean(touched.name && errors.name)}
+                      error={Boolean(touched.bedNo && errors.bedNo)}
                     />
-                    {touched.name && errors.name && (
-                      <FormHelperText error>{errors.name}</FormHelperText>
+                    {touched.bedNo && errors.bedNo && (
+                      <FormHelperText error>{errors.bedNo}</FormHelperText>
                     )}
                   </Stack>
                 </Grid>
@@ -482,6 +510,12 @@ const BedTab = () => {
                       Level
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
+                      Chamber
+                    </TableCell>
+                    <TableCell align="right" sx={{ px: 3 }}>
+                      Bed
+                    </TableCell>
+                    <TableCell align="right" sx={{ px: 3 }}>
                       Created At
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
@@ -490,8 +524,8 @@ const BedTab = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {towersData
-                    ? towersData
+                  {bedsData
+                    ? bedsData
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -510,10 +544,16 @@ const BedTab = () => {
                               {row.id}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
-                              {row.towerId}
+                              {row.tower.name}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
-                              {row.name}
+                              {row.level.name}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.chamber.name}
+                            </TableCell>
+                            <TableCell align="right" sx={{ px: 3 }}>
+                              {row.bedNo}
                             </TableCell>
                             <TableCell align="right" sx={{ px: 3 }}>
                               {row.createdAt}
@@ -553,7 +593,7 @@ const BedTab = () => {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={towersData.length}
+              count={bedsData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}

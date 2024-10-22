@@ -53,7 +53,7 @@ const AddCategory = () => {
             aria-label="basic tabs example"
           >
             <Tab label="Tower" {...a11yProps(0)} />
-            <Tab label="Floor" {...a11yProps(1)} />
+            <Tab label="Level" {...a11yProps(1)} />
             <Tab label="Chamber" {...a11yProps(2)} />
             <Tab label="Bed" {...a11yProps(3)} />
           </Tabs>

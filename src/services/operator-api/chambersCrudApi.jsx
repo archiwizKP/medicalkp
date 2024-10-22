@@ -3,12 +3,16 @@ import axios from "axios";
 // Base URl
 const baseURL = import.meta.env.VITE_API_URL;
 
-// Add level API
-export const AddLevelAPI = async (form, token) => {
+// Add chamber API
+export const AddChamberAPI = async (form, token) => {
   try {
-    const response = await axios.post(`${baseURL}/levels/create-level`, form, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.post(
+      `${baseURL}/chambers/create-chamber`,
+      form,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     console.log("response: ", response);
     return response;
   } catch (error) {
@@ -16,10 +20,10 @@ export const AddLevelAPI = async (form, token) => {
   }
 };
 
-// Get levels API
-export const GetLevelAPI = async (token) => {
+// Get chambers API
+export const GetChamberAPI = async (token) => {
   try {
-    const response = await axios.get(`${baseURL}/levels`, {
+    const response = await axios.get(`${baseURL}/chambers`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -28,10 +32,10 @@ export const GetLevelAPI = async (token) => {
     return error.response;
   }
 };
-// Get Levels by Id API
-export const GetLevelsByTowerId = async (token, id) => {
+// Get chambers by Id API
+export const GetChambersByLevelId = async (token, id) => {
   try {
-    const response = await axios.get(`${baseURL}/levels/tower/${id}`, {
+    const response = await axios.get(`${baseURL}/chambers/level/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -40,10 +44,10 @@ export const GetLevelsByTowerId = async (token, id) => {
     return error.response;
   }
 };
-// Delete levels API
-export const DeleteLevelAPI = async (id, token) => {
+// Delete chambers API
+export const DeleteChamberAPI = async (id, token) => {
   try {
-    const response = await axios.delete(`${baseURL}/levels/${id}`, {
+    const response = await axios.delete(`${baseURL}/chambers/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -52,10 +56,10 @@ export const DeleteLevelAPI = async (id, token) => {
     return error.response;
   }
 };
-// Edit level API
-export const EditLevelAPI = async (token, form) => {
+// Edit chamber API
+export const EditChamberAPI = async (token, form) => {
   try {
-    const response = await axios.put(`${baseURL}/levels/${form.id}`, form, {
+    const response = await axios.put(`${baseURL}/chambers/${form.id}`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);

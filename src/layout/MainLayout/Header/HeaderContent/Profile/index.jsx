@@ -111,7 +111,8 @@ const Profile = () => {
     // empty the state
     dispatch(LogoutAction());
     setOpen(false);
-    navigate("/");
+    // Navigate to the login page
+    navigate("../");
   };
 
   return (
