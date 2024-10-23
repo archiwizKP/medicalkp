@@ -18,6 +18,7 @@ import {
   GetTowerAPI,
 } from "../../services/operator-api/towersCrudAPI";
 import TowerModal from "../../components/modal/towerModal";
+import BreadCrumbs from "../../components/breadcrumbs";
 
 // dialog
 
@@ -181,8 +182,9 @@ const AllPatients = () => {
         token={token}
         handleServerResponse={handleServerResponse} // Pass the callback
       />
+      <BreadCrumbs title={false} page={"All Patients"} />
       {/* Table */}
-      <Box sx={{ width: "100%", mt: 15 }}>
+      <Box sx={{ width: "100%", mt: 5 }}>
         <Typography variant="h5" component="div" sx={{ mb: 3 }} gutterBottom>
           All Patients
         </Typography>
@@ -209,7 +211,7 @@ const AllPatients = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {towersData ? (
+                  {towersData && towersData.length > 0 ? (
                     towersData
                       .slice(
                         page * rowsPerPage,
@@ -255,7 +257,11 @@ const AllPatients = () => {
                         </TableRow>
                       ))
                   ) : (
-                    <></>
+                    <>
+                      <TableRow>
+                        <TableCell>Loading...</TableCell>
+                      </TableRow>
+                    </>
                   )}
                 </TableBody>
               </Table>

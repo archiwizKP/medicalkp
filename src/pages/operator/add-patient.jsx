@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 // material-ui
 import {
   Box,
+  Breadcrumbs,
   Button,
   FormControl,
   FormHelperText,
@@ -29,6 +30,8 @@ import { GetLevelsByTowerId } from "../../services/operator-api/levelCrudApi";
 import { GetChambersByLevelId } from "../../services/operator-api/chambersCrudApi";
 import { GetRolesDoctors } from "../../services/operator-api/doctorCrudApi";
 import AuthWrapper from "../authentication/AuthWrapper";
+import OperatorMenu from "../../menu-items/operator";
+import BreadCrumbs from "../../components/breadcrumbs";
 
 const AddPatient = () => {
   const [token, setToken] = useState("");
@@ -155,6 +158,7 @@ const AddPatient = () => {
 
   return (
     <>
+      <BreadCrumbs title={true} page={"Add Patient"} />
       <Box sx={{ mt: 5 }}>
         {/* // ============================|| Add Patient ||============================ // */}
         <Formik
