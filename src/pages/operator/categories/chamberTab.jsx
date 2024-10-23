@@ -264,6 +264,7 @@ const ChamberTab = () => {
                 resetForm();
                 setFieldValue("towerId", ""); // Reset towerId
                 setFieldValue("levelId", ""); // Reset levelId
+                fetchChambers();
               } else {
                 setServerResponse({
                   authentication: false,
