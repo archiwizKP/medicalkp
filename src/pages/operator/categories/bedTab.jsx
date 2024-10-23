@@ -31,16 +31,13 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { GetTowerAPI } from "../../../services/operator-api/towersCrudAPI";
-import {
-  DeleteLevelAPI,
-  EditLevelAPI,
-  GetLevelsByTowerId,
-} from "../../../services/operator-api/levelCrudApi";
+import { GetLevelsByTowerId } from "../../../services/operator-api/levelCrudApi";
 import LevelModal from "../../../components/modal/levelModal";
 import { GetChambersByLevelId } from "../../../services/operator-api/chambersCrudApi";
 import {
   AddBedAPI,
-  GetBedAPI,
+  DeleteBedAPI,
+  EditBedAPI,
 } from "../../../services/operator-api/bedCrudAPi";
 
 const BedTab = () => {
@@ -157,15 +154,16 @@ const BedTab = () => {
   };
 
   //   Delete level
-  const deleteLevel = async () => {
+  const deleteBed = async () => {
     try {
-      const response = await DeleteLevelAPI(selectedId.selectId, token);
+      const response = await DeleteBedAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
         const filterlevelsData = levelsData.filter(
           (item) => item.id !== selectedId.selectId
         );
         setLevelsData(filterlevelsData);
+        fetchBeds();
       }
     } catch (error) {
       console.log("delete api error", error);
@@ -173,9 +171,9 @@ const BedTab = () => {
   };
 
   //   Edit level
-  const editLevel = async () => {
+  const editBed = async () => {
     try {
-      const response = await EditLevelAPI(selectedId.selectId, token);
+      const response = await EditBedAPI(selectedId.selectId, token);
       console.log("Edit api response", response);
       if (response.message) {
         const updatedlevelsData = levelsData.map((item) =>
@@ -192,9 +190,9 @@ const BedTab = () => {
   const handleConfirm = async () => {
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
-      deleteLevel();
+      deleteBed();
     } else if (selectedId.selectId && selectedId.action === "edit") {
-      editLevel();
+      editBed();
     }
   };
 
