@@ -35,15 +35,16 @@ import AuthWrapper from "../authentication/AuthWrapper";
 import OperatorMenu from "../../menu-items/operator";
 import BreadCrumbs from "../../components/breadcrumbs";
 import { AddPatientAPI } from "../../services/operator-api/patientsCrud";
+import { useNavigate } from "react-router-dom";
 
 const AddPatient = () => {
+  const navigate = useNavigate();
   const [token, setToken] = useState("");
   const [levelsData, setLevelsData] = useState([]);
   const [towersData, setTowersData] = useState([]);
   const [chambersData, setChambersData] = useState([]);
   const [bedsData, setBedsData] = useState([]);
   const [doctorsData, setDoctorsData] = useState([]);
-
   // ids
   const [towerId, setTowerId] = useState(0);
   const [levelId, setLevelId] = useState(0);
@@ -55,6 +56,7 @@ const AddPatient = () => {
     authentication: false,
   });
 
+  // get the token
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("auth"));
     if (storedData && storedData.token) {
@@ -157,8 +159,6 @@ const AddPatient = () => {
     }
   }, [chamberId]);
 
-  console.log("i am server response data:", serverResponse);
-
   return (
     <>
       <BreadCrumbs title={true} page={"Add Patient"} />
@@ -189,26 +189,32 @@ const AddPatient = () => {
               .max(255)
               .required("Account number is required"),
           })}
-          onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+          onSubmit={async (
+            values,
+            { setErrors, setStatus, setSubmitting, resetForm, setFieldValue }
+          ) => {
             try {
               const response = await AddPatientAPI(values, token);
               console.log("API response: ", response);
 
+              console.log("i am success", response.data.success);
+
               // Check if response contains data and message
-              if (response.data && response.data.success) {
+              if (response && response.data.success) {
                 setServerResponse({
                   authentication: true,
                   msg: response.data.message, // Use the message from the response
-                  res: response.data,
+                  res: response.data.data,
                 });
-
-                // Perform success actions, like resetting form
-                setStatus(true);
                 resetForm();
                 setFieldValue("towerId", ""); // Reset towerId
                 setFieldValue("levelId", ""); // Reset levelId
                 setFieldValue("chamberId", ""); // reset chamber id
-                setFieldValue("bedId", ""); // reset chamber id
+                setFieldValue("bedId", ""); // reset bed id
+                // navigate to additional fields
+                if (delayState) {
+                  navigate("/operator/add-patient-additionalinfo");
+                }
               } else {
                 setServerResponse({
                   authentication: false,
@@ -222,6 +228,8 @@ const AddPatient = () => {
                   ? err.response.data.message
                   : "Something went wrong. Please try again.",
               });
+            } finally {
+              setSubmitting(false);
             }
           }}
         >
@@ -239,6 +247,7 @@ const AddPatient = () => {
                 {/* Display the server response message */}
                 {serverResponse.msg && (
                   <Alert
+                    sx={{ width: "500px" }}
                     variant="filled"
                     severity={
                       serverResponse.authentication ? "success" : "error"
@@ -274,11 +283,15 @@ const AddPatient = () => {
                       label="Tower"
                     >
                       <MenuItem>Select</MenuItem>
-                      {towersData.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>
-                          {item.name}
-                        </MenuItem>
-                      ))}
+                      {towersData && towersData.length > 0 ? (
+                        towersData.map((item) => (
+                          <MenuItem value={item.id} key={item.id}>
+                            {item.name}
+                          </MenuItem>
+                        ))
+                      ) : (
+                        <MenuItem>No Tower Found</MenuItem>
+                      )}
                       {/* Add more MenuItem components as needed */}
                     </Select>
                     {touched.towerId && errors.towerId && (
