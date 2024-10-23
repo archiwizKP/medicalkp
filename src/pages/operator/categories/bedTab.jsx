@@ -90,7 +90,7 @@ const BedTab = () => {
   const fetchBeds = async () => {
     try {
       const response = await GetBedAPI(token);
-      console.log(response);
+      console.log("", response);
       if (response) {
         setBedsData(response);
       }
@@ -282,6 +282,7 @@ const BedTab = () => {
                 setFieldValue("towerId", ""); // Reset towerId
                 setFieldValue("levelId", ""); // Reset levelId
                 setFieldValue("chamberId", ""); // reset chamber id
+                fetchBeds();
               } else {
                 setServerResponse({
                   authentication: false,
@@ -348,11 +349,15 @@ const BedTab = () => {
                       label="Tower"
                     >
                       <MenuItem>Select</MenuItem>
-                      {towersData.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>
-                          {item.name}
-                        </MenuItem>
-                      ))}
+                      {towersData && towersData.length > 0 ? (
+                        towersData.map((item) => (
+                          <MenuItem value={item.id} key={item.id}>
+                            {item.name}
+                          </MenuItem>
+                        ))
+                      ) : (
+                        <MenuItem>No Towers Found</MenuItem>
+                      )}
                       {/* Add more MenuItem components as needed */}
                     </Select>
                     {touched.towerId && errors.towerId && (
@@ -387,12 +392,15 @@ const BedTab = () => {
                       label="Level"
                     >
                       <MenuItem>Select</MenuItem>
-                      {levelsData &&
+                      {levelsData && levelsData.length > 0 ? (
                         levelsData.map((item) => (
                           <MenuItem value={item.id} key={item.id}>
                             {item.name}
                           </MenuItem>
-                        ))}
+                        ))
+                      ) : (
+                        <MenuItem>No Levels Found</MenuItem>
+                      )}
                       {/* Add more MenuItem components as needed */}
                     </Select>
                     {touched.levelId && errors.levelId && (
@@ -426,12 +434,15 @@ const BedTab = () => {
                       label="Chamber"
                     >
                       <MenuItem>Select</MenuItem>
-                      {chambersData &&
+                      {chambersData && chambersData.length > 0 ? (
                         chambersData.map((item) => (
                           <MenuItem value={item.id} key={item.id}>
                             {item.name}
                           </MenuItem>
-                        ))}
+                        ))
+                      ) : (
+                        <MenuItem>No Chambers Found</MenuItem>
+                      )}
                       {/* Add more MenuItem components as needed */}
                     </Select>
                     {touched.chamberId && errors.chamberId && (
@@ -524,69 +535,65 @@ const BedTab = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {bedsData
-                    ? bedsData
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => (
-                          <TableRow
-                            hover
-                            key={row.id}
-                            sx={{ cursor: "pointer" }}
-                          >
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              sx={{ px: 3 }}
+                  {bedsData && bedsData.length > 0 ? (
+                    bedsData
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((row) => (
+                        <TableRow hover key={row.id} sx={{ cursor: "pointer" }}>
+                          <TableCell component="th" scope="row" sx={{ px: 3 }}>
+                            {row.id}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.tower.name}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.level.name}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.chamber.name}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.bedNo}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.createdAt}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            <Button
+                              variant="contained"
+                              color="success"
+                              sx={{ ml: 2 }}
+                              onClick={() =>
+                                handleEditClick(row, {
+                                  action: "edit",
+                                })
+                              }
                             >
-                              {row.id}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.tower.name}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.level.name}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.chamber.name}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.bedNo}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              {row.createdAt}
-                            </TableCell>
-                            <TableCell align="right" sx={{ px: 3 }}>
-                              <Button
-                                variant="contained"
-                                color="success"
-                                sx={{ ml: 2 }}
-                                onClick={() =>
-                                  handleEditClick(row, {
-                                    action: "edit",
-                                  })
-                                }
-                              >
-                                Edit
-                              </Button>
-                              <Button
-                                variant="contained"
-                                color="error"
-                                sx={{ ml: 2 }}
-                                onClick={() =>
-                                  handleDeleteClick(row, {
-                                    action: "delete",
-                                  })
-                                }
-                              >
-                                Delete
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                    : {}}
+                              Edit
+                            </Button>
+                            <Button
+                              variant="contained"
+                              color="error"
+                              sx={{ ml: 2 }}
+                              onClick={() =>
+                                handleDeleteClick(row, {
+                                  action: "delete",
+                                })
+                              }
+                            >
+                              Delete
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                  ) : (
+                    <TableRow>
+                      <TableCell>Loading...</TableCell>
+                    </TableRow>
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>
