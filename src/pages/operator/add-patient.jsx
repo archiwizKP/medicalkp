@@ -28,6 +28,7 @@ import { GetBedsByChamberId } from "../../services/operator-api/bedCrudAPi";
 import { GetLevelsByTowerId } from "../../services/operator-api/levelCrudApi";
 import { GetChambersByLevelId } from "../../services/operator-api/chambersCrudApi";
 import { GetRolesDoctors } from "../../services/operator-api/doctorCrudApi";
+import AuthWrapper from "../authentication/AuthWrapper";
 
 const AddPatient = () => {
   const [token, setToken] = useState("");
