@@ -35,6 +35,7 @@ import TowerTab from "./categories/towerTab";
 import LevelTab from "./categories/levelTab";
 import ChamberTab from "./categories/chamberTab";
 import BedTab from "./categories/bedTab";
+import DoctorTab from "./categories/doctorTab";
 
 const AddCategory = () => {
   const [value, setValue] = useState(0);
@@ -56,6 +57,7 @@ const AddCategory = () => {
             <Tab label="Level" {...a11yProps(1)} />
             <Tab label="Chamber" {...a11yProps(2)} />
             <Tab label="Bed" {...a11yProps(3)} />
+            <Tab label="Doctor" {...a11yProps(4)} />
           </Tabs>
         </Box>
 
@@ -74,6 +76,10 @@ const AddCategory = () => {
         {/* Bed */}
         <CustomTabPanel value={value} index={3}>
           <BedTab />
+        </CustomTabPanel>
+        {/* Doctor */}
+        <CustomTabPanel value={value} index={4}>
+          <DoctorTab />
         </CustomTabPanel>
       </Box>
     </>

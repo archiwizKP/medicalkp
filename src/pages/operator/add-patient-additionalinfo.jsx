@@ -15,6 +15,7 @@ import {
   OutlinedInput,
   Select,
   Stack,
+  TextField,
   Typography,
 } from "@mui/material";
 
@@ -28,8 +29,9 @@ import { GetBedsByChamberId } from "../../services/operator-api/bedCrudAPi";
 import { GetLevelsByTowerId } from "../../services/operator-api/levelCrudApi";
 import { GetChambersByLevelId } from "../../services/operator-api/chambersCrudApi";
 import { GetRolesDoctors } from "../../services/operator-api/doctorCrudApi";
+import { Link } from "react-router-dom";
 
-const AddPatient = () => {
+const AddPatientAdditionalInfo = () => {
   const [token, setToken] = useState("");
   const [levelsData, setLevelsData] = useState([]);
   const [towersData, setTowersData] = useState([]);
@@ -210,163 +212,8 @@ const AddPatient = () => {
             <form noValidate onSubmit={handleSubmit}>
               <Grid container spacing={3}>
                 {/* Tower */}
-                <Grid item md={6} xs={12}>
-                  <FormControl
-                    fullWidth
-                    error={Boolean(touched.towerId && errors.towerId)}
-                  >
-                    <InputLabel id="towerId-select-label">
-                      Select Tower
-                    </InputLabel>
-                    <Select
-                      labelId="towerId-select-label"
-                      id="towerId"
-                      value={values.towerId}
-                      name="towerId"
-                      onBlur={handleBlur}
-                      onChange={(e) => {
-                        handleChange(e);
-                        setTowerId(e.target.value);
-                      }}
-                      label="Tower"
-                    >
-                      <MenuItem>Select</MenuItem>
-                      {towersData.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>
-                          {item.name}
-                        </MenuItem>
-                      ))}
-                      {/* Add more MenuItem components as needed */}
-                    </Select>
-                    {touched.towerId && errors.towerId && (
-                      <FormHelperText error>{errors.towerId}</FormHelperText>
-                    )}
-                  </FormControl>
-                </Grid>
-                {errors.submit && (
-                  <Grid item xs={12}>
-                    <FormHelperText error>{errors.submit}</FormHelperText>
-                  </Grid>
-                )}
-                {/* Levels */}
-                <Grid item md={6} xs={12}>
-                  <FormControl
-                    fullWidth
-                    error={Boolean(touched.levelId && errors.levelId)}
-                  >
-                    <InputLabel id="levelId-select-label">
-                      Select Levels
-                    </InputLabel>
-                    <Select
-                      labelId="levelId-select-label"
-                      id="levelId"
-                      value={values.levelId}
-                      name="levelId"
-                      onBlur={handleBlur}
-                      onChange={(e) => {
-                        handleChange(e);
-                        setLevelId(e.target.value);
-                      }}
-                      label="Level"
-                    >
-                      <MenuItem>Select</MenuItem>
-                      {levelsData &&
-                        levelsData.map((item) => (
-                          <MenuItem value={item.id} key={item.id}>
-                            {item.name}
-                          </MenuItem>
-                        ))}
-                      {/* Add more MenuItem components as needed */}
-                    </Select>
-                    {touched.levelId && errors.levelId && (
-                      <FormHelperText error>{errors.levelId}</FormHelperText>
-                    )}
-                  </FormControl>
-                </Grid>
-                {errors.submit && (
-                  <Grid item xs={12}>
-                    <FormHelperText error>{errors.submit}</FormHelperText>
-                  </Grid>
-                )}
-                {/* Chambers */}
-                <Grid item md={6} xs={12}>
-                  <FormControl
-                    fullWidth
-                    error={Boolean(touched.chamberId && errors.chamberId)}
-                  >
-                    <InputLabel id="chamberId-select-label">
-                      Select Chamber
-                    </InputLabel>
-                    <Select
-                      labelId="chamberId-select-label"
-                      id="chamberId"
-                      value={values.chamberId}
-                      name="chamberId"
-                      onBlur={handleBlur}
-                      onChange={(e) => {
-                        handleChange(e);
-                        setChamberId(e.target.value);
-                      }}
-                      label="Chamber"
-                    >
-                      <MenuItem>Select</MenuItem>
-                      {chambersData &&
-                        chambersData.map((item) => (
-                          <MenuItem value={item.id} key={item.id}>
-                            {item.name}
-                          </MenuItem>
-                        ))}
-                      {/* Add more MenuItem components as needed */}
-                    </Select>
-                    {touched.chamberId && errors.chamberId && (
-                      <FormHelperText error>{errors.chamberId}</FormHelperText>
-                    )}
-                  </FormControl>
-                </Grid>
-                {errors.submit && (
-                  <Grid item xs={12}>
-                    <FormHelperText error>{errors.submit}</FormHelperText>
-                  </Grid>
-                )}
-                {/* Beds */}
-                <Grid item md={6} xs={12}>
-                  <FormControl
-                    fullWidth
-                    error={Boolean(touched.bedId && errors.bedId)}
-                  >
-                    <InputLabel id="bedId-select-label">Select Bed</InputLabel>
-                    <Select
-                      labelId="bedId-select-label"
-                      id="bedId"
-                      value={values.bedId}
-                      name="bedId"
-                      onBlur={handleBlur}
-                      onChange={(e) => {
-                        handleChange(e);
-                      }}
-                      label="Beds"
-                    >
-                      <MenuItem>Select</MenuItem>
-                      {bedsData &&
-                        bedsData.map((item) => (
-                          <MenuItem value={item.id} key={item.id}>
-                            {item.bedNo}
-                          </MenuItem>
-                        ))}
-                      {/* Add more MenuItem components as needed */}
-                    </Select>
-                    {touched.bedId && errors.bedId && (
-                      <FormHelperText error>{errors.bedId}</FormHelperText>
-                    )}
-                  </FormControl>
-                </Grid>
-                {errors.submit && (
-                  <Grid item xs={12}>
-                    <FormHelperText error>{errors.submit}</FormHelperText>
-                  </Grid>
-                )}
                 {/* Rounding Doctor */}
-                {/* <Grid item md={6} xs={12}>
+                <Grid item md={6} xs={12}>
                   <FormControl
                     fullWidth
                     error={Boolean(
@@ -416,9 +263,9 @@ const AddPatient = () => {
                   <Grid item xs={12}>
                     <FormHelperText error>{errors.submit}</FormHelperText>
                   </Grid>
-                )} */}
+                )}
                 {/* ARNP */}
-                {/* <Grid item md={6} xs={12}>
+                <Grid item md={6} xs={12}>
                   <FormControl
                     fullWidth
                     error={Boolean(touched.arnp && errors.arnp)}
@@ -462,10 +309,10 @@ const AddPatient = () => {
                   <Grid item xs={12}>
                     <FormHelperText error>{errors.submit}</FormHelperText>
                   </Grid>
-                )} */}
+                )}
 
                 {/* Recieving Doctor */}
-                {/* <Grid item md={6} xs={12}>
+                <Grid item md={6} xs={12}>
                   <FormControl
                     fullWidth
                     error={Boolean(
@@ -514,63 +361,14 @@ const AddPatient = () => {
                   <Grid item xs={12}>
                     <FormHelperText error>{errors.submit}</FormHelperText>
                   </Grid>
-                )} */}
-                {/* First Name */}
-                <Grid item xs={12} md={6}>
-                  <Stack spacing={1}>
-                    {/* <InputLabel htmlFor="firstname-signup">
-                      First Name*
-                    </InputLabel> */}
-                    <OutlinedInput
-                      id="firstname-login"
-                      type="firstname"
-                      value={values.firstname}
-                      name="firstname"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      placeholder="Enter First Name"
-                      fullWidth
-                      error={Boolean(touched.firstname && errors.firstname)}
-                    />
-                    {touched.firstname && errors.firstname && (
-                      <FormHelperText error id="helper-text-firstname-signup">
-                        {errors.firstname}
-                      </FormHelperText>
-                    )}
-                  </Stack>
-                </Grid>
-                {/* Last Name */}
-                <Grid item xs={12} md={6}>
-                  <Stack spacing={1}>
-                    {/* <InputLabel htmlFor="lastname-signup">
-                      Last Name*
-                    </InputLabel> */}
-                    <OutlinedInput
-                      fullWidth
-                      error={Boolean(touched.lastname && errors.lastname)}
-                      id="lastname-signup"
-                      type="lastname"
-                      value={values.lastname}
-                      name="lastname"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      placeholder="Enter last name"
-                      inputProps={{}}
-                    />
-                    {touched.lastname && errors.lastname && (
-                      <FormHelperText error id="helper-text-lastname-signup">
-                        {errors.lastname}
-                      </FormHelperText>
-                    )}
-                  </Stack>
-                </Grid>
+                )}
 
                 {/* Last Scene */}
-                {/* <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
-                    <InputLabel htmlFor="lastScene-signup">
+                    {/* <InputLabel htmlFor="lastScene-signup">
                       Last Scene
-                    </InputLabel>
+                    </InputLabel> */}
                     <OutlinedInput
                       fullWidth
                       error={Boolean(touched.lastScene && errors.lastScene)}
@@ -579,7 +377,7 @@ const AddPatient = () => {
                       name="lastScene"
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      placeholder="Demo Inc."
+                      placeholder="Last Scene"
                       inputProps={{}}
                     />
                     {touched.lastScene && errors.lastScene && (
@@ -588,86 +386,31 @@ const AddPatient = () => {
                       </FormHelperText>
                     )}
                   </Stack>
-                </Grid> */}
-                {/* Data of birth */}
+                </Grid>
+                {/* Day */}
                 <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
-                    <InputLabel htmlFor="dob-signup">Date of Birth</InputLabel>
+                    <InputLabel htmlFor="lastScene-signup">Day</InputLabel>
                     <OutlinedInput
                       fullWidth
-                      error={Boolean(touched.dob && errors.dob)}
-                      id="dob-login"
-                      type="dob"
-                      value={values.dob}
-                      name="dob"
+                      error={Boolean(touched.day && errors.day)}
+                      id="day-signup"
+                      value={values.day}
+                      name="day"
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      placeholder="demo@company.com"
+                      placeholder="Day"
                       inputProps={{}}
                     />
-                    {touched.dob && errors.dob && (
-                      <FormHelperText error id="helper-text-dob-signup">
-                        {errors.dob}
-                      </FormHelperText>
-                    )}
-                  </Stack>
-                </Grid>
-                {/* Mr Number */}
-                <Grid item xs={12} md={6}>
-                  <Stack spacing={1}>
-                    <InputLabel htmlFor="accountNumber-signup">
-                      Mr Number
-                    </InputLabel>
-                    <OutlinedInput
-                      fullWidth
-                      error={Boolean(touched.mrNumber && errors.mrNumber)}
-                      id="mrNumber-signup"
-                      value={values.mrNumber}
-                      name="mrNumber"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      placeholder="Demo Inc."
-                      inputProps={{}}
-                    />
-                    {touched.mrNumber && errors.mrNumber && (
-                      <FormHelperText error id="helper-text-mrNumber-signup">
-                        {errors.mrNumber}
-                      </FormHelperText>
-                    )}
-                  </Stack>
-                </Grid>
-                {/* Account Number */}
-                <Grid item xs={12} md={12}>
-                  <Stack spacing={1}>
-                    <InputLabel htmlFor="accountNumber-signup">
-                      Account Number
-                    </InputLabel>
-                    <OutlinedInput
-                      fullWidth
-                      error={Boolean(
-                        touched.accountNumber && errors.accountNumber
-                      )}
-                      id="accountNumber-login"
-                      type="accountNumber"
-                      value={values.accountNumber}
-                      name="accountNumber"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      placeholder="demo@company.com"
-                      inputProps={{}}
-                    />
-                    {touched.accountNumber && errors.accountNumber && (
-                      <FormHelperText
-                        error
-                        id="helper-text-accountNumber-signup"
-                      >
-                        {errors.accountNumber}
+                    {touched.day && errors.day && (
+                      <FormHelperText error id="helper-text-day-signup">
+                        {errors.day}
                       </FormHelperText>
                     )}
                   </Stack>
                 </Grid>
                 {/* Insurance */}
-                {/* <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
                     <InputLabel htmlFor="insurance-signup">
                       Insurance
@@ -690,9 +433,9 @@ const AddPatient = () => {
                       </FormHelperText>
                     )}
                   </Stack>
-                </Grid> */}
+                </Grid>
                 {/* Neurology */}
-                {/* <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
                     <InputLabel htmlFor="neurology-signup">
                       Neurology
@@ -715,9 +458,9 @@ const AddPatient = () => {
                       </FormHelperText>
                     )}
                   </Stack>
-                </Grid> */}
+                </Grid>
                 {/* PMH */}
-                {/* <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <Stack spacing={1}>
                     <InputLabel htmlFor="pmh-signup">PMH</InputLabel>
                     <OutlinedInput
@@ -738,7 +481,159 @@ const AddPatient = () => {
                       </FormHelperText>
                     )}
                   </Stack>
-                </Grid> */}
+                </Grid>
+                {/* Objectives */}
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="objectives-signup">
+                      Objectives
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.objectives && errors.objectives)}
+                      id="objectives-login"
+                      type="objectives"
+                      value={values.objectives}
+                      name="objectives"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.objectives && errors.objectives && (
+                      <FormHelperText error id="helper-text-objectives-signup">
+                        {errors.objectives}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {/* Assessment */}
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="Assessment-signup">
+                      Assessment
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.Assessment && errors.Assessment)}
+                      id="Assessment-login"
+                      type="Assessment"
+                      value={values.Assessment}
+                      name="Assessment"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.Assessment && errors.Assessment && (
+                      <FormHelperText error id="helper-text-Assessment-signup">
+                        {errors.Assessment}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {/* Plan */}
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="Plan-signup">Plan</InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.Plan && errors.Plan)}
+                      id="Plan-login"
+                      type="Plan"
+                      value={values.Plan}
+                      name="Plan"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.Plan && errors.Plan && (
+                      <FormHelperText error id="helper-text-Plan-signup">
+                        {errors.Plan}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {/* initial NIH */}
+                <Grid item xs={12} md={6}>
+                  <Stack spacing={1}>
+                    <InputLabel htmlFor="initialNih-signup">
+                      Initial NIH
+                    </InputLabel>
+                    <OutlinedInput
+                      fullWidth
+                      error={Boolean(touched.initialNih && errors.initialNih)}
+                      id="initialNih-login"
+                      type="initialNih"
+                      value={values.initialNih}
+                      name="initialNih"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      placeholder="demo@company.com"
+                      inputProps={{}}
+                    />
+                    {touched.initialNih && errors.initialNih && (
+                      <FormHelperText error id="helper-text-initialNih-signup">
+                        {errors.initialNih}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {/* Images */}
+                <Grid item xs={12} md={6} sx={{ mt: 1 }}>
+                  <Stack spacing={1}>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Images"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      fullWidth
+                    />
+                    {touched.Images && errors.Images && (
+                      <FormHelperText error id="helper-text-Images-signup">
+                        {errors.Images}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {/* Lab Status */}
+                <Grid item xs={12} md={6} sx={{ mt: 1 }}>
+                  <Stack spacing={1}>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Lab Status"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      fullWidth
+                    />
+                    {touched.history && errors.history && (
+                      <FormHelperText error id="helper-text-history-signup">
+                        {errors.history}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
+                {/* History */}
+                <Grid item xs={12} md={12}>
+                  <Stack spacing={1}>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="History"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      fullWidth
+                    />
+                    {touched.history && errors.history && (
+                      <FormHelperText error id="helper-text-history-signup">
+                        {errors.history}
+                      </FormHelperText>
+                    )}
+                  </Stack>
+                </Grid>
                 {/* Button */}
                 <Grid item xs={1}>
                   <AnimateButton>
@@ -755,6 +650,23 @@ const AddPatient = () => {
                     </Button>
                   </AnimateButton>
                 </Grid>
+                <Grid item xs={1.3}>
+                  <AnimateButton>
+                    <Link to={"/all-patients"}>
+                      <Button
+                        disableElevation
+                        disabled={isSubmitting}
+                        fullWidth
+                        size="large"
+                        type="submit"
+                        variant="contained"
+                        color="success"
+                      >
+                        Skip For Now
+                      </Button>
+                    </Link>
+                  </AnimateButton>
+                </Grid>
               </Grid>
             </form>
           )}
@@ -764,4 +676,4 @@ const AddPatient = () => {
   );
 };
 
-export default AddPatient;
+export default AddPatientAdditionalInfo;

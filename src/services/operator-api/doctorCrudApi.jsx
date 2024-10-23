@@ -3,12 +3,16 @@ import axios from "axios";
 // Base URl
 const baseURL = import.meta.env.VITE_API_URL;
 
-// Add bed API
-export const AddBedAPI = async (form, token) => {
+// Add doctor API
+export const AddDoctorAPI = async (form, token) => {
   try {
-    const response = await axios.post(`${baseURL}/beds/create-bed`, form, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.post(
+      `${baseURL}/doctors/create-doctor`,
+      form,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     console.log("response: ", response);
     return response;
   } catch (error) {
@@ -16,10 +20,10 @@ export const AddBedAPI = async (form, token) => {
   }
 };
 
-// Get beds API
-export const GetBedAPI = async (token) => {
+// Get doctors API
+export const GetDoctorAPI = async (token) => {
   try {
-    const response = await axios.get(`${baseURL}/beds`, {
+    const response = await axios.get(`${baseURL}/doctors`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -28,10 +32,10 @@ export const GetBedAPI = async (token) => {
     return error.response;
   }
 };
-// Get beds by Id API
-export const GetBedsByChamberId = async (token, id) => {
+// Get doctors by Id API
+export const GetRolesDoctors = async (token) => {
   try {
-    const response = await axios.get(`${baseURL}/beds/chamber/${id}`, {
+    const response = await axios.get(`${baseURL}/doctors?sorted=1`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -40,10 +44,10 @@ export const GetBedsByChamberId = async (token, id) => {
     return error.response;
   }
 };
-// Delete beds API
-export const DeletebedAPI = async (id, token) => {
+// Delete doctors API
+export const DeleteDoctorAPI = async (id, token) => {
   try {
-    const response = await axios.delete(`${baseURL}/beds/${id}`, {
+    const response = await axios.delete(`${baseURL}/doctors/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);
@@ -52,10 +56,10 @@ export const DeletebedAPI = async (id, token) => {
     return error.response;
   }
 };
-// Edit bed API
-export const EditbedAPI = async (token, form) => {
+// Edit doctor API
+export const EditDoctorAPI = async (token, form) => {
   try {
-    const response = await axios.put(`${baseURL}/beds/${form.id}`, form, {
+    const response = await axios.put(`${baseURL}/doctors/${form.id}`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);

@@ -20,6 +20,8 @@ import AddCategory from "../pages/operator/add-category";
 import Login from "../pages/authentication/Login";
 import Loader from "../components/Loader";
 import { Box } from "@mui/material";
+import AddPatientAdditionalInfo from "../pages/operator/add-patient-additionalinfo";
+import AllPatients from "../pages/operator/all-patients";
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("../pages/dashboard")));
@@ -149,6 +151,14 @@ function CustomRoute() {
             {
               path: "add-patient",
               element: <AddPatient />,
+            },
+            {
+              path: "add-patient-additionalinfo",
+              element: <AddPatientAdditionalInfo />,
+            },
+            {
+              path: "all-patients",
+              element: <AllPatients />,
             },
             {
               path: "add-category",
