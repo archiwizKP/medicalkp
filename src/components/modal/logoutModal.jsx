@@ -7,6 +7,7 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const LogoutModal = ({ open, onClose, text, onConfirm }) => {
   return (
@@ -27,9 +28,11 @@ const LogoutModal = ({ open, onClose, text, onConfirm }) => {
         <Button variant="outlined" color="success" onClick={onClose}>
           No
         </Button>
-        <Button type="submit" variant="contained" onClick={onConfirm}>
-          Yes
-        </Button>
+        <Link to={"/"}>
+          <Button type="submit" variant="contained" onClick={onConfirm}>
+            Yes
+          </Button>
+        </Link>
       </DialogActions>
     </Dialog>
   );
