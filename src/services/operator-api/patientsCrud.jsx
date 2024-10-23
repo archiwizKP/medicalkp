@@ -21,7 +21,7 @@ export const AddPatientAPI = async (form, token) => {
 };
 
 // Get patients API
-export const GetpatientAPI = async (token) => {
+export const GetPatientAPI = async (token) => {
   try {
     const response = await axios.get(`${baseURL}/patients`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +45,7 @@ export const GetpatientsByChamberId = async (token, id) => {
   }
 };
 // Delete patients API
-export const DeletepatientAPI = async (id, token) => {
+export const DeletePatientAPI = async (id, token) => {
   try {
     const response = await axios.delete(`${baseURL}/patients/${id}`, {
       headers: { Authorization: `Bearer ${token}` },

@@ -41,7 +41,7 @@ export const GetBedsByChamberId = async (token, id) => {
   }
 };
 // Delete beds API
-export const DeletebedAPI = async (id, token) => {
+export const DeleteBedAPI = async (id, token) => {
   try {
     const response = await axios.delete(`${baseURL}/beds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -53,7 +53,7 @@ export const DeletebedAPI = async (id, token) => {
   }
 };
 // Edit bed API
-export const EditbedAPI = async (token, form) => {
+export const EditBedAPI = async (token, form) => {
   try {
     const response = await axios.put(`${baseURL}/beds/${form.id}`, form, {
       headers: { Authorization: `Bearer ${token}` },

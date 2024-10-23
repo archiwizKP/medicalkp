@@ -19,12 +19,16 @@ import {
 } from "../../services/operator-api/towersCrudAPI";
 import TowerModal from "../../components/modal/towerModal";
 import BreadCrumbs from "../../components/breadcrumbs";
+import {
+  DeletePatientAPI,
+  GetPatientAPI,
+} from "../../services/operator-api/patientsCrud";
 
 // dialog
 
 const AllPatients = () => {
   const [token, setToken] = useState("");
-  const [towersData, setTowersData] = useState([]);
+  const [towersData, setPatientsData] = useState([]);
   const [selectedId, setSelectedId] = useState({
     selectId: "",
     action: "",
@@ -56,10 +60,10 @@ const AllPatients = () => {
 
   const fetchData = async () => {
     try {
-      const getTowersData = await GetTowerAPI(token);
-      console.log("I am towers data", getTowersData);
-      if (getTowersData) {
-        setTowersData(getTowersData);
+      const getPatientsData = await GetPatientAPI(token);
+      console.log("I am patients data", getPatientsData);
+      if (getPatientsData) {
+        setPatientsData(getPatientsData);
       }
     } catch (error) {
       console.log("I am towers error: ", error);
@@ -107,15 +111,20 @@ const AllPatients = () => {
   };
 
   // Delete Tower
-  const deleteTower = async () => {
+  const deletePatient = async () => {
     try {
-      const response = await DeleteTowerAPI(selectedId.selectId, token);
+      const response = await DeletePatientAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
         const filterTowersData = towersData.filter(
           (item) => item.id !== selectedId.selectId
         );
-        setTowersData(filterTowersData);
+        setPatientsData(filterTowersData);
+        setServerResponse({
+          msg: "",
+          res: "",
+          authentication: false,
+        });
       }
     } catch (error) {
       console.log("delete api error", error);
@@ -131,7 +140,7 @@ const AllPatients = () => {
         const updatedTowersData = towersData.map((item) =>
           item.id === selectedId.selectId ? { ...item, ...response.data } : item
         );
-        setTowersData(updatedTowersData);
+        setPatientsData(updatedTowersData);
       }
     } catch (error) {
       console.log("edit api error", error);
@@ -142,7 +151,7 @@ const AllPatients = () => {
   const handleConfirm = async () => {
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
-      deleteTower();
+      deletePatient();
     } else if (selectedId.selectId && selectedId.action === "edit") {
       editTower();
     }
@@ -152,20 +161,6 @@ const AllPatients = () => {
     setOpen(false);
     fetchData();
   };
-
-  const data = [
-    {
-      id: 1,
-      floor: 2,
-    },
-  ];
-
-  const floorData = [
-    {
-      id: 1,
-      floor: 2,
-    },
-  ];
 
   console.log("selected data: ", selectedId.data);
 
@@ -185,6 +180,18 @@ const AllPatients = () => {
       <BreadCrumbs title={false} page={"All Patients"} />
       {/* Table */}
       <Box sx={{ width: "100%", mt: 5 }}>
+        {serverResponse.msg && (
+          <Alert
+            sx={{ width: "500px" }}
+            variant="filled"
+            severity={serverResponse.authentication ? "success" : "error"}
+            onClose={() => {
+              setServerResponse({ ...serverResponse, msg: "" });
+            }}
+          >
+            {serverResponse.msg}
+          </Alert>
+        )}
         <Typography variant="h5" component="div" sx={{ mb: 3 }} gutterBottom>
           All Patients
         </Typography>
@@ -200,7 +207,10 @@ const AllPatients = () => {
                   <TableRow>
                     <TableCell sx={{ px: 3 }}>ID</TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
-                      Tower
+                      First Name
+                    </TableCell>
+                    <TableCell align="right" sx={{ px: 3 }}>
+                      Last Name
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
                       Created At
@@ -223,7 +233,10 @@ const AllPatients = () => {
                             {row.id}
                           </TableCell>
                           <TableCell align="right" sx={{ px: 3 }}>
-                            {row.name}
+                            {row.firstName}
+                          </TableCell>
+                          <TableCell align="right" sx={{ px: 3 }}>
+                            {row.lastName}
                           </TableCell>
                           <TableCell align="right" sx={{ px: 3 }}>
                             {row.createdAt}
