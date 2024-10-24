@@ -89,8 +89,8 @@ const BedTab = () => {
     try {
       const response = await GetBedAPI(token);
       console.log("", response);
-      if (response) {
-        setBedsData(response);
+      if (response && response.data) {
+        setBedsData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -526,7 +526,7 @@ const BedTab = () => {
                       Bed
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
-                      Created At
+                      Status
                     </TableCell>
                     <TableCell align="right" sx={{ px: 3 }}>
                       Action
@@ -558,8 +558,24 @@ const BedTab = () => {
                             {row.bedNo}
                           </TableCell>
                           <TableCell align="right" sx={{ px: 3 }}>
-                            {row.createdAt}
+                            <Button
+                              sx={{
+                                borderRadius: "40px",
+                                backgroundColor:
+                                  row.isOccupied === 1 ? "red" : "#0047ab",
+                                color: "white",
+                                "&:hover": {
+                                  backgroundColor:
+                                    row.isOccupied === 1
+                                      ? "darkred"
+                                      : "darkblue",
+                                },
+                              }}
+                            >
+                              {row.isOccupied === 1 ? "Occupied" : "Free"}
+                            </Button>
                           </TableCell>
+
                           <TableCell align="right" sx={{ px: 3 }}>
                             <Button
                               variant="contained"

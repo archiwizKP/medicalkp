@@ -32,8 +32,20 @@ export const GetPatientAPI = async (token) => {
     return error.response;
   }
 };
+// Get Patient By id
+export const GetPatientsById = async (token, id) => {
+  try {
+    const response = await axios.get(`${baseURL}/patients/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("response: ", response);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
 // Get patients by Id API
-export const GetpatientsByChamberId = async (token, id) => {
+export const GetPatientsByChamberId = async (token, id) => {
   try {
     const response = await axios.get(`${baseURL}/patients/chamber/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -57,9 +69,9 @@ export const DeletePatientAPI = async (id, token) => {
   }
 };
 // Edit patient API
-export const EditpatientAPI = async (token, form) => {
+export const EditPatientAPI = async (token, form, id) => {
   try {
-    const response = await axios.put(`${baseURL}/patients/${form.id}`, form, {
+    const response = await axios.put(`${baseURL}/patients/${id}`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("response: ", response);

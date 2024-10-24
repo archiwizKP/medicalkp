@@ -210,6 +210,9 @@ const AddPatient = () => {
                 setFieldValue("chamberId", ""); // reset chamber id
                 setFieldValue("bedId", ""); // reset bed id
                 resetForm();
+                setTimeout(() => {
+                  navigate("/operator/all-patients"); // Use absolute path
+                }, 2000); // Navigate after 3 seconds
               } else {
                 setServerResponse({
                   authentication: false,
