@@ -51,9 +51,9 @@ const AddPatient = () => {
   const [chamberId, setChamberId] = useState(0);
   const [doctorId, setDoctorId] = useState(0);
   const [serverResponse, setServerResponse] = useState({
+    authentication: false,
     msg: "",
     res: "",
-    authentication: false,
   });
 
   // get the token
@@ -159,6 +159,8 @@ const AddPatient = () => {
     }
   }, [chamberId]);
 
+  console.log("i am server response:", serverResponse);
+
   return (
     <>
       <BreadCrumbs title={true} page={"Add Patient"} />
@@ -189,10 +191,7 @@ const AddPatient = () => {
               .max(255)
               .required("Account number is required"),
           })}
-          onSubmit={async (
-            values,
-            { setErrors, setStatus, setSubmitting, resetForm, setFieldValue }
-          ) => {
+          onSubmit={async (values, { resetForm, setFieldValue }) => {
             try {
               const response = await AddPatientAPI(values, token);
               console.log("API response: ", response);
@@ -200,21 +199,17 @@ const AddPatient = () => {
               console.log("i am success", response.data.success);
 
               // Check if response contains data and message
-              if (response && response.data.success) {
+              if (response.data.success === true) {
                 setServerResponse({
                   authentication: true,
                   msg: response.data.message, // Use the message from the response
                   res: response.data.data,
                 });
-                resetForm();
                 setFieldValue("towerId", ""); // Reset towerId
                 setFieldValue("levelId", ""); // Reset levelId
                 setFieldValue("chamberId", ""); // reset chamber id
                 setFieldValue("bedId", ""); // reset bed id
-                // navigate to additional fields
-                if (delayState) {
-                  navigate("/operator/add-patient-additionalinfo");
-                }
+                resetForm();
               } else {
                 setServerResponse({
                   authentication: false,
@@ -228,8 +223,6 @@ const AddPatient = () => {
                   ? err.response.data.message
                   : "Something went wrong. Please try again.",
               });
-            } finally {
-              setSubmitting(false);
             }
           }}
         >
