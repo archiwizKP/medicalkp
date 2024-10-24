@@ -38,6 +38,7 @@ import {
   AddBedAPI,
   DeleteBedAPI,
   EditBedAPI,
+  GetBedAPI,
 } from "../../../services/operator-api/bedCrudAPi";
 
 const BedTab = () => {
