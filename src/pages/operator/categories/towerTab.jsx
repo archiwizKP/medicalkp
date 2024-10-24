@@ -17,6 +17,7 @@ import {
   Stack,
   TableHead,
   Typography,
+  MenuItem,
 } from "@mui/material";
 
 // third party
@@ -85,7 +86,7 @@ const TowerTab = () => {
       const getTowersData = await GetTowerAPI(token);
       console.log("I am towers data", getTowersData);
       if (getTowersData) {
-        setTowersData(getTowersData);
+        setTowersData(getTowersData.data);
       }
     } catch (error) {
       console.log("I am towers error: ", error);
@@ -351,7 +352,7 @@ const TowerTab = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {towersData ? (
+                  {towersData && towersData.length > 0 ? (
                     towersData
                       .slice(
                         page * rowsPerPage,
@@ -397,7 +398,7 @@ const TowerTab = () => {
                         </TableRow>
                       ))
                   ) : (
-                    <></>
+                    <MenuItem>Loading...</MenuItem>
                   )}
                 </TableBody>
               </Table>

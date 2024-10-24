@@ -40,8 +40,11 @@ import {
 import LevelModal from "../../../components/modal/levelModal";
 import {
   AddDoctorAPI,
+  DeleteDoctorAPI,
+  EditDoctorAPI,
   GetDoctorAPI,
 } from "../../../services/operator-api/doctorCrudApi";
+import DoctorModal from "../../../components/modal/doctorModal";
 
 const DoctorTab = () => {
   // roles list
@@ -121,15 +124,16 @@ const DoctorTab = () => {
   };
 
   //   Delete level
-  const deleteLevel = async () => {
+  const deleteDoctor = async () => {
     try {
-      const response = await DeleteLevelAPI(selectedId.selectId, token);
+      const response = await DeleteDoctorAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
-        const filterlevelsData = levelsData.filter(
+        const filterDoctorssData = doctorsData.filter(
           (item) => item.id !== selectedId.selectId
         );
-        setLevelsData(filterlevelsData);
+        setDoctorsData(filterDoctorssData);
+        fetchDoctors();
       }
     } catch (error) {
       console.log("delete api error", error);
@@ -137,15 +141,15 @@ const DoctorTab = () => {
   };
 
   //   Edit level
-  const editLevel = async () => {
+  const editDoctor = async () => {
     try {
-      const response = await EditLevelAPI(selectedId.selectId, token);
+      const response = await EditDoctorAPI(selectedId.selectId, token);
       console.log("Edit api response", response);
       if (response.message) {
-        const updatedlevelsData = levelsData.map((item) =>
+        const updatedDoctorsData = doctorsData.map((item) =>
           item.id === selectedId.selectId ? { ...item, ...response.data } : item
         );
-        setLevelsData(updatedlevelsData);
+        setDoctorsData(updatedDoctorsData);
       }
     } catch (error) {
       console.log("edit api error", error);
@@ -156,9 +160,9 @@ const DoctorTab = () => {
   const handleConfirm = async () => {
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
-      deleteLevel();
+      deleteDoctor();
     } else if (selectedId.selectId && selectedId.action === "edit") {
-      editLevel();
+      editDoctor();
     }
   };
 
@@ -180,7 +184,7 @@ const DoctorTab = () => {
   return (
     <>
       {/* level Modal */}
-      <LevelModal
+      <DoctorModal
         open={open}
         onClose={handleClose}
         text="Are you sure you want to delete this record?"

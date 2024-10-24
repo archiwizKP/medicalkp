@@ -71,7 +71,7 @@ const AddPatient = () => {
       const response = await GetTowerAPI(token);
       console.log(response);
       if (response) {
-        setTowersData(response);
+        setTowersData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -84,7 +84,7 @@ const AddPatient = () => {
       const response = await GetLevelsByTowerId(token, towerId);
       console.log("ia m fetch lvels by towerid: ", response);
       if (response) {
-        setLevelsData(response);
+        setLevelsData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
