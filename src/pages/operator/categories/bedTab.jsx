@@ -77,7 +77,7 @@ const BedTab = () => {
       const response = await GetTowerAPI(token);
       console.log(response);
       if (response) {
-        setTowersData(response);
+        setTowersData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -103,7 +103,7 @@ const BedTab = () => {
       const response = await GetLevelsByTowerId(token, selectId);
       console.log("ia m fetch lvels by towerid: ", response);
       if (response) {
-        setLevelsData(response);
+        setLevelsData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -230,6 +230,7 @@ const BedTab = () => {
   console.log("Chambers Data: ", chambersData);
 
   console.log("i am server response; ", serverResponse);
+  console.log("i am beds data: ; ", bedsData);
 
   return (
     <>

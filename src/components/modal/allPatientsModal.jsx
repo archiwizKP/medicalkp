@@ -43,7 +43,6 @@ const AllPatientsModal = ({
   action,
   token,
   editId,
-  handleServerResponse, // New prop
 }) => {
   const [levelsData, setLevelsData] = useState([]);
   const [towersData, setTowersData] = useState([]);
@@ -70,7 +69,7 @@ const AllPatientsModal = ({
       const response = await GetTowerAPI(token);
       console.log(response);
       if (response) {
-        setTowersData(response);
+        setTowersData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -83,7 +82,7 @@ const AllPatientsModal = ({
       const response = await GetLevelsByTowerId(token, towerId);
       console.log("ia m fetch lvels by towerid: ", response);
       if (response) {
-        setLevelsData(response);
+        setLevelsData(response.data);
       }
     } catch (error) {
       console.log("Error: ", error);
@@ -237,7 +236,7 @@ const AllPatientsModal = ({
 
           try {
             const responseData = await EditPatientAPI(token, values, editId);
-            console.log("response in edit cat modal: ", response);
+            console.log("response in edit all patients modal: ", response);
 
             const response =
               responseData.code === "ERR_BAD_REQUEST"
@@ -262,8 +261,6 @@ const AllPatientsModal = ({
               });
               setStatus(true);
               resetForm();
-              fetchData();
-              onClose(); // Close the modal on success
             }
           } catch (err) {
             setModalServerResponse({
@@ -293,27 +290,6 @@ const AllPatientsModal = ({
             ) : (
               <Box sx={{ mb: 3 }}>
                 <Grid container spacing={3}>
-                  <Grid item md={3.5} xs={12}>
-                    {/* Display the server response message */}
-                    {modalServerResponse.msg && (
-                      <Alert
-                        variant="filled"
-                        severity={
-                          modalServerResponse.authentication
-                            ? "success"
-                            : "error"
-                        }
-                        onClose={() => {
-                          setModalServerResponse({
-                            ...modalServerResponse,
-                            msg: "",
-                          });
-                        }}
-                      >
-                        {modalServerResponse.msg}
-                      </Alert>
-                    )}
-                  </Grid>
                   <Grid
                     container
                     spacing={3}
