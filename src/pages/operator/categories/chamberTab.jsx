@@ -41,6 +41,7 @@ import {
 import LevelModal from "../../../components/modal/levelModal";
 import {
   AddChamberAPI,
+  DeleteChamberAPI,
   GetChamberAPI,
 } from "../../../services/operator-api/chambersCrudApi";
 
@@ -144,15 +145,15 @@ const ChamberTab = () => {
   };
 
   //   Delete level
-  const deleteLevel = async () => {
+  const deleteChambers = async () => {
     try {
-      const response = await DeleteLevelAPI(selectedId.selectId, token);
+      const response = await DeleteChamberAPI(selectedId.selectId, token);
       console.log("Delete api response", response);
       if (response.message) {
         const filterlevelsData = levelsData.filter(
           (item) => item.id !== selectedId.selectId
         );
-        setLevelsData(filterlevelsData);
+        setChambersData(filterlevelsData);
       }
     } catch (error) {
       console.log("delete api error", error);
@@ -179,7 +180,7 @@ const ChamberTab = () => {
   const handleConfirm = async () => {
     setOpen(false);
     if (selectedId.selectId && selectedId.action === "delete") {
-      deleteLevel();
+      deleteChambers();
     } else if (selectedId.selectId && selectedId.action === "edit") {
       editLevel();
     }
